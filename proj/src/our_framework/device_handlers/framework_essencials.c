@@ -2,32 +2,31 @@
 
 bool game_running = true;
 
-int run(void (*func)()){
+int ipc_status;
+message msg;
+int r;
 
+int run(void (*func)()){
+  timer_subscribe_interrupt();
+
+  unsigned long long time_counter = 0;
+  
   while(game_running){
-        func();
-    // printf("In while, counter: %d\n", counter);
-    // printf("In while, safe_counter: %d\n", safe_counter);
-    //safe_counter++;
-    if((r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+    r = driver_receive(ANY, &msg, &ipc_status);
+    if(r != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
     }
-    if (is_ipc_notify(ipc_status) && 
-       (_ENDPOINT_P(msg.m_source) == HARDWARE)) /* receive notification */
-        if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
-          /* process it */
-          timer_int_handler();
-          // printf("counter: %d\n", counter);
-          // printf("counter: %d\n", counter);
-          if(counter % 60 == 0){
-            timer_print_elapsed_time();
-          }
-        }
+
+    if(is_timer_0_interrupt(ipc_status, msg)){
+      func();
+      time_counter++;
+    }
   }
 
+  timer_unsubscribe_interrupt();
 
-    return 0;
+  return 0;
 }
 
 void quit(){

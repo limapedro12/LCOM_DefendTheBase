@@ -2,14 +2,25 @@
 
 int hook_id = 0;
 
-int timer_subscribe_int(u8_t key){
-    hook_id = key;
-    if(sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)){
-        printf("Error setting policy\n");
-        return 1;
-    }
-    return 0;
+int timer_subscribe_interrupt(){
+  hook_id = TIMER_KEY;
+  if(sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)){
+    printf("Error while subscribing to timer's interrupts\n");
+    return 1;
+  }
+  return 0;
 }
 
-int timer_unsubscribe_int();
-bool is_timer_0_interrupt();
+int timer_unsubscribe_interrupt(){
+  if(sys_irqrmpolicy(&hook_id)){
+    printf("Error while unsubscribing to timer's interrupts\n");
+    return 1;
+  }
+  return 0;
+}
+
+bool is_timer_0_interrupt(int ipc_status, message msg){
+  return (is_ipc_notify(ipc_status) && 
+         (_ENDPOINT_P(msg.m_source) == HARDWARE) && 
+         (msg.m_notify.interrupts & IRQ_SET_TIMER));
+}

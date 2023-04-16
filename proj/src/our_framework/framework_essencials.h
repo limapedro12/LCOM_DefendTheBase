@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 #include <stdbool.h>
+#include "device_handlers/timer.h"
 
 /**
  * @brief Runs the game
