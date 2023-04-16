@@ -23,4 +23,8 @@ int run(void (*func)());
  */
 void quit();
 
+int get_time_counter();
+bool is_time_interval_elapsed_seconds(int start_time, int interval);
+bool is_time_interval_elapsed_milliseconds(int start_time, int interval);
+
 #endif

@@ -4,13 +4,12 @@ bool game_running = true;
 
 int ipc_status;
 message msg;
-int r;
+unsigned long long time_counter = 0;
 
 int run(void (*func)()){
   timer_subscribe_interrupt();
-
-  unsigned long long time_counter = 0;
   
+  int r = 0;
   while(game_running){
     r = driver_receive(ANY, &msg, &ipc_status);
     if(r != 0) {
@@ -30,6 +29,31 @@ int run(void (*func)()){
 }
 
 void quit(){
-    game_running = false;
-    return;
+  game_running = false;
+  return;
+}
+
+int get_time_counter(){
+    return time_counter % 600000000;
+}
+
+bool is_time_interval_elapsed_seconds(int start_time, int interval){
+  if(interval * 60 > 600000000){
+    printf("Interval too big, max interval is 10000000 seconds\n");
+    return false;
+  }
+  if(600000000-start_time < interval)
+    start_time = -start_time;
+  return ((int)((time_counter%600000000) / 60) >= start_time + interval);
+}
+
+bool is_time_interval_elapsed_milliseconds(int start_time, int interval){
+  interval = (interval * 60)/1000;
+  if(interval > 600000000){
+    printf("Interval too big, max interval is 10000000000 milliseconds\n");
+    return false;
+  }
+  if(600000000-start_time < interval)
+    start_time = -start_time;
+  return ((int)(time_counter%600000000) >= start_time + interval);
 }
