@@ -2,6 +2,8 @@
 #include <lcom/proj.h>
 #include <stdint.h>
 #include <stdio.h>
+#include "game.h"
+#include "our_framework/framework_essencials.h"
 
 int main(int argc, char *argv[]){
   lcf_set_language("EN-US");
@@ -11,6 +13,10 @@ int main(int argc, char *argv[]){
 }
 
 int(proj_main_loop)(int argc, char *argv[]) {
-    printf("Hello World!");
+    
+    before();
+    run(game);
+    after();
+
     return 0;
 }
