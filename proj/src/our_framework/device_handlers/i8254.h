@@ -1,5 +1,5 @@
-#ifndef _LCOM_I8254_H_
-#define _LCOM_I8254_H_
+#ifndef __I8254_H_
+#define __I8254_H_
 
 #include <lcom/lcf.h>
 
@@ -8,7 +8,7 @@
  *
  * @brief Timer constants
  * 
- * Constants for programming the i8254 Timer. Needs to be completed.
+ * Constants for programming the i8254 Timer.
  */
 
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */

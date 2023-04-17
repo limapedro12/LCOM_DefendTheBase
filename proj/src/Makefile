@@ -6,7 +6,7 @@ PROG=proj
 .PATH: ${.CURDIR}/our_framework/device_handlers
 
 # source code files to be compiled
-SRCS = proj.c game.c framework_essencials.c timer.c
+SRCS = proj.c game.c framework_essencials.c utils.c timer.c kbd.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

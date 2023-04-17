@@ -10,9 +10,12 @@ int before(){
 }
 
 void game(){
-    if(is_time_interval_elapsed_milliseconds(time_0, 200)){
-      printf("2 millisecond has passed!");
-      time_0 = get_time_counter();
+    if(is_key_pressed(0x81)){
+      printf("Esc Key pressed outside!\n");
+      quit();
+    }
+    if(is_time_interval_elapsed_seconds(time_0, 5)){
+      printf("5 seconds has passed!");
       quit();
     }
 }
