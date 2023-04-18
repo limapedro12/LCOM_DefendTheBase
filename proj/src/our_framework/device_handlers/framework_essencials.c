@@ -79,8 +79,12 @@ bool is_time_interval_elapsed_milliseconds(int start_time, int interval){
   return ((int)(time_counter%600000000) >= start_time + interval);
 }
 
-bool is_key_pressed(uint8_t scancode){
+bool is_key_pressed_code(uint8_t scancode){
   return code == scancode;
+}
+
+bool is_key_pressed(char key){
+  return code == char_to_scancode(key);
 }
 
 void turn_on_graphics(){

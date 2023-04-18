@@ -60,7 +60,9 @@ bool is_time_interval_elapsed_seconds(int start_time, int interval);
  */
 bool is_time_interval_elapsed_milliseconds(int start_time, int interval);
 
-bool is_key_pressed(uint8_t scancode);
+bool is_key_pressed_code(uint8_t scancode);
+
+bool is_key_pressed(char key);
 
 void turn_on_graphics();
 

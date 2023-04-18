@@ -1,5 +1,16 @@
 #include "kbd.h"
 
+#define TAB 1         // 0x0f
+#define BACKSPACE 2   // 0e
+#define SHIFT 3       // 2a
+#define CTRL 4        // 1d
+#define ALT 5         // 38
+#define ENTER 6       // 1c
+#define ARROW_UP 7    // e048
+#define ARROW_LEFT 8  // e04b
+#define ARROW_RIGHT 9 // e04d
+#define ARROW_DOWN 10 // e050
+
 int hook_id_keyboard = 0;
 
 int keyboard_subscribe_interrupt(){
@@ -34,4 +45,31 @@ u8_t read_scancode(){
       }
     tickdelay(2000);
   }
+}
+
+char char_map[256] = {0, 0xf, 0xe, 0x2a, 0x1d, 0x38, 0x1c, 0x48, 0x4b, 0x4d, 0x50, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0x39, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0xb, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8, 0x9, 0xa, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0x1e, 0x30, 0x2e, 0x20, 0x12, 0x21, 0x22, 0x23, 0x17, 0x24, 0x25, 
+                      0x26, 0x32, 0x31, 0x18, 0x19, 0x10, 0x13, 0x1f, 0x14, 0x16, 0x2f, 0x11, 
+                      0x2d, 0x15, 0x2c, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                      0, 0, 0, 0 };
+u8_t char_to_scancode(char c){
+  u8_t uc = (u8_t) c;
+  return char_map[uc];  
 }

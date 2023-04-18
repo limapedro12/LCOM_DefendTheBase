@@ -11,5 +11,6 @@
 int keyboard_subscribe_interrupt();
 int keyboard_unsubscribe_interrupt();
 u8_t read_scancode();
+u8_t char_to_scancode(char c);
 
 #endif

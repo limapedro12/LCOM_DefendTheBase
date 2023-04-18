@@ -14,20 +14,25 @@ int x = 20;
 int y = 20;
 
 void game(){
-  if(is_key_pressed(0x81)){
+  if(is_key_pressed_code(0x81)){
     printf("Esc Key pressed outside!\n");
     quit();
   }
-  if(is_key_pressed(0x4B)){
+  if(is_key_pressed(' ')){
+    printf("Space Key pressed outside!\n");
+    quit();
+  }
+
+  if(is_key_pressed_code(0x4B)){
     x--;
   }
-  if(is_key_pressed(0x4D)){
+  if(is_key_pressed_code(0x4D)){
     x++;
   }
-  if(is_key_pressed(0x48)){
+  if(is_key_pressed_code(0x48)){
     y--;
   }
-  if(is_key_pressed(0x50)){
+  if(is_key_pressed_code(0x50)){
     y++;
   }
   if(is_time_interval_elapsed_seconds(time_0, 5)){
