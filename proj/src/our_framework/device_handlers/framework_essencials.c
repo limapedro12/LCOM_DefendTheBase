@@ -5,7 +5,14 @@ u8_t code = 0;
 
 unsigned long long time_counter = 0;
 
+bool graphics_on = false;
+
+char* video_mem = NULL;
+
 int run(void (*func)()){
+  if(graphics_on)
+    video_mem = vg_init(0x115);
+
   timer_subscribe_interrupt();
   keyboard_subscribe_interrupt();
   
@@ -35,6 +42,9 @@ int run(void (*func)()){
 
   keyboard_unsubscribe_interrupt();
   timer_unsubscribe_interrupt();
+
+  if(graphics_on)
+    vg_exit();
 
   return 0;
 }
@@ -70,11 +80,20 @@ bool is_time_interval_elapsed_milliseconds(int start_time, int interval){
 }
 
 bool is_key_pressed(uint8_t scancode){
-  // if ((is_ipc_notify(ipc_status) && 
-  //    (_ENDPOINT_P(msg.m_source) == HARDWARE) && 
-  //    (msg.m_notify.interrupts & IRQ_SET_KBD))){
-  //     u8_t code = read_scancode();
-  //     return code == scancode;
-  // }
   return code == scancode;
+}
+
+void turn_on_graphics(){
+  if(!graphics_on){
+    vg_init(0x105);
+    graphics_on = true;
+  }
+}
+
+void draw_rectangle(int x, int y, int width, int height, uint32_t color){
+  if(!graphics_on){
+    printf("Graphics not on!\n");
+    return;
+  }
+  draw_rect(x, y, width, height, color, video_mem, 0x115);
 }

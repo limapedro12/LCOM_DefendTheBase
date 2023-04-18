@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "device_handlers/timer.h"
 #include "device_handlers/kbd.h"
+#include "device_handlers/gpu.h"
 
 /**
  * @brief Runs the game
@@ -60,5 +61,9 @@ bool is_time_interval_elapsed_seconds(int start_time, int interval);
 bool is_time_interval_elapsed_milliseconds(int start_time, int interval);
 
 bool is_key_pressed(uint8_t scancode);
+
+void turn_on_graphics();
+
+void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
 #endif
