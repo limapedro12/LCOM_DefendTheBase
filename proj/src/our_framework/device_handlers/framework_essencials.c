@@ -30,7 +30,7 @@ int run(void (*func)()){
      (_ENDPOINT_P(msg.m_source) == HARDWARE))){
       if (msg.m_notify.interrupts & IRQ_SET_KBD){
         code = read_scancode();
-        // printf("Code: 0x%x\n", code);
+        printf("Code: 0x%x\n", code);
       }
     }
 
@@ -83,7 +83,16 @@ bool is_key_pressed_code(uint8_t scancode){
   return code == scancode;
 }
 
-bool is_key_pressed(char key){
+bool is_key_pressed(char key, bool isBreak){
+  if(isBreak){
+    if(code == (char_to_scancode(key) | BIT(7))){
+      // printf("Got break code: 0x%x", code);
+      code = 0;
+      return true;
+    }
+    return false;
+  }
+
   return code == char_to_scancode(key);
 }
 

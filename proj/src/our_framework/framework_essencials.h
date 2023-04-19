@@ -60,12 +60,48 @@ bool is_time_interval_elapsed_seconds(int start_time, int interval);
  */
 bool is_time_interval_elapsed_milliseconds(int start_time, int interval);
 
+/**
+ * @brief Checks if a certain key is pressed or released
+ * 
+ * This function returns true if the key with the given scancode is pressed or released(depending onthe type of scancode)
+ * 
+ * @param scancode 
+ * @return true 
+ * @return false 
+ */
 bool is_key_pressed_code(uint8_t scancode);
 
-bool is_key_pressed(char key);
+/**
+ * @brief Checks if a certain key is pressed or released
+ * 
+ * This function returns true if the key with the given character is pressed or released(depending on the isBreak parameter)
+ * 
+ * @param key 
+ * @param isBreak 
+ * @return true 
+ * @return false 
+ */
+bool is_key_pressed(char key, bool isBreak);
 
+/**
+ * @brief Turns on graphics mode
+ * 
+ * This function turns on graphics mode, if it is not already on.
+ * 
+ */
 void turn_on_graphics();
 
+/**
+ * @brief Draws a rectangle
+ * 
+ * This function draws a rectangle with the given parameters.
+ * 
+ * @param x 
+ * @param y 
+ * @param width 
+ * @param height 
+ * @param color 
+ */
 void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
 #endif

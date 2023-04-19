@@ -18,21 +18,21 @@ void game(){
     printf("Esc Key pressed outside!\n");
     quit();
   }
-  if(is_key_pressed(' ')){
+  if(is_key_pressed(' ', false)){
     printf("Space Key pressed outside!\n");
     quit();
   }
 
-  if(is_key_pressed_code(0x4B)){
+  if(is_key_pressed('a', true)){
     x--;
   }
-  if(is_key_pressed_code(0x4D)){
+  if(is_key_pressed('d', false)){
     x++;
   }
-  if(is_key_pressed_code(0x48)){
+  if(is_key_pressed('w', false)){
     y--;
   }
-  if(is_key_pressed_code(0x50)){
+  if(is_key_pressed('s', false)){
     y++;
   }
   if(is_time_interval_elapsed_seconds(time_0, 5)){

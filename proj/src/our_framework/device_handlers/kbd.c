@@ -1,16 +1,5 @@
 #include "kbd.h"
 
-#define TAB 1         // 0x0f
-#define BACKSPACE 2   // 0e
-#define SHIFT 3       // 2a
-#define CTRL 4        // 1d
-#define ALT 5         // 38
-#define ENTER 6       // 1c
-#define ARROW_UP 7    // e048
-#define ARROW_LEFT 8  // e04b
-#define ARROW_RIGHT 9 // e04d
-#define ARROW_DOWN 10 // e050
-
 int hook_id_keyboard = 0;
 
 int keyboard_subscribe_interrupt(){
