@@ -2,6 +2,11 @@
 
 bool game_running = true;
 u8_t code = 0;
+u8_t mouse_arr[3] = {0, 0, 0};
+struct packet pp;
+int current = 0;
+
+position mouse_position = {0, 0};
 
 unsigned long long time_counter = 0;
 
@@ -15,6 +20,7 @@ int run(void (*func)()){
 
   timer_subscribe_interrupt();
   keyboard_subscribe_interrupt();
+  mouse_subscribe_interrupt();
   
   int ipc_status;
   message msg;
@@ -32,7 +38,18 @@ int run(void (*func)()){
         code = read_scancode();
         printf("Code: 0x%x\n", code);
       }
+      if (msg.m_notify.interrupts & IRQ_SET_MOUSE){
+        mouse_arr[current] = read_scancode();
+        if(current == 2){
+          parse_to_packet(mouse_arr, &pp);
+          mouse_position.x += pp.delta_x;
+          mouse_position.y += pp.delta_y;
+          // printf("Mouse position: (%d, %d)\n", mouse_position.x, mouse_position.y);
+        }
+        current = (current + 1) % 3;
+      }
     }
+    // printf("Time counter: %d\n", time_counter);
 
     if(is_timer_0_interrupt(ipc_status, msg)){
       func();
@@ -40,6 +57,7 @@ int run(void (*func)()){
     }
   }
 
+  mouse_unsubscribe_interrupt();
   keyboard_unsubscribe_interrupt();
   timer_unsubscribe_interrupt();
 
@@ -96,6 +114,10 @@ bool is_key_pressed(char key, bool isBreak){
   return code == char_to_scancode(key);
 }
 
+position get_mouse_position(){
+  return mouse_position;
+}
+
 void turn_on_graphics(){
   if(!graphics_on){
     vg_init(0x105);
@@ -110,3 +132,4 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color){
   }
   draw_rect(x, y, width, height, color, video_mem, 0x115);
 }
+

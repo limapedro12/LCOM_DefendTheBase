@@ -5,7 +5,13 @@
 #include <stdbool.h>
 #include "device_handlers/timer.h"
 #include "device_handlers/kbd.h"
+#include "device_handlers/mouse.h"
 #include "device_handlers/gpu.h"
+
+typedef struct {
+    int x;
+    int y;
+} position;
 
 /**
  * @brief Runs the game
@@ -82,6 +88,8 @@ bool is_key_pressed_code(uint8_t scancode);
  * @return false 
  */
 bool is_key_pressed(char key, bool isBreak);
+
+position get_mouse_position();
 
 /**
  * @brief Turns on graphics mode

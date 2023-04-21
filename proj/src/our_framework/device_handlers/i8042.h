@@ -21,6 +21,8 @@
 #define KBC_ST_REG 0x64
 #define KBC_CMD_REG 0x64
 
+#define MOUSE_IRQ 12
+
 /**@}*/
 
 #endif

@@ -23,7 +23,7 @@ void game(){
     quit();
   }
 
-  if(is_key_pressed('a', true)){
+  if(is_key_pressed('a', false)){
     x--;
   }
   if(is_key_pressed('d', false)){
@@ -35,12 +35,16 @@ void game(){
   if(is_key_pressed('s', false)){
     y++;
   }
+
+  // printf("MOuse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
+
   if(is_time_interval_elapsed_seconds(time_0, 5)){
     printf("5 seconds has passed!");
     quit();
   }
 
   draw_rectangle(x, y, 2, 2, 0x00FF00);
+  draw_rectangle(780 + get_mouse_position().x, 680 + get_mouse_position().y, 2, 2, 0xFF0000);
 }
 
 int after(){

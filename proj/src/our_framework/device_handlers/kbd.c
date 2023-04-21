@@ -23,7 +23,9 @@ u8_t read_scancode(){
   u8_t data;
   uint stat;
 
-  while(1) {
+  int tries = 10;
+  while(tries--) {
+    // printf("Trying to read scancode\n");
     sys_inb(KBC_ST_REG, &stat); 
     if( stat & KBC_OBF ) {
       util_sys_inb(KBC_OUT_BUF, &data);
@@ -34,6 +36,7 @@ u8_t read_scancode(){
       }
     tickdelay(2000);
   }
+  return -1;
 }
 
 char char_map[256] = {0, 0xf, 0xe, 0x2a, 0x1d, 0x38, 0x1c, 0x48, 0x4b, 0x4d, 0x50, 0, 
