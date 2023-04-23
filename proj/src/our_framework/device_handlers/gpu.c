@@ -45,12 +45,12 @@ void* (vg_init)(u16_t mode){
 
 void draw_rect(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color, void* buffer, uint16_t mode){
     char* ptr = (char* ) buffer;
-    int bpp = 3; // get_bytes_per_pixel(mode);
-    // if(bpp == 2) color = get_2B_color(color,mode);
+    int bpp = 3; 
+    int screen_width = get_width(mode);
     for(int i = x; i < x+width; i++)
         for(int j = y; j < y+height; j++)
             for(int k = 0; k < bpp; k++){
-                ptr[j*get_width(mode)*bpp + i*bpp + k] = color >> (k*8);
+                ptr[j*screen_width*bpp + i*bpp + k] = color >> (k*8);
             }
 }
 
@@ -58,6 +58,12 @@ int get_width(uint16_t mode){
     vbe_mode_info_t info;
     vbe_get_mode_info(mode, &info);
     return info.XResolution;
+}
+
+int get_height(uint16_t mode){
+    vbe_mode_info_t info;
+    vbe_get_mode_info(mode, &info);
+    return info.YResolution;
 }
 
 

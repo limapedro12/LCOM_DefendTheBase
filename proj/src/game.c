@@ -6,7 +6,7 @@ int time_0;
 int before(){
   turn_on_graphics();
   time_0 = get_time_counter();
-  printf("Hello World from inside Game!\n");
+  // printf("Hello World from inside Game!\n");
   return 0;
 }
 
@@ -15,11 +15,11 @@ int y = 20;
 
 void game(){
   if(is_key_pressed_code(0x81)){
-    printf("Esc Key pressed outside!\n");
+    // printf("Esc Key pressed outside!\n");
     quit();
   }
   if(is_key_pressed(' ', false)){
-    printf("Space Key pressed outside!\n");
+    // printf("Space Key pressed outside!\n");
     quit();
   }
 
@@ -36,15 +36,25 @@ void game(){
     y++;
   }
 
-  // printf("MOuse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
+  // printf("Mouse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
 
-  if(is_time_interval_elapsed_seconds(time_0, 5)){
-    printf("5 seconds has passed!");
-    quit();
-  }
+  // if(is_time_interval_elapsed_seconds(time_0, 5)){
+  //   printf("5 seconds has passed!");
+  //   quit();
+  // }
 
-  draw_rectangle(x, y, 2, 2, 0x00FF00);
-  draw_rectangle(780 + get_mouse_position().x, 680 + get_mouse_position().y, 2, 2, 0xFF0000);
+  draw_rectangle(x, y, 30, 30, 0x00FF00);
+  if(get_mouse_position().x < 300 && get_mouse_position().x > -300 && get_mouse_position().y < 200 && get_mouse_position().y > -200)
+    draw_rectangle(400 + get_mouse_position().x, 300 - get_mouse_position().y, 30, 30, 0xFF0000);
+  // if(get_mouse_position().x > 0 && get_mouse_position().y > 0)
+  //   draw_rectangle(300, 300, 30, 30, 0xFF0000);
+  // else if(get_mouse_position().x > 0 && get_mouse_position().y < 0)
+  //   draw_rectangle(300, -300, 30, 30, 0x00FF00);
+  // else if(get_mouse_position().x < 0 && get_mouse_position().y > 0)
+  //   draw_rectangle(-300, 300, 30, 30, 0x0000FF);
+  // else if(get_mouse_position().x < 0 && get_mouse_position().y < 0)
+  //   draw_rectangle(-300, -300, 30, 30, 0xFFFFFF);
+  clear_screen();
 }
 
 int after(){

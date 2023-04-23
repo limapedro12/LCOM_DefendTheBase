@@ -112,4 +112,6 @@ void turn_on_graphics();
  */
 void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
+void clear_screen();
+
 #endif

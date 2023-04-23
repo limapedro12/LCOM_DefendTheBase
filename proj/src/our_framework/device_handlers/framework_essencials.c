@@ -15,8 +15,6 @@ bool graphics_on = false;
 char* video_mem = NULL;
 
 int run(void (*func)()){
-  if(graphics_on)
-    video_mem = vg_init(0x115);
 
   timer_subscribe_interrupt();
   keyboard_subscribe_interrupt();
@@ -35,11 +33,11 @@ int run(void (*func)()){
     if ((is_ipc_notify(ipc_status) && 
      (_ENDPOINT_P(msg.m_source) == HARDWARE))){
       if (msg.m_notify.interrupts & IRQ_SET_KBD){
-        code = read_scancode();
-        printf("Code: 0x%x\n", code);
+        read_scancode(&code);
+        // printf("Code: 0x%x\n", code);
       }
       if (msg.m_notify.interrupts & IRQ_SET_MOUSE){
-        mouse_arr[current] = read_scancode();
+        read_scancode(&(mouse_arr[current]));
         if(current == 2){
           parse_to_packet(mouse_arr, &pp);
           mouse_position.x += pp.delta_x;
@@ -120,8 +118,8 @@ position get_mouse_position(){
 
 void turn_on_graphics(){
   if(!graphics_on){
-    vg_init(0x105);
     graphics_on = true;
+    video_mem = vg_init(0x115);
   }
 }
 
@@ -133,3 +131,10 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color){
   draw_rect(x, y, width, height, color, video_mem, 0x115);
 }
 
+void clear_screen(){
+  if(!graphics_on){
+    printf("Graphics not on!\n");
+    return;
+  }
+  draw_rect(0, 0, get_width(0x115), get_height(0x115), 0, video_mem, 0x115);
+}

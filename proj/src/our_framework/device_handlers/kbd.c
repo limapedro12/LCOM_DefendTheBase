@@ -19,7 +19,7 @@ int keyboard_unsubscribe_interrupt(){
   return 0;
 }
 
-u8_t read_scancode(){
+void read_scancode(u8_t* ret){
   u8_t data;
   uint stat;
 
@@ -30,13 +30,14 @@ u8_t read_scancode(){
     if( stat & KBC_OBF ) {
       util_sys_inb(KBC_OUT_BUF, &data);
       if ( (stat &(KBC_PAR_ERR | KBC_TO_ERR)) == 0 )
-        return data;
+        *ret = data;
       else
-        return -1;
+        *ret = 0;
+      return;
       }
     tickdelay(2000);
   }
-  return -1;
+  *ret = 0;
 }
 
 char char_map[256] = {0, 0xf, 0xe, 0x2a, 0x1d, 0x38, 0x1c, 0x48, 0x4b, 0x4d, 0x50, 0, 
