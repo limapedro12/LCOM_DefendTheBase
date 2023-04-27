@@ -12,6 +12,8 @@ int before(){
 
 int x = 20;
 int y = 20;
+int enemy_x = 0;
+int enemy_y = 300;
 
 void game(){
   clear_screen();
@@ -37,6 +39,10 @@ void game(){
     y++;
   }
 
+  enemy_x++;
+  if(enemy_x > 800)
+    enemy_x = 0;
+
   // printf("Mouse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
 
   // if(is_time_interval_elapsed_seconds(time_0, 5)){
@@ -45,8 +51,8 @@ void game(){
   // }
 
   draw_rectangle(x, y, 30, 30, 0x00FF00);
-  if(get_mouse_position().x < 300 && get_mouse_position().x > -300 && get_mouse_position().y < 200 && get_mouse_position().y > -200)
-    draw_rectangle(400 + get_mouse_position().x, 300 - get_mouse_position().y, 30, 30, 0xFF0000);
+  draw_rectangle(400 + get_mouse_position().x, 300 - get_mouse_position().y, 30, 30, 0xFF0000);
+  draw_rectangle(enemy_x, enemy_y, 30, 30, 0x0000FF);
   // if(get_mouse_position().x > 0 && get_mouse_position().y > 0)
   //   draw_rectangle(300, 300, 30, 30, 0xFF0000);
   // else if(get_mouse_position().x > 0 && get_mouse_position().y < 0)
