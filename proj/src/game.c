@@ -27,21 +27,30 @@ void game(){
   }
 
   if(is_key_pressed('a', false)){
-    x--;
+    x-=6;
   }
   if(is_key_pressed('d', false)){
-    x++;
+    x+=6;
   }
   if(is_key_pressed('w', false)){
-    y--;
+    y-=3;
   }
   if(is_key_pressed('s', false)){
-    y++;
+    y+=3;
   }
 
-  enemy_x++;
+  if (x > 800)
+    x = 800; 
+  if (x < 0)
+    x = 0;
+  if (y > 600)
+    y = 600;
+  if (y < 0)
+    y = 0;
+  enemy_x+= 12;
   if(enemy_x > 800)
     enemy_x = 0;
+  
 
   // printf("Mouse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
 
