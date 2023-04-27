@@ -14,6 +14,7 @@ int x = 20;
 int y = 20;
 
 void game(){
+  clear_screen();
   if(is_key_pressed_code(0x81)){
     // printf("Esc Key pressed outside!\n");
     quit();
@@ -54,7 +55,6 @@ void game(){
   //   draw_rectangle(-300, 300, 30, 30, 0x0000FF);
   // else if(get_mouse_position().x < 0 && get_mouse_position().y < 0)
   //   draw_rectangle(-300, -300, 30, 30, 0xFFFFFF);
-  clear_screen();
 }
 
 int after(){

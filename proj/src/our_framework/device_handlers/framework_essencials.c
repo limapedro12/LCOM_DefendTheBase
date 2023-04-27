@@ -12,7 +12,6 @@ unsigned long long time_counter = 0;
 
 bool graphics_on = false;
 
-char* video_mem = NULL;
 
 int run(void (*func)()){
 
@@ -51,6 +50,7 @@ int run(void (*func)()){
 
     if(is_timer_0_interrupt(ipc_status, msg)){
       func();
+      doublebuffer_to_vram();
       time_counter++;
     }
   }
@@ -60,7 +60,7 @@ int run(void (*func)()){
   timer_unsubscribe_interrupt();
 
   if(graphics_on)
-    vg_exit();
+    gpu_exit();
 
   return 0;
 }
@@ -119,7 +119,7 @@ position get_mouse_position(){
 void turn_on_graphics(){
   if(!graphics_on){
     graphics_on = true;
-    video_mem = vg_init(0x115);
+    vg_init(0x115);
   }
 }
 
@@ -128,7 +128,7 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color){
     printf("Graphics not on!\n");
     return;
   }
-  draw_rect(x, y, width, height, color, video_mem, 0x115);
+  draw_rect(x, y, width, height, color, 0x115);
 }
 
 void clear_screen(){
@@ -136,5 +136,5 @@ void clear_screen(){
     printf("Graphics not on!\n");
     return;
   }
-  draw_rect(0, 0, get_width(0x115), get_height(0x115), 0, video_mem, 0x115);
+  draw_rect(0, 0, get_width(0x115), get_height(0x115), 0, 0x115);
 }
