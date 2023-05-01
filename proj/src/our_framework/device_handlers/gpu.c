@@ -3,10 +3,10 @@
 char * double_buffer = NULL;
 int vram_size = 0;
 char * video_mem = NULL;
+vbe_mode_info_t info;
 
 void* (vg_init)(u16_t mode){
     // Get Info
-    vbe_mode_info_t info;
     vbe_get_mode_info(mode, &info);
 
     // Get Phisical Address to Virtual Space
@@ -47,17 +47,18 @@ void* (vg_init)(u16_t mode){
     return video_mem;
 }
 
+void draw_pixel(int x, int y, uint color){  
+  int bpp = 3; 
+  if(x < 0 || x > info.XResolution || y < 0 || y > info.YResolution)
+    return;
+  for(int k = 0; k < bpp; k++)
+    double_buffer[y*info.XResolution*bpp + x*bpp + k] = (color >> (k*8));
+}
+
 void draw_rect(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color, uint16_t mode){
-    int bpp = 3; 
-    int screen_width = get_width(mode);
-    int screen_height = get_height(mode);
     for(int i = x; i < x+width; i++)
         for(int j = y; j < y+height; j++)
-            for(int k = 0; k < bpp; k++){
-                if(i < 0 || i > screen_width || j < 0 || j > screen_height)
-                    continue;
-                double_buffer[j*screen_width*bpp + i*bpp + k] = color >> (k*8);
-            }
+            draw_pixel(i, j, color);
 }
 
 int doublebuffer_to_vram(){
