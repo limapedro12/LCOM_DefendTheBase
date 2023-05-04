@@ -14,9 +14,11 @@ int main(int argc, char *argv[]){
 
 int(proj_main_loop)(int argc, char *argv[]) {
     
-    before();
-    run(game);
-    after();
+  before();
 
-    return 0;
+  run(game);
+  
+  after();
+
+  return 0;
 }
