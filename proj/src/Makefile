@@ -4,9 +4,10 @@ PROG=proj
 .PATH: ${.CURDIR}
 .PATH: ${.CURDIR}/our_framework
 .PATH: ${.CURDIR}/our_framework/device_handlers
+.PATH: ${.CURDIR}/draw
 
 # source code files to be compiled
-SRCS = proj.c game.c framework_essencials.c utils.c timer.c kbd.c gpu.c mouse.c
+SRCS = proj.c game.c framework_essencials.c utils.c timer.c kbd.c gpu.c mouse.c draw.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
