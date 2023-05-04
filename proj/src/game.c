@@ -1,5 +1,7 @@
 #include "game.h"
 #include "our_framework/framework_essencials.h"
+#include "xpm/test.xpm"
+#include "xpm/teapot.xpm"
 
 int time_0;
 
@@ -62,6 +64,7 @@ void game(){
   draw_rectangle(x, y, 30, 30, 0x00FF00);
   draw_rectangle(400 + get_mouse_position().x, 300 - get_mouse_position().y, 30, 30, 0xFF0000);
   draw_rectangle(enemy_x, enemy_y, 30, 30, 0x0000FF);
+  draw_xpm(100,100, teapot_xpm);
   // if(get_mouse_position().x > 0 && get_mouse_position().y > 0)
   //   draw_rectangle(300, 300, 30, 30, 0xFF0000);
   // else if(get_mouse_position().x > 0 && get_mouse_position().y < 0)
