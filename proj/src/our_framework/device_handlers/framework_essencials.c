@@ -42,6 +42,8 @@ int run(void (*func)()){
           mouse_position.x += pp.delta_x;
           mouse_position.y += pp.delta_y;
           // printf("Mouse position: (%d, %d)\n", mouse_position.x, mouse_position.y);
+
+          
         }
         current = (current + 1) % 3;
       }
@@ -137,4 +139,25 @@ void clear_screen(){
     return;
   }
   draw_rect(0, 0, get_width(0x115), get_height(0x115), 0, 0x115);
+}
+
+bool is_mb_pressed() {
+  if(pp.mb) {
+    return true;
+  }
+  return false;
+}
+
+bool is_lb_pressed() {
+  if(pp.lb) {
+    return true;
+  }
+  return false;
+}
+
+bool is_rb_pressed() {
+  if(pp.rb) {
+    return true;
+  }
+  return false;
 }

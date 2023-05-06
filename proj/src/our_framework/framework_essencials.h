@@ -114,4 +114,10 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
 void clear_screen();
 
+bool is_mb_pressed();
+
+bool is_lb_pressed();
+
+bool is_rb_pressed();
+
 #endif

@@ -5,7 +5,9 @@
 #include <stdio.h>
 
 int before();
+
 void game();
+
 int after();
 
 #endif

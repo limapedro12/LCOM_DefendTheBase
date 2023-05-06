@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "framework_essencials.h": "c"
+        "framework_essencials.h": "c",
+        "stdint.h": "c",
+        "stdio.h": "c",
+        "*.xpm": "c"
     }
 }
