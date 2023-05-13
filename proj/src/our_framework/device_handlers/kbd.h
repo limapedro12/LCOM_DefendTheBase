@@ -8,6 +8,7 @@
 #define KBD_KEY 30
 #define IRQ_SET_KBD BIT(KBD_KEY)
 
+#define ESC 0
 #define TAB 1         // 0x0f
 #define BACKSPACE 2   // 0e
 #define SHIFT 3       // 2a

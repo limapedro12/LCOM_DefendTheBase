@@ -83,15 +83,18 @@ int gpu_exit(){
     return vg_exit();
 }
 
-int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm){
+int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm, uint color_to_ignore){
     xpm_image_t img;
     uint8_t * pixmap = xpm_load(xpm, XPM_8_8_8, &img);
     for(int i = 0; i < img.height; i++)
         for(int j = 0; j < img.width; j++){
             unsigned int color = 0;
-            for(int k = 0; k < 3; k++)
-                color += pixmap[i*img.width + j + k] << (k*8);
-            draw_pixel(x+j, y+i, color);}
+            for(int k = 0; k < 3; k++){
+                color += ((uint) pixmap[i*img.width*3 + j*3 + k]) << (k*8);
+            }
+            if(color != color_to_ignore)
+                draw_pixel(x+j, y+i, color);
+            }
     
     return 0;
 }

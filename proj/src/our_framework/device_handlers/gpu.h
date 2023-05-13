@@ -10,6 +10,6 @@ int get_width(uint16_t mode);
 int get_height(uint16_t mode);
 int gpu_exit();
 int doublebuffer_to_vram();
-int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm);
+int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm, uint color_to_ignore);
 int draw_xpm_pointer_pointer(uint16_t x, uint16_t y, char** xpm);
 #endif

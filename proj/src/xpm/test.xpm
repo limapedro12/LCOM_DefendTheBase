@@ -1,9 +1,9 @@
-static xpm_row_t pic_x[] = {
-  "32 13 4",
-  "  0",
-  "x 2",
-  "o 14",
-  "+ 4",
+static xpm_row_t et_xpm[] = {
+  "32 13 4 1",
+  "  c #000000",
+  "x c #FF0000",
+  "o c #00FF00",
+  "+ c #0000FF",
   "                                ",
   "              xxx               ",
   "            xxxxxxx             ",
