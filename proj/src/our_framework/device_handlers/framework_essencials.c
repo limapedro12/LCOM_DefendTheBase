@@ -14,10 +14,14 @@ bool graphics_on = false;
 
 
 int run(void (*func)()){
-
-  timer_subscribe_interrupt();
-  keyboard_subscribe_interrupt();
-  mouse_subscribe_interrupt();
+  if(timer_subscribe_interrupt())
+    game_running = false;
+  if(keyboard_subscribe_interrupt())
+    game_running = false;
+  if(mouse_subscribe_interrupt())
+    game_running = false;
+  if(mouse_enable_data_reporting_ours())
+    game_running = false;
   
   int ipc_status;
   message msg;
@@ -40,7 +44,7 @@ int run(void (*func)()){
         if(current == 2){
           parse_to_packet(mouse_arr, &pp);
           mouse_position.x += pp.delta_x;
-          mouse_position.y += pp.delta_y;
+          mouse_position.y -= pp.delta_y;
           // printf("Mouse position: (%d, %d)\n", mouse_position.x, mouse_position.y);
 
           
@@ -60,6 +64,7 @@ int run(void (*func)()){
   mouse_unsubscribe_interrupt();
   keyboard_unsubscribe_interrupt();
   timer_unsubscribe_interrupt();
+  mouse_disable_data_reporting();
 
   if(graphics_on)
     gpu_exit();
@@ -139,6 +144,37 @@ void clear_screen(){
     return;
   }
   draw_rect(0, 0, get_width(0x115), get_height(0x115), 0, 0x115);
+}
+
+bool set_mouse_position(int x, int y){
+  if(!graphics_on){
+    printf("Graphics not on!\n");
+    return false;
+  }
+  if(x < 0 || x > get_width(0x115) || y < 0 || y > get_height(0x115)){
+    printf("Invalid position!\n");
+    return false;
+  }
+  mouse_position.x = x;
+  mouse_position.y = y;
+  return true;
+}
+
+bool verify_mouse_limits(int x_min, int x_max, int y_min, int y_max){
+  if(!graphics_on){
+    printf("Graphics not on!\n");
+    return false;
+  }
+  if(mouse_position.x < x_min)
+    mouse_position.x = x_min;
+  else if(mouse_position.x > x_max)
+    mouse_position.x = x_max;
+  if(mouse_position.y < y_min)
+    mouse_position.y = y_min;
+  else if(mouse_position.y > y_max)
+    mouse_position.y = y_max;
+  return true;
+
 }
 
 bool is_mb_pressed() {

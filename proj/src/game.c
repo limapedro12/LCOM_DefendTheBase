@@ -21,6 +21,7 @@ int enemy_y = 300;
 
 void game(){
   clear_screen();
+  verify_mouse_limits(0, 800-10, 0, 600-10);
 
   if(menu_state) {
     draw_rectangle(250, 190, 300, 50, 0x00e600);
@@ -34,12 +35,12 @@ void game(){
       menu_state = false;
     }
 
-    if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && -get_mouse_position().y >= 190 && -get_mouse_position().y <= 240 && is_lb_pressed()){
+    if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && get_mouse_position().y >= 190 && get_mouse_position().y <= 240 && is_lb_pressed()){
       menu_state = false;
     }
 
     //cursor
-    draw_rectangle(get_mouse_position().x, -get_mouse_position().y, 10, 10, 0xFF0000);
+    draw_rectangle(get_mouse_position().x, get_mouse_position().y, 10, 10, 0xFF0000);
   } 
 
   else {
@@ -117,7 +118,7 @@ void game(){
     draw_map(map);
 
     draw_rectangle(x, y, 30, 30, 0xFFFF00);
-    draw_rectangle(get_mouse_position().x, -get_mouse_position().y, 15, 15, 0xFF0000);
+    draw_rectangle(get_mouse_position().x, get_mouse_position().y, 15, 15, 0xFF0000);
     draw_rectangle(enemy_x, enemy_y, 30, 30, 0x0000FF);
     
     draw_xpm(100,100, et_xpm, 0x000000);

@@ -91,6 +91,16 @@ bool is_key_pressed(char key, bool isBreak);
 
 position get_mouse_position();
 
+bool set_mouse_position(int x, int y);
+
+bool verify_mouse_limits(int x_min, int x_max, int y_min, int y_max);
+
+bool is_mb_pressed();
+
+bool is_lb_pressed();
+
+bool is_rb_pressed();
+
 /**
  * @brief Turns on graphics mode
  * 
@@ -113,11 +123,5 @@ void turn_on_graphics();
 void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
 void clear_screen();
-
-bool is_mb_pressed();
-
-bool is_lb_pressed();
-
-bool is_rb_pressed();
 
 #endif
