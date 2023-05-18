@@ -20,8 +20,8 @@ int run(void (*func)()){
     game_running = false;
   if(mouse_subscribe_interrupt())
     game_running = false;
-  if(mouse_enable_data_reporting_ours())
-    game_running = false;
+  //if(mouse_enable_data_reporting_ours())
+   // game_running = false;
   
   int ipc_status;
   message msg;
@@ -64,7 +64,7 @@ int run(void (*func)()){
   mouse_unsubscribe_interrupt();
   keyboard_unsubscribe_interrupt();
   timer_unsubscribe_interrupt();
-  mouse_disable_data_reporting();
+  //mouse_disable_data_reporting();
 
   if(graphics_on)
     gpu_exit();
