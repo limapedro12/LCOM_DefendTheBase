@@ -7,17 +7,28 @@
 int time_0;
 bool menu_state = true;
 
+int x = 10;
+int y = 10;
+int enemy_x = 10;
+int enemy_y = 10;
+position enemy_pos;
+int i = 0;
+
+position corners[13] = {{10, 60}, {710, 60}, {710, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
+char directions[13] = {'r', 'd', 'l', 'd', 'l', 'u', 'l', 'd', 'r', 'u', 'r', 'd', 'r'};
+char direction = 'd';
+
+bool game_clock = false;
+
 int before(){
   turn_on_graphics();
   time_0 = get_time_counter();
-  // printf("Hello World from inside Game!\n");
+
+  enemy_pos.x = enemy_x;
+  enemy_pos.y = enemy_y;
+
   return 0;
 }
-
-int x = 10;
-int y = 10;
-int enemy_x = 151;
-int enemy_y = 300;
 
 void game(){
   clear_screen();
@@ -46,12 +57,10 @@ void game(){
   else {
 
     if(is_key_pressed(ESC, true)){
-    // printf("Esc Key pressed outside!\n");
       quit();
     }
     if(is_key_pressed(' ', false)){
-      // printf("Space Key pressed outside!\n");
-      quit();
+      game_clock = true;
     }
 
     if(is_key_pressed('a', false)){
@@ -76,62 +85,56 @@ void game(){
     if (y < 0)
       y = 0;
 
-    
-    if(enemy_x > 150)
-      enemy_y += 3;
-    
-    if(enemy_y > 390)
-      enemy_x -= 3;
+    if(game_clock) {
 
-    if(enemy_x < 40)
-      enemy_y -= 3;
+      if(direction == 'r') {
+        enemy_pos.x += 2;
+      }
+      if(direction == 'l') {
+        enemy_pos.x -= 2;
+      }
+      if(direction == 'u') {
+        enemy_pos.y -= 2;
+      }
+      if(direction == 'd') {
+        enemy_pos.y += 2;
+      }
+          
+      if(enemy_pos.x == corners[i].x && enemy_pos.y == corners[i].y) {
+          direction = directions[i];
+          i++;
+        }
 
-    if(enemy_y < 300)
-      enemy_x += 3;
-
-    // printf("Mouse position: (%d, %d)\n", get_mouse_position().x, get_mouse_position().y);
-
-    // if(is_time_interval_elapsed_seconds(time_0, 5)){
-    //   printf("5 seconds has passed!");
-    //   quit();
-    // }
-
+    }
 
     /* Draw Background */
     draw_rectangle(0, 0, 800, 600, 0x86592d);
 
     char map[12][16] = {
-      {' ','#','#','#','#','#','#',' ',' ',' ',' ',' ','#','#','#','#'},
-      {' ',' ',' ',' ',' ',' ',' ',' ','#','#','#',' ','#','#','#','#'},
-      {'#','#','#','#','#','#','#','#','#','#','#',' ',' ',' ',' ','#'},
-      {'#',' ',' ',' ',' ',' ',' ','#','#','#','#','#','#','#',' ','#'},
-      {'#',' ','#','#','#','#',' ','#',' ',' ',' ',' ',' ',' ',' ','#'},
-      {'#',' ','#','#',' ',' ',' ','#',' ','#','#','#','#','#','#','#'},
-      {' ',' ','#','#',' ','#','#','#',' ','#','#',' ',' ',' ','#','#'},
-      {' ','#','#','#',' ',' ',' ',' ',' ','#',' ',' ','#',' ','#','#'},
-      {' ','#','#','#','#','#','#','#','#','#',' ','#','#',' ','#','#'},
-      {' ',' ','#',' ',' ',' ',' ','#','#','#',' ','#','#',' ','#','#'},
-      {'#',' ',' ',' ','#','#',' ',' ',' ',' ',' ','#','#',' ',' ',' '},
+      {' ','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'},
+      {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#'},
+      {'#','#','#','#','#','#','#','#','#','#','#','#','#','#',' ','#'},
+      {'#','#','#','#','#','#','#','#','#','#','#','#','#','#',' ','#'},
+      {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ',' ',' ',' ',' ','#'},
+      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','#','#','#','#'},
+      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','#','#','#','#'},
+      {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','#'},
+      {'#',' ','#','#','#','#','#','#','#','#',' ','#','#',' ','#','#'},
+      {'#',' ','#','#','#','#','#','#','#','#',' ','#','#',' ','#','#'},
+      {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','#',' ',' ',' '},
       {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'},
     };
 
     draw_map(map);
 
+    //Draw player
     draw_rectangle(x, y, 30, 30, 0xFFFF00);
-    draw_rectangle(get_mouse_position().x, get_mouse_position().y, 15, 15, 0xFF0000);
-    draw_rectangle(enemy_x, enemy_y, 30, 30, 0x0000FF);
+
     
-    draw_xpm(100,100, et_xpm, 0x000000);
 
-
-    // if(get_mouse_position().x > 0 && get_mouse_position().y > 0)
-    //   draw_rectangle(300, 300, 30, 30, 0xFF0000);
-    // else if(get_mouse_position().x > 0 && get_mouse_position().y < 0)
-    //   draw_rectangle(300, -300, 30, 30, 0x00FF00);
-    // else if(get_mouse_position().x < 0 && get_mouse_position().y > 0)
-    //   draw_rectangle(-300, 300, 30, 30, 0x0000FF);
-    // else if(get_mouse_position().x < 0 && get_mouse_position().y < 0)
-    //   draw_rectangle(-300, -300, 30, 30, 0xFFFFFF);
+    //Draw enemies
+    draw_rectangle(enemy_pos.x, enemy_pos.y, 30, 30, 0x0000FF);
+    draw_xpm(enemy_pos.x, enemy_pos.y, et_xpm, 0x000000);
   }
 }
 
