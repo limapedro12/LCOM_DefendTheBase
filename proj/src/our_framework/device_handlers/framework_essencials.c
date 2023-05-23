@@ -82,21 +82,17 @@ int get_time_counter(){
 }
 
 bool is_time_interval_elapsed_seconds(int start_time, int interval){
-  if(interval * 60 > 600000000){
+  if(interval > 10000000){
     printf("Interval too big, max interval is 10000000 seconds\n");
     return false;
   }
   if(600000000-start_time < interval)
     start_time = -start_time;
-  return ((int)((time_counter%600000000) / 60) >= start_time + interval);
+  return ((int)(time_counter % 600000000) >= start_time + interval * 60);
 }
 
 bool is_time_interval_elapsed_milliseconds(int start_time, int interval){
   interval = (interval * 60)/1000;
-  if(interval > 600000000){
-    printf("Interval too big, max interval is 10000000000 milliseconds\n");
-    return false;
-  }
   if(600000000-start_time < interval)
     start_time = -start_time;
   return ((int)(time_counter%600000000) >= start_time + interval);
