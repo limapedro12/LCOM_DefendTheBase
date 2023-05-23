@@ -3,6 +3,8 @@
 #include "draw/draw.h"
 #include "xpm/test.xpm"
 #include "xpm/teapot.xpm"
+#include "xpm/cursor.xpm"
+#include "player.h"
 
 int time_0;
 bool menu_state = true;
@@ -37,6 +39,7 @@ void game(){
   if(menu_state) {
     draw_rectangle(250, 190, 300, 50, 0x00e600);
     draw_rectangle(250, 290, 300, 50, 0x86592d);
+    
 
     if(is_key_pressed(ESC, true)){
       quit();
@@ -51,7 +54,8 @@ void game(){
     }
 
     //cursor
-    draw_rectangle(get_mouse_position().x, get_mouse_position().y, 10, 10, 0xFF0000);
+    
+    //draw_rectangle(get_mouse_position().x, get_mouse_position().y, 10, 10, 0xFF0000);
   } 
 
   else {
@@ -136,6 +140,7 @@ void game(){
     draw_rectangle(enemy_pos.x, enemy_pos.y, 30, 30, 0x0000FF);
     draw_xpm(enemy_pos.x, enemy_pos.y, et_xpm, 0x000000);
   }
+  draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x17f221);
 }
 
 int after(){
