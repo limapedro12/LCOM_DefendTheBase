@@ -3,7 +3,7 @@
 #include "draw/draw.h"
 #include "xpm/test.xpm"
 #include "xpm/teapot.xpm"
-#include "xpm/mouse.xpm"
+#include "xpm/cursor.xpm"
 #include "player.h"
 
 int time_0;
@@ -39,7 +39,7 @@ void game(){
   if(menu_state) {
     draw_rectangle(250, 190, 300, 50, 0x00e600);
     draw_rectangle(250, 290, 300, 50, 0x86592d);
-    draw_xpm(50, 50, cursor, 0x00bf12);
+    draw_xpm(50, 50, cursor, 0x17f221);
 
     if(is_key_pressed(ESC, true)){
       quit();
