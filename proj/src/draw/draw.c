@@ -8,6 +8,9 @@ void draw_map(char map[12][16]) {
             if(map[y][x] == '#') {
                 draw_rectangle(x*50, y*50, 50, 50, 0x00e600);
             }
+            if(map[y][x] == '-') {
+                draw_rectangle(x*50, y*50, 50, 50, 0x000000);
+            }
         }
     }
 }

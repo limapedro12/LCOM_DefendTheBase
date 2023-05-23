@@ -5,7 +5,4 @@
 
 void verifyDrag(int * x, int * y);
 
-
-
-
 #endif
