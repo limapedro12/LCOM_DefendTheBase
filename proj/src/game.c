@@ -152,7 +152,7 @@ void game(){
     draw_xpm(enemy_pos.x, enemy_pos.y, et_xpm, 0x000000);
   }
   
-  draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x17f221);
+  draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x2AFF00);
 }
 
 int after(){
