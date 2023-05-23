@@ -6,6 +6,7 @@
 #include "xpm/cursor.xpm"
 #include "player.h"
 #include "drag.h"
+#include "bullet.h"
 
 int time_0;
 bool menu_state = true;
@@ -142,6 +143,7 @@ void game(){
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
       draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
       verifyDrag(&towers[i].x, &towers[i].y);
+      drawBullet(towers[i].x, towers[i].y, enemy_pos.x, enemy_pos.y);
     }
 
 
