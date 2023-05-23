@@ -18,7 +18,7 @@ int enemy_y = 10;
 position enemy_pos;
 int i = 0;
 
-position towers[6] = {{610, 160}, {610, 210}, {610, 260}, {660, 160}, {660, 210}, {660, 260}};
+tower towers[6] = {{610, 160, false}, {610, 210, true}, {610, 260, true}, {660, 160, true}, {660, 210, true}, {660, 260, true}};
 
 position corners[13] = {{10, 60}, {510, 60}, {510, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
 char directions[13] = {'r', 'd', 'l', 'd', 'l', 'u', 'l', 'd', 'r', 'u', 'r', 'd', 'r'};
@@ -141,11 +141,16 @@ void game(){
 
     //Draw towerS
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-      draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
-      verifyDrag(&towers[i].x, &towers[i].y);
-      drawBullet(towers[i].x, towers[i].y, enemy_pos.x, enemy_pos.y);
-    }
+      if(!towers[i].placed) {
+        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
+        verifyDrag(&towers[i].x, &towers[i].y, &towers[i].placed, &towers[i+1].placed);
 
+      }
+      else {
+        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
+        drawBullet(towers[i].x, towers[i].y, enemy_pos.x, enemy_pos.y);
+      }
+    }
 
     //Draw enemies
     draw_rectangle(enemy_pos.x, enemy_pos.y, 30, 30, 0x0000FF);
