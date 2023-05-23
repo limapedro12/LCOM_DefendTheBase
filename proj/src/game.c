@@ -152,7 +152,15 @@ void game(){
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
       draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
       verifyDrag(&towers[i].x, &towers[i].y);
-      drawBullet(towers[i].x, towers[i].y, enemy_pos.x, enemy_pos.y);
+    }
+
+    // drawBullet(towers[0].x, towers[0].y, enemies[5].x, enemies[5].y);
+    for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
+      // drawBullet(towers[i].x, towers[i].y, enemies[2].x, enemies[2].y);
+      for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+        if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, j))
+          break;
+      }
     }
 
 
@@ -161,6 +169,8 @@ void game(){
       draw_rectangle(enemies[i].x, enemies[i].y, 30, 30, 0x0000FF);
       draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
     }
+
+    draw_rectangle(enemies[2].x, enemies[2].y, 30, 30, 0xFFFFFF);
   }
   
   draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x2AFF00);
