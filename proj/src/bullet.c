@@ -18,10 +18,6 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y){
       is_bullet_on = true;
       bullet_x = tower_x; bullet_y = tower_y;
     } 
-    if(is_bullet_on && id != last_bullet_id) {
-      is_bullet_on = true;
-      bullet_x = tower_x; bullet_y = tower_y;
-    }
     ret = true;
   } 
 

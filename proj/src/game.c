@@ -19,10 +19,12 @@ int enemy_y = 10;
 position enemy_pos;
 int enemy_i = 0;
 
-position towers[6] = {{610, 160}, {610, 210}, {610, 260}, {660, 160}, {660, 210}, {660, 260}};
+tower towers[6] = {{610, 160, false}, {610, 210, true}, {610, 260, true}, {660, 160, true}, {660, 210, true}, {660, 260, true}};
+
 position enemies[6] = {{10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}};
 char enemy_directions[6] = {'d', 'd', 'd', 'd', 'd', 'd'};
 int current_enemy_direction[6] = {0, 0, 0, 0, 0, 0};
+
 
 position corners[13] = {{10, 60}, {510, 60}, {510, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
 char directions[13] = {'r', 'd', 'l', 'd', 'l', 'u', 'l', 'd', 'r', 'u', 'r', 'd', 'r'};
@@ -150,27 +152,24 @@ void game(){
 
     //Draw towerS
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-      draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
-      verifyDrag(&towers[i].x, &towers[i].y);
-    }
-
-    // drawBullet(towers[0].x, towers[0].y, enemies[5].x, enemies[5].y);
-    for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-      // drawBullet(towers[i].x, towers[i].y, enemies[2].x, enemies[2].y);
-      for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-        if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, j))
-          break;
+      if(!towers[i].placed) {
+        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
+        verifyDrag(&towers[i].x, &towers[i].y, &towers[i].placed, &towers[i+1].placed);
+      }
+      else {
+        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
+        for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+          if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y))
+            break;
+        }
       }
     }
-
 
     //Draw enemies
     for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
       draw_rectangle(enemies[i].x, enemies[i].y, 30, 30, 0x0000FF);
       draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
     }
-
-    draw_rectangle(enemies[2].x, enemies[2].y, 30, 30, 0xFFFFFF);
   }
   
   draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x2AFF00);

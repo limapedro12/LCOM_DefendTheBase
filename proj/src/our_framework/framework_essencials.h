@@ -13,6 +13,12 @@ typedef struct {
     int y;
 } position;
 
+typedef struct {
+    int x;
+    int y;
+    bool placed;
+} tower;
+
 /**
  * @brief Runs the game
  * 
