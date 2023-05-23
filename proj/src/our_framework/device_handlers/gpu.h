@@ -2,6 +2,7 @@
 #define GPU_H
 
 #include <lcom/lcf.h>
+#define NO_BACKGROUND 0xFF000000;
 
 void* (vg_init)(u16_t mode);
 void draw_pixel(int x, int y, uint color);
