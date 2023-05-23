@@ -7,7 +7,7 @@ PROG=proj
 .PATH: ${.CURDIR}/draw
 
 # source code files to be compiled
-SRCS = proj.c game.c framework_essencials.c utils.c timer.c kbd.c gpu.c mouse.c draw.c
+SRCS = proj.c game.c framework_essencials.c utils.c timer.c kbd.c gpu.c mouse.c draw.c drag.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
