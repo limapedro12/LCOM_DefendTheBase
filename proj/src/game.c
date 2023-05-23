@@ -93,29 +93,32 @@ void game(){
     if (y < 0)
       y = 0;
 
-    if(game_clock) {
 
-      if(enemy_directions[0] == 'r') {
-        enemies[0].x += 5;
-      }
-      if(enemy_directions[0] == 'l') {
-        enemies[0].x -= 5;
-      }
-      if(enemy_directions[0] == 'u') {
-        enemies[0].y -= 5;
-      }
-      if(enemy_directions[0] == 'd') {
-        enemies[0].y += 5;
-      }
-          
-      if(enemies[0].x == corners[current_enemy_direction[0]].x && 
-         enemies[0].y == corners[current_enemy_direction[0]].y) {
-        enemy_directions[0] = directions[current_enemy_direction[0]];
-        current_enemy_direction[0]++;
-      }
+    for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
+      if(game_clock) {
 
-      if(enemies[0].x == 11*50+20 && enemies[0].y == 7*50+10) {
-        quit();
+        if(enemy_directions[i] == 'r') {
+          enemies[i].x += 5;
+        }
+        if(enemy_directions[i] == 'l') {
+          enemies[i].x -= 5;
+        }
+        if(enemy_directions[i] == 'u') {
+          enemies[i].y -= 5;
+        }
+        if(enemy_directions[i] == 'd') {
+          enemies[i].y += 5;
+        }
+            
+        if(enemies[i].x == corners[current_enemy_direction[i]].x && 
+          enemies[i].y == corners[current_enemy_direction[i]].y) {
+          enemy_directions[i] = directions[current_enemy_direction[i]];
+          current_enemy_direction[i]++;
+        }
+
+        if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
+          quit();
+        }
       }
     }
 
