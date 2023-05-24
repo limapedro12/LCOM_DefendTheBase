@@ -15,6 +15,7 @@ typedef struct {
 } position;
 
 typedef struct {
+    int level;
     int x;
     int y;
     bool new;

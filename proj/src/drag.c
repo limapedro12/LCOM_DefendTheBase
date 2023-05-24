@@ -15,3 +15,10 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
     *new_next = true;
   }
 }
+
+void verifyUpgrade(int * x, int * y, int * level){
+  int tower_size = 30;
+  if(is_key_pressed('u', false) && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
+    *level = 2;
+  }
+}
