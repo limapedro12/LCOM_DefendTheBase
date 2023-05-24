@@ -5,7 +5,9 @@ double bullet_x;
 double bullet_y;
 position bullet_pos[6];
 int bullet_enemy_id[6] = {-1, -1, -1, -1, -1, -1};
+int last_time_a_bullet_was_shot[6] = {-1, -1, -1, -1, -1, -1};
 bool is_bullet_on = false;
+int time_between_shots = 700;
 
 bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id, int enemy_id){
   if(bullet_enemy_id[tower_id] != -1 && 
@@ -20,10 +22,12 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
   double y_difference = enemy_y_center - tower_y_center;
   double x_difference = enemy_x_center -  tower_x_center;
   if(sqrt(y_difference*y_difference + x_difference*x_difference) <= 100.0){
-    if(bullet_enemy_id[tower_id] == -1) {
+    if(bullet_enemy_id[tower_id] == -1 && 
+      is_time_interval_elapsed_milliseconds(last_time_a_bullet_was_shot[tower_id], time_between_shots)) {
       bullet_enemy_id[tower_id] = enemy_id;
       bullet_pos[tower_id].x = tower_x_center; 
       bullet_pos[tower_id].y = tower_y_center;
+      last_time_a_bullet_was_shot[tower_id] = get_time_counter();
     } 
   } 
 
