@@ -7,6 +7,7 @@
 #include "device_handlers/kbd.h"
 #include "device_handlers/mouse.h"
 #include "device_handlers/gpu.h"
+#include "device_handlers/rtc.h"
 
 typedef struct {
     int x;

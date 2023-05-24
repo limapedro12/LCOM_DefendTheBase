@@ -1,0 +1,5 @@
+*.o
+.clang-format
+.gdbinit
+core.*
+proj
