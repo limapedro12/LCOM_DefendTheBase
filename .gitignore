@@ -1,5 +1,5 @@
-*.o
-.clang-format
-.gdbinit
-core.*
-proj
+proj/src/*.o
+proj/src/.clang-format
+proj/src/.gdbinit
+proj/src/core.*
+proj/src/proj
