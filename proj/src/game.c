@@ -159,8 +159,8 @@ void game(){
       else {
         draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
         for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-          if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y))
-            break;
+          drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j);
+            //break;
         }
       }
     }
