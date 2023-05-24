@@ -4,6 +4,7 @@
 #include "xpm/test.xpm"
 #include "xpm/cursor.xpm"
 #include "xpm/tower_orange_right.xpm"
+#include "xpm/tower_purple_right.xpm"
 #include "xpm/tower_orange_up.xpm"
 #include "player.h"
 #include "drag.h"
@@ -143,7 +144,7 @@ void game(){
             draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           }         
           else {
-            draw_xpm(towers[i].x, towers[i].y, tower_orange_up, 0xFFFFFF);
+            draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
           }
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
@@ -168,7 +169,7 @@ void game(){
               draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
             }  
             else {
-              draw_xpm(towers[i].x, towers[i].y, tower_orange_up, 0xFFFFFF);
+              draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
             }      
             verifyUpgrade(&towers[i].x, &towers[i].y, &towers[i].level);
           }
