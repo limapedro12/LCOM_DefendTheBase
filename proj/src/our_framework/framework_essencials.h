@@ -21,6 +21,12 @@ typedef struct {
     bool placed;
 } tower;
 
+typedef struct {
+    int x;
+    int y;
+    int hp;
+} enemy;
+
 /**
  * @brief Runs the game
  * 
