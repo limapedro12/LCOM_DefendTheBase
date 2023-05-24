@@ -2,8 +2,8 @@
 #include "our_framework/framework_essencials.h"
 #include "draw/draw.h"
 #include "xpm/test.xpm"
-#include "xpm/teapot.xpm"
 #include "xpm/cursor.xpm"
+#include "xpm/tower_orange_right.xpm"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -12,6 +12,8 @@ int time_0;
 int time_start_round;
 bool menu_state = true;
 
+int lives = 6;
+
 int x = 10;
 int y = 10;
 int enemy_x = 10;
@@ -19,7 +21,7 @@ int enemy_y = 10;
 position enemy_pos;
 int enemy_i = 0;
 
-tower towers[6] = {{610, 160, false}, {610, 210, true}, {610, 260, true}, {660, 160, true}, {660, 210, true}, {660, 260, true}};
+tower towers[6] = {{610, 160, true, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}};
 
 position enemies[6] = {{10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}};
 char enemy_directions[6] = {'d', 'd', 'd', 'd', 'd', 'd'};
@@ -121,6 +123,10 @@ void game(){
         }
 
         if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
+          lives--;
+        }
+
+        if(lives == 0) {
           quit();
         }
       }
@@ -152,17 +158,37 @@ void game(){
 
     //Draw towerS
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
+      if(towers[i].new) {
+        draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+        verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed);
+      }
+      else {
+        if(towers[i].placed) {
+          //draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
+          draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+            if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
+              //decrease enemy health
+            }
+          }
+        }
+
+      }
+
+      /*
       if(!towers[i].placed) {
         draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
+        //draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
         verifyDrag(&towers[i].x, &towers[i].y, &towers[i].placed, &towers[i+1].placed);
       }
       else {
-        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xFF0000);
+        draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
         for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
           drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j);
             //break;
         }
       }
+      */
     }
 
     //Draw enemies

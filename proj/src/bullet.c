@@ -1,4 +1,5 @@
 #include "bullet.h"
+#include "xpm/shot_orange.xpm"
 
 double bullet_x; 
 double bullet_y;
@@ -21,8 +22,8 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
   if(sqrt(y_difference*y_difference + x_difference*x_difference) <= 100.0){
     if(bullet_enemy_id[tower_id] == -1) {
       bullet_enemy_id[tower_id] = enemy_id;
-      bullet_pos[tower_id].x = tower_x; 
-      bullet_pos[tower_id].y = tower_y;
+      bullet_pos[tower_id].x = tower_x_center; 
+      bullet_pos[tower_id].y = tower_y_center;
     } 
   } 
 
@@ -32,10 +33,11 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
       bullet_enemy_id[tower_id] = -1;
       return false;
     }
-    draw_rectangle(bullet_pos[tower_id].x, bullet_pos[tower_id].y, 15, 15, 0xDDDDDD);
+    draw_xpm(bullet_pos[tower_id].x, bullet_pos[tower_id].y, shot_orange, 0xFFFFFF);
     // bullet center = bullet coordinates + 7.5
     double move_delta_x = (bullet_pos[tower_id].x + 7.5 - enemy_x_center)/5;
     double move_delta_y = (bullet_pos[tower_id].y + 7.5 - enemy_y_center)/5;
+
     double move_delta = sqrt(move_delta_x*move_delta_x + move_delta_y*move_delta_y);
     move_delta_x /= move_delta;
     move_delta_y /= move_delta;
@@ -48,6 +50,7 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
      bullet_pos[tower_id].y + 7.5 >= enemy_y_center - 15 && 
      bullet_pos[tower_id].y + 7.5 <= enemy_y_center + 15) {
     bullet_enemy_id[tower_id] = -1;
+    return true;
   }
-  return true;
+  return false;
 }
