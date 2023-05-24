@@ -147,8 +147,12 @@ void game(){
             draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
           }
 
+          int bullet_speed = 5*towers[i].level;
+          int bullet_range = 100*towers[i].level;
+          int bullet_time = 2000/towers[i].level;
+
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
+            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
               enemies[j].hp--;
             }
           }
