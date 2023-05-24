@@ -1,4 +1,5 @@
 #include "bullet.h"
+#include "xpm/shot_orange.xpm"
 
 double bullet_x; 
 double bullet_y;
@@ -26,7 +27,8 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y){
       is_bullet_on = false;
       return ret;
     }
-    draw_rectangle(bullet_x, bullet_y, 15, 15, 0xDDDDDD);
+    //draw_rectangle(bullet_x, bullet_y, 15, 15, 0xDDDDDD);
+    draw_xpm(bullet_x, bullet_y, shot_orange, 0xFFFFFF);
     // bullet center = buller coordinates + 7.5
     double move_delta_x = (bullet_x + 7.5 - enemy_x_center);
     double move_delta_y = (bullet_y + 7.5 - enemy_y_center);
