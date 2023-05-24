@@ -4,6 +4,7 @@
 #include "xpm/test.xpm"
 #include "xpm/cursor.xpm"
 #include "xpm/tower_orange_right.xpm"
+#include "xpm/tower_orange_up.xpm"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -13,11 +14,11 @@ int time_start_round;
 bool menu_state = true;
 
 int lives = 6;
-int num_enemies = 6;
+
 
 int enemy_i = 0;
 
-tower towers[6] = {{610, 160, true, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}};
+tower towers[6] = {{1, 610, 160, true, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}};
 
 enemy enemies[6] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
 char enemy_directions[6] = {'d', 'd', 'd', 'd', 'd', 'd'};
@@ -92,7 +93,7 @@ void game(){
       time_start_round = get_time_counter();
     }
 
-    if(lives == 0 || num_enemies == 0) {
+    if(lives == 0) {
       quit();
     }
 
@@ -131,12 +132,31 @@ void game(){
         }
 
         if(enemies_alive == 0) {
-          quit();
+          game_clock = false;
+        }
+      }
+
+      //Draw towerS
+      for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
+        if(towers[i].placed) {
+          if(towers[i].level == 1) {
+            draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          }         
+          else {
+            draw_xpm(towers[i].x, towers[i].y, tower_orange_up, 0xFFFFFF);
+          }
+
+          for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
+              enemies[j].hp--;
+            }
+          }
         }
       }
     }
 
     else {
+
       for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
         if(towers[i].new) {
           draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
@@ -144,24 +164,13 @@ void game(){
         }
         else {
           if(towers[i].placed) {
-            draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-          }
-        }
-      }
-    }
-
-    //Draw towerS
-    for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-      if(towers[i].new) {
-        draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-      }
-      else {
-        if(towers[i].placed) {
-          draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-          for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
-              enemies[j].hp--;
-            }
+            if(towers[i].level == 1) {
+              draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+            }  
+            else {
+              draw_xpm(towers[i].x, towers[i].y, tower_orange_up, 0xFFFFFF);
+            }      
+            verifyUpgrade(&towers[i].x, &towers[i].y, &towers[i].level);
           }
         }
       }

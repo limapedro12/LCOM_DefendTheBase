@@ -5,4 +5,6 @@
 
 void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next);
 
+void verifyUpgrade(int * x, int * y, int * level);
+
 #endif
