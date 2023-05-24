@@ -13,17 +13,13 @@ int time_start_round;
 bool menu_state = true;
 
 int lives = 6;
+int num_enemies = 6;
 
-int x = 10;
-int y = 10;
-int enemy_x = 10;
-int enemy_y = 10;
-position enemy_pos;
 int enemy_i = 0;
 
 tower towers[6] = {{610, 160, true, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}, {610, 160, false, false}};
 
-position enemies[6] = {{10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}, {10, 10}};
+enemy enemies[6] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
 char enemy_directions[6] = {'d', 'd', 'd', 'd', 'd', 'd'};
 int current_enemy_direction[6] = {0, 0, 0, 0, 0, 0};
 
@@ -35,10 +31,8 @@ char direction = 'd';
 bool game_clock = false;
 
 int before(){
-  turn_on_graphics();
 
-  enemy_pos.x = enemy_x;
-  enemy_pos.y = enemy_y;
+  turn_on_graphics();
 
   return 0;
 }
@@ -69,69 +63,6 @@ void game(){
 
   else {
 
-    if(is_key_pressed(ESC, true)){
-      quit();
-    }
-    if(is_key_pressed(' ', false)){
-      game_clock = true;
-      time_start_round = get_time_counter();
-    }
-
-    if(is_key_pressed('a', false)){
-      x-=6;
-    }
-    if(is_key_pressed('d', false)){
-      x+=6;
-    }
-    if(is_key_pressed('w', false)){
-      y-=3;
-    }
-    if(is_key_pressed('s', false)){
-      y+=3;
-    }
-
-    if (x > 800-30)
-      x = 800-30; 
-    if (x < 0)
-      x = 0;
-    if (y > 600-30)
-      y = 600-30;
-    if (y < 0)
-      y = 0;
-
-
-    for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
-      if(game_clock && is_time_interval_elapsed_seconds(time_start_round, i)){
-
-        if(enemy_directions[i] == 'r') {
-          enemies[i].x += 5;
-        }
-        if(enemy_directions[i] == 'l') {
-          enemies[i].x -= 5;
-        }
-        if(enemy_directions[i] == 'u') {
-          enemies[i].y -= 5;
-        }
-        if(enemy_directions[i] == 'd') {
-          enemies[i].y += 5;
-        }
-            
-        if(enemies[i].x == corners[current_enemy_direction[i]].x && 
-          enemies[i].y == corners[current_enemy_direction[i]].y) {
-          enemy_directions[i] = directions[current_enemy_direction[i]];
-          current_enemy_direction[i]++;
-        }
-
-        if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
-          lives--;
-        }
-
-        if(lives == 0) {
-          quit();
-        }
-      }
-    }
-
     /* Draw Background */
     draw_rectangle(0, 0, 800, 600, 0x86592d);
 
@@ -152,49 +83,96 @@ void game(){
 
     draw_map(map);
 
-    //Draw player
-    draw_rectangle(x, y, 30, 30, 0xFFFF00);
+    if(is_key_pressed(ESC, true)){
+      quit();
+    }
 
+    if(is_key_pressed(' ', false)){
+      game_clock = true;
+      time_start_round = get_time_counter();
+    }
+
+    if(lives == 0 || num_enemies == 0) {
+      quit();
+    }
+
+    if(game_clock) {
+      int enemies_alive = 6;
+
+      for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
+        if(game_clock && is_time_interval_elapsed_seconds(time_start_round, i) && enemies[i].hp > 0){
+
+          if(enemy_directions[i] == 'r') {
+            enemies[i].x += 2;
+          }
+          if(enemy_directions[i] == 'l') {
+            enemies[i].x -= 2;
+          }
+          if(enemy_directions[i] == 'u') {
+            enemies[i].y -= 2;
+          }
+          if(enemy_directions[i] == 'd') {
+            enemies[i].y += 2;
+          }
+              
+          if(enemies[i].x == corners[current_enemy_direction[i]].x && 
+            enemies[i].y == corners[current_enemy_direction[i]].y) {
+            enemy_directions[i] = directions[current_enemy_direction[i]];
+            current_enemy_direction[i]++;
+          }
+
+          if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
+            lives--;
+          }
+        }
+
+        if(!enemies[i].hp > 0) {
+          enemies_alive--;
+        }
+
+        if(enemies_alive == 0) {
+          quit();
+        }
+      }
+    }
+
+    else {
+      for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
+        if(towers[i].new) {
+          draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed);
+        }
+        else {
+          if(towers[i].placed) {
+            draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          }
+        }
+      }
+    }
 
     //Draw towerS
     for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
       if(towers[i].new) {
         draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-        verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed);
       }
       else {
         if(towers[i].placed) {
-          //draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
           draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
-              //decrease enemy health
+            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j)){
+              enemies[j].hp--;
             }
           }
         }
-
       }
-
-      /*
-      if(!towers[i].placed) {
-        draw_rectangle(towers[i].x, towers[i].y, 30, 30, 0xA020F0);
-        //draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-        verifyDrag(&towers[i].x, &towers[i].y, &towers[i].placed, &towers[i+1].placed);
-      }
-      else {
-        draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-        for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-          drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j);
-            //break;
-        }
-      }
-      */
     }
 
     //Draw enemies
     for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
-      draw_rectangle(enemies[i].x, enemies[i].y, 30, 30, 0x0000FF);
-      draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
+      if(enemies[i].hp > 0 && enemies[i].x < 570 && enemies[i].y < 600) {
+        draw_rectangle(enemies[i].x, enemies[i].y, 30, 30, 0x0000FF);
+        draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
+      }
     }
   }
   
