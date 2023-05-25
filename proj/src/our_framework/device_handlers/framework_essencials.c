@@ -12,16 +12,19 @@ unsigned long long time_counter = 0;
 
 bool graphics_on = false;
 
+uint minutes = 33;
+uint hours = 33;
+bool update_rtc = true;
 
 int run(void (*func)()){
+  if(mouse_enable_data_reporting_ours())
+    game_running = false;
   if(timer_subscribe_interrupt())
     game_running = false;
   if(keyboard_subscribe_interrupt())
     game_running = false;
   if(mouse_subscribe_interrupt())
     game_running = false;
-  //if(mouse_enable_data_reporting_ours())
-   // game_running = false;
   
   int ipc_status;
   message msg;
@@ -55,19 +58,37 @@ int run(void (*func)()){
     // printf("Time counter: %d\n", time_counter);
 
     if(is_timer_0_interrupt(ipc_status, msg)){
+      
+
       func();
+      
+
       doublebuffer_to_vram();
       time_counter++;
+      if(time_counter % 60 == 0)
+        update_rtc = true;
+    }
+
+    if(update_rtc){
+      if(!is_rtc_updating()){
+        rtc_update_time(&hours, &minutes);
+        update_rtc = false;
+      }
     }
   }
 
   mouse_unsubscribe_interrupt();
   keyboard_unsubscribe_interrupt();
   timer_unsubscribe_interrupt();
-  //mouse_disable_data_reporting();
+  mouse_disable_data_reporting();
 
   if(graphics_on)
     gpu_exit();
+
+  uint reg_b;
+  rtc_input(11, &reg_b);
+  printf("Reg B: 0x%x\n", reg_b);
+  printf("Time: %d:%d\n", hours, minutes);
 
   return 0;
 }

@@ -3,8 +3,9 @@
 
 #include <lcom/lcf.h>
 
-int rtc_output(uint8_t command, uint8_t *output);
-int rtc_is_updating();
-int rtc_update_time(uint8_t *hours);
+int rtc_input(uint8_t cmd, uint *place_to_store);
+int rtc_output(uint8_t cmd, uint8_t output);
+int is_rtc_updating();
+int rtc_update_time(uint *hours, uint *minutes);
 
 #endif
