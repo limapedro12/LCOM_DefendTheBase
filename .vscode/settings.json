@@ -3,6 +3,8 @@
         "framework_essencials.h": "c",
         "stdint.h": "c",
         "stdio.h": "c",
-        "*.xpm": "c"
+        "*.xpm": "c",
+        "enemy_fire_skull_walking.h": "c",
+        "xlocale": "c"
     }
 }

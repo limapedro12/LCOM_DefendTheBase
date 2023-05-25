@@ -4,14 +4,8 @@
 #include <math.h>
 #include "our_framework/framework_essencials.h"
 #include "bullet.h"
-#include "xpm/tower_orange_up.xpm"
-#include "xpm/tower_orange_right_up.xpm"
-#include "xpm/tower_orange_right.xpm"
-#include "xpm/tower_orange_right_down.xpm"
-#include "xpm/tower_orange_down.xpm"
-#include "xpm/tower_orange_left_down.xpm"
-#include "xpm/tower_orange_left.xpm"
-#include "xpm/tower_orange_left_up.xpm"
+#include "xpm/tower_orange/tower_orange.h"
+#include "xpm/tower_purple/tower_purple.h"
 
 void draw_map(char map[12][16]);
 

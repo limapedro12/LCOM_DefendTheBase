@@ -3,9 +3,9 @@
 #include "draw.h"
 #include "xpm/test.xpm"
 #include "xpm/cursor.xpm"
-// #include "xpm/tower_orange_right.xpm"
-#include "xpm/tower_purple_right.xpm"
-// #include "xpm/tower_orange_up.xpm"
+#include "xpm/tower_purple/tower_purple.h"
+#include "xpm/tower_orange/tower_orange.h"
+#include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -14,22 +14,22 @@ int time_0;
 int time_start_round;
 bool menu_state = true;
 
-int lives = 3;
+bool game_clock = false;
 
+int lives = 3;
 int coins = 1000;
 
 tower towers[6] = {{1, 610, 160, true, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}};
 
-enemy enemies[6] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
-char enemy_directions[6] = {'d', 'd', 'd', 'd', 'd', 'd'};
-int current_enemy_direction[6] = {0, 0, 0, 0, 0, 0};
-
+enemy enemies[4] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
+char enemy_directions[4] = {'d', 'd', 'd', 'd'};
+int current_enemy_direction[4] = {0, 0, 0, 0};
+int enemy_animation = 0;
 
 position corners[13] = {{10, 60}, {510, 60}, {510, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
 char directions[13] = {'r', 'd', 'l', 'd', 'l', 'u', 'l', 'd', 'r', 'u', 'r', 'd', 'r'};
 char direction = 'd';
 
-bool game_clock = false;
 
 int before(){
 
@@ -202,8 +202,11 @@ void game(){
     //Draw enemies
     for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
       if(enemies[i].hp > 0 && enemies[i].x < 570 && enemies[i].y < 600) {
-        draw_rectangle(enemies[i].x, enemies[i].y, 30, 30, 0x0000FF);
-        draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
+        
+        if(enemy_animation == 13) enemy_animation = 0;
+        draw_xpm(enemies[i].x, enemies[i].y, enemy_fire_skull_walking[enemy_animation], 0xFFFFFF);
+        enemy_animation++;
+
       }
     }
 
