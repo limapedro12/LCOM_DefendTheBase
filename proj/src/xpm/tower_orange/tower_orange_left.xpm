@@ -1,5 +1,5 @@
 /* XPM */
-static char *_825_38eb6533a8c36da09f8cba3d9e47b88d90d78c19f3a7cd468838a2469b534e28[] = {
+static xpm_row_t tower_orange_left[] = {
 /* columns rows colors chars-per-pixel */
 "50 50 12 1 ",
 "  c #000000",

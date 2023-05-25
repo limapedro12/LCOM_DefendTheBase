@@ -1,11 +1,11 @@
 #include "bullet.h"
-#include "xpm/shot_orange.xpm"
+#include "xpm/tower_orange/shot_orange.xpm"
 
 double bullet_x; 
 double bullet_y;
-position bullet_pos[6];
-int bullet_enemy_id[6] = {-1, -1, -1, -1, -1, -1};
-int last_time_a_bullet_was_shot[6] = {-1, -1, -1, -1, -1, -1};
+position bullet_pos[4];
+int bullet_enemy_id[4] = {-1, -1, -1, -1};
+int last_time_a_bullet_was_shot[4] = {-1, -1, -1, -1};
 bool is_bullet_on = false;
 // int time_between_shots = 700;
 // int bullet_speed = 5;

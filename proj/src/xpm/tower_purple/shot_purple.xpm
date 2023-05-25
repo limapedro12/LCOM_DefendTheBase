@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_[] = {
+static xpm_row_t shot_purple[] = {
 /* columns rows colors chars-per-pixel */
 "15 15 7 1 ",
 "  c #000000",
