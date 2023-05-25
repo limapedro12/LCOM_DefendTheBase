@@ -3,9 +3,9 @@
 #include "draw.h"
 #include "xpm/test.xpm"
 #include "xpm/cursor.xpm"
-#include "xpm/tower_orange_right.xpm"
+// #include "xpm/tower_orange_right.xpm"
 #include "xpm/tower_purple_right.xpm"
-#include "xpm/tower_orange_up.xpm"
+// #include "xpm/tower_orange_up.xpm"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -153,7 +153,8 @@ void game(){
       for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
         if(towers[i].placed) {
           if(towers[i].level == 1) {
-            draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+            draw_tower(i, towers[i].x, towers[i].y);
+            // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           }         
           else {
             draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);

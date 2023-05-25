@@ -3,7 +3,6 @@
 
 double bullet_x; 
 double bullet_y;
-position bullet_pos[6];
 int bullet_enemy_id[6] = {-1, -1, -1, -1, -1, -1};
 int last_time_a_bullet_was_shot[6] = {-1, -1, -1, -1, -1, -1};
 bool is_bullet_on = false;
@@ -12,6 +11,7 @@ bool is_bullet_on = false;
 // int bullet_range = 100;
 
 bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots){
+  bullet_enemy_id_ptr = bullet_enemy_id;
   if(bullet_enemy_id[tower_id] != -1 && 
      enemy_id != bullet_enemy_id[tower_id]){
     return false;
