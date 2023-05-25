@@ -1,6 +1,6 @@
 #include "drag.h"
 
-void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next){
+void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * coins){
   int tower_size = 30;
   if(placed && is_lb_pressed() && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
     *x = get_mouse_position().x - 15;
@@ -13,12 +13,14 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
     *placed_next = false;
     *new = false;
     *new_next = true;
+    *coins = *coins - 50;
   }
 }
 
-void verifyUpgrade(int * x, int * y, int * level){
+void verifyUpgrade(int * x, int * y, int * level, int * coins){
   int tower_size = 30;
   if(is_key_pressed('u', false) && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
     *level = 2;
+    *coins = *coins -100;
   }
 }
