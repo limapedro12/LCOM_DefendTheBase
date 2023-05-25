@@ -1,6 +1,6 @@
 #include "game.h"
 #include "our_framework/framework_essencials.h"
-#include "draw/draw.h"
+#include "draw.h"
 #include "xpm/test.xpm"
 #include "xpm/cursor.xpm"
 #include "xpm/tower_orange_right.xpm"
@@ -14,10 +14,9 @@ int time_0;
 int time_start_round;
 bool menu_state = true;
 
-int lives = 6;
+int lives = 3;
 
-
-int enemy_i = 0;
+int coins = 1000;
 
 tower towers[6] = {{1, 610, 160, true, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}};
 
@@ -46,7 +45,6 @@ void game(){
   if(menu_state) {
     draw_rectangle(250, 190, 300, 50, 0x00e600);
     draw_rectangle(250, 290, 300, 50, 0x86592d);
-    
 
     if(is_key_pressed(ESC, true)){
       quit();
@@ -60,6 +58,9 @@ void game(){
     if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && get_mouse_position().y >= 190 && get_mouse_position().y <= 240 && is_lb_pressed()){
       menu_state = false;
       time_0 = get_time_counter();
+    }
+    if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && get_mouse_position().y >= 290 && get_mouse_position().y <= 340 && is_lb_pressed()){
+      quit();
     }
   } 
 
@@ -86,7 +87,7 @@ void game(){
     draw_map(map);
 
     if(is_key_pressed(ESC, true)){
-      quit();
+      menu_state = true;
     }
 
     if(is_key_pressed(' ', false)){
@@ -125,6 +126,7 @@ void game(){
 
           if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
             lives--;
+            enemies[i].hp = 0;
           }
         }
 
@@ -133,6 +135,16 @@ void game(){
         }
 
         if(enemies_alive == 0) {
+          for(unsigned int i = 0; i <= sizeof(enemies) / sizeof(enemies[0]); i++) {
+            enemies[i].x = 10;
+            enemies[i].y = 10;
+            enemies[i].hp = 3;
+            enemy_directions[i] = 'd';
+            current_enemy_direction[i] = 0;
+          }
+          lives = 3;
+          enemies_alive = 6;
+
           game_clock = false;
         }
       }
@@ -153,6 +165,7 @@ void game(){
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
             if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+              coins += 20;
               enemies[j].hp--;
             }
           }
@@ -165,7 +178,9 @@ void game(){
       for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
         if(towers[i].new) {
           draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-          verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed);
+          if(coins >= 50) {
+            verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed, &coins);
+          }
         }
         else {
           if(towers[i].placed) {
@@ -175,7 +190,9 @@ void game(){
             else {
               draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
             }      
-            verifyUpgrade(&towers[i].x, &towers[i].y, &towers[i].level);
+            if(coins >= 100) {
+              verifyUpgrade(&towers[i].x, &towers[i].y, &towers[i].level, &coins);
+            }
           }
         }
       }
@@ -188,8 +205,10 @@ void game(){
         draw_xpm(enemies[i].x, enemies[i].y, et_xpm, 0x000000);
       }
     }
+
+    draw_lives(lives);
   }
-  
+
   draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x2AFF00);
 }
 

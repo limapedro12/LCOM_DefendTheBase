@@ -56,6 +56,8 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
      bullet_pos[tower_id].y + 7.5 >= enemy_y_center - 15 && 
      bullet_pos[tower_id].y + 7.5 <= enemy_y_center + 15) {
     bullet_enemy_id[tower_id] = -1;
+    bullet_pos[tower_id].x = tower_x_center; 
+    bullet_pos[tower_id].y = tower_y_center;
     return true;
   }
   return false;

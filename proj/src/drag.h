@@ -3,8 +3,8 @@
 #include "lcom/lcf.h"
 #include "our_framework/framework_essencials.h"
 
-void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next);
+void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * coins);
 
-void verifyUpgrade(int * x, int * y, int * level);
+void verifyUpgrade(int * x, int * y, int * level, int * coins);
 
 #endif
