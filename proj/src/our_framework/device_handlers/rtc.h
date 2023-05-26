@@ -25,7 +25,7 @@ int rtc_output(uint8_t cmd, uint8_t output);
  * 
  * @return false if rtc is updating, true otherwise 
  */
-bool rtc_is_updating();
+int rtc_is_updating();
 
 /**
  * @brief updates the time of the RTC
@@ -35,6 +35,8 @@ bool rtc_is_updating();
  * @return int 0 if success, 1 otherwise
  */
 int rtc_update_time(uint *hours, uint *minutes);
+
+int is_rtc_updating();
 
 
 #endif

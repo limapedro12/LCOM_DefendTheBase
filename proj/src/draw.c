@@ -38,18 +38,15 @@ void draw_lives(int lives) {
     switch (lives)
     {
     case 1:
-        draw_rectangle(620, 300, 30, 30, 0xFF0000);
+        draw_xpm(720, 130, number_1, 0x36FF00);
         break;
     
     case 2:
-        draw_rectangle(620, 300, 30, 30, 0xFF0000);
-        draw_rectangle(620, 350, 30, 30, 0xFF0000);
+        draw_xpm(720, 130, number_2, 0x36FF00);
         break;
 
     case 3:
-        draw_rectangle(620, 300, 30, 30, 0xFF0000);
-        draw_rectangle(620, 350, 30, 30, 0xFF0000);
-        draw_rectangle(620, 400, 30, 30, 0xFF0000);
+        draw_xpm(720, 130, number_3, 0x36FF00);
         break;          
     default:
         break;
