@@ -9,11 +9,23 @@
 #include "device_handlers/gpu.h"
 #include "device_handlers/rtc.h"
 
+/**
+ * @brief struct that represents a position
+ * @param x x coordinate
+ * @param y y coordinate
+ */
 typedef struct {
     int x;
     int y;
 } position;
 
+/**
+ * @brief struct that represents a tower
+ * @param x x coordinate
+ * @param y y coordinate
+ * @param new true if the tower is new, false otherwise
+ * @param placed true if the tower is placed, false otherwise
+ */
 typedef struct {
     int level;
     int x;
@@ -22,6 +34,12 @@ typedef struct {
     bool placed;
 } tower;
 
+/**
+ * @brief struct that represents an enemy
+ * @param x x coordinate
+ * @param y y coordinate
+ * @param hp health points
+ */
 typedef struct {
     int x;
     int y;
@@ -104,17 +122,57 @@ bool is_key_pressed_code(uint8_t scancode);
  */
 bool is_key_pressed(char key, bool isBreak);
 
+/**
+ * @brief Get the mouse position
+ * 
+ * @return position the mouse position
+ */
 position get_mouse_position();
 
+/**
+ * @brief Set the mouse position
+ * 
+ * This function sets the mouse position to the given coordinates.
+ * 
+ * @param x 
+ * @param y 
+ * @return true 
+ * @return false 
+ */
 bool set_mouse_position(int x, int y);
 
+/**
+ * @brief Checks if the mouse is inside the screen
+ * 
+ * @param x_min 0
+ * @param x_max 800
+ * @param y_min 0
+ * @param y_max 600
+ * @return true if the mouse is inside the screen, false otherwise
+ */
 bool verify_mouse_limits(int x_min, int x_max, int y_min, int y_max);
 
+/**
+ * @brief Check if the middle button of the mouse is pressed
+ * 
+ * @return true if the middle button of the mouse is pressed, false otherwise
+ */
 bool is_mb_pressed();
 
+/**
+ * @brief Check if the left button of the mouse is pressed
+ * 
+ * @return true if the left button of the mouse is pressed, false otherwise
+ */
 bool is_lb_pressed();
 
+/**
+ * @brief Check if the right button of the mouse is pressed
+ * 
+ * @return true if the right button of the mouse is pressed, false otherwise
+ */
 bool is_rb_pressed();
+
 
 /**
  * @brief Turns on graphics mode
@@ -137,6 +195,10 @@ void turn_on_graphics();
  */
 void draw_rectangle(int x, int y, int width, int height, uint32_t color);
 
+/**
+ * @brief paints the screen black
+ * 
+ */
 void clear_screen();
 
 #endif
