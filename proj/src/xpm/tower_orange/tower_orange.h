@@ -20,5 +20,12 @@ xpm_image_t tower_orange_up_left_img;
 xpm_image_t tower_orange_up_img;
 
 uint8_t* tower_orange_up_right_pixmap;
+uint8_t* tower_orange_right_pixmap;
+uint8_t* tower_orange_down_right_pixmap;
+uint8_t* tower_orange_down_pixmap;
+uint8_t* tower_orange_down_left_pixmap;
+uint8_t* tower_orange_left_pixmap;
+uint8_t* tower_orange_up_left_pixmap;
+uint8_t* tower_orange_up_pixmap;
 
 #endif

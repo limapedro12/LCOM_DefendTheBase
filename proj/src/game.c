@@ -6,7 +6,6 @@
 #include "xpm/tower_purple/tower_purple.h"
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
-#include "xpm/menu.xpm"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -45,7 +44,7 @@ void game(){
   verify_mouse_limits(0, 800-10, 0, 600-10);
 
   if(menu_state) {
-    draw_xpm(0, 0, menu_xpm, 0xFFFFFFFF);
+    draw_xpm_loaded(0, 0, menu_pixmap, menu_img, NO_BACKGROUND);
     draw_rectangle(250, 190, 300, 50, 0x00e600);
     draw_rectangle(250, 290, 300, 50, 0x86592d);
 
@@ -88,7 +87,7 @@ void game(){
     };
 
     draw_map(map);
-    draw_xpm_loaded(0, 0, background_pixmap, background_img, 0xFFFFFFFF);
+    draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
 
     if(is_key_pressed(ESC, true)){
       menu_state = true;

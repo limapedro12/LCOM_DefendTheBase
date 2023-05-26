@@ -4,7 +4,15 @@ extern position bullet_pos[4];
 
 void load_xpms(){
     background_pixmap = xpm_load(background_xpm, XPM_8_8_8, &background_img);
-    // tower_orange_up_right_pixmap = 
+    menu_pixmap = xpm_load(menu_xpm, XPM_8_8_8, &menu_img);
+    tower_orange_up_right_pixmap = xpm_load(tower_orange_up_right, XPM_8_8_8, &tower_orange_up_right_img);
+    tower_orange_right_pixmap = xpm_load(tower_orange_right, XPM_8_8_8, &tower_orange_right_img);
+    tower_orange_down_right_pixmap = xpm_load(tower_orange_down_right, XPM_8_8_8, &tower_orange_down_right_img);
+    tower_orange_down_pixmap = xpm_load(tower_orange_down, XPM_8_8_8, &tower_orange_down_img);
+    tower_orange_down_left_pixmap = xpm_load(tower_orange_down_left, XPM_8_8_8, &tower_orange_down_left_img);
+    tower_orange_left_pixmap = xpm_load(tower_orange_left, XPM_8_8_8, &tower_orange_left_img);
+    tower_orange_up_left_pixmap = xpm_load(tower_orange_up_left, XPM_8_8_8, &tower_orange_up_left_img);
+    tower_orange_up_pixmap = xpm_load(tower_orange_up, XPM_8_8_8, &tower_orange_up_img);
 }
 
 void draw_map(char map[12][16]) {
@@ -55,19 +63,27 @@ void draw_tower(int tower_id, int tower_x, int tower_y){
     }
     int angle = atan2(delta_y, delta_x) * 180 / 3.1416;
     if(angle > 22.5 && angle < 67.5)
-        draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_right_pixmap, tower_orange_up_right_img, 0xFFFFFF);
     else if(angle > 67.5 && angle < 112.5)
-        draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
     else if(angle > 112.5 && angle < 157.5)
-        draw_xpm(tower_x, tower_y, tower_orange_down_right, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_down_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_right_pixmap, tower_orange_down_right_img, 0xFFFFFF);
     else if(angle > 157.5 || angle < -157.5)
-        draw_xpm(tower_x, tower_y, tower_orange_down, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_down, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_pixmap, tower_orange_down_img, 0xFFFFFF);
     else if(angle > -157.5 && angle < -112.5)
-        draw_xpm(tower_x, tower_y, tower_orange_down_left, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_down_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_left_pixmap, tower_orange_down_left_img, 0xFFFFFF);
     else if(angle > -112.5 && angle < -67.5)
-        draw_xpm(tower_x, tower_y, tower_orange_left, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_left_pixmap, tower_orange_left_img, 0xFFFFFF);
     else if(angle > -67.5 && angle < -22.5)
-        draw_xpm(tower_x, tower_y, tower_orange_up_left, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_up_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_left_pixmap, tower_orange_up_left_img, 0xFFFFFF);
     else
-        draw_xpm(tower_x, tower_y, tower_orange_up, 0xFFFFFF);
+        /* draw_xpm(tower_x, tower_y, tower_orange_up, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_pixmap, tower_orange_up_img, 0xFFFFFF);
 }

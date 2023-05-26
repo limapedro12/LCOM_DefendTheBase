@@ -6,6 +6,7 @@ char * video_mem = NULL;
 vbe_mode_info_t info;
 
 void* (vg_init)(u16_t mode){
+    NO_BACKGROUND = 0xFFFFFFFF;
     // Get Info
     vbe_get_mode_info(mode, &info);
 
