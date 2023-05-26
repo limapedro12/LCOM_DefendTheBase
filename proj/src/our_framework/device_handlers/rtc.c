@@ -43,6 +43,6 @@ int rtc_update_time(uint *hours, uint *minutes) {
       return 1;
     }
     *hours -= 6; *hours %= 24;
-    *minutes -= 6; *minutes %= 60;
+    // *minutes -= 6; *minutes %= 60;
     return 0;
 }

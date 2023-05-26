@@ -45,8 +45,10 @@ void game(){
 
   if(menu_state) {
     draw_xpm_loaded(0, 0, menu_pixmap, menu_img, NO_BACKGROUND);
-    draw_rectangle(250, 190, 300, 50, 0x00e600);
-    draw_rectangle(250, 290, 300, 50, 0x86592d);
+    // draw_rectangle(250, 190, 300, 50, 0x00e600);
+    // draw_rectangle(250, 290, 300, 50, 0x86592d);
+    draw_xpm_loaded(257, 314, start_game_pixmap, start_game_img, 0xFFFFFF); //54, 281
+    draw_xpm_loaded(341, 421, quit_pixmap, quit_img, 0xFFFFFF);//54, 114
 
     if(is_key_pressed(ESC, true)){
       quit();
@@ -57,12 +59,20 @@ void game(){
       time_0 = get_time_counter();
     }
 
-    if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && get_mouse_position().y >= 190 && get_mouse_position().y <= 240 && is_lb_pressed()){
-      menu_state = false;
-      time_0 = get_time_counter();
+    if(get_mouse_position().x >= 257 && get_mouse_position().x <= 257 + 281 && 
+       get_mouse_position().y >= 314 && get_mouse_position().y <= 314 + 54){
+      draw_xpm_loaded(257, 314, start_game_glow_pixmap, start_game_glow_img, 0xFFFFFF);
+      if(is_lb_pressed()){
+        menu_state = false;
+        time_0 = get_time_counter();
+      }
     }
-    if(get_mouse_position().x >= 250 && get_mouse_position().x <= 550 && get_mouse_position().y >= 290 && get_mouse_position().y <= 340 && is_lb_pressed()){
-      quit();
+    if(get_mouse_position().x >= 341 && get_mouse_position().x <= 341 + 114&& 
+       get_mouse_position().y >= 421 && get_mouse_position().y <= 421 + 54){
+      draw_xpm_loaded(341, 421, quit_glow_pixmap, quit_glow_img, 0xFFFFFF);
+      if(is_lb_pressed()){
+        quit();
+      }
     }
   } 
 
@@ -220,5 +230,7 @@ void game(){
 }
 
 int after(){
+  for(int i = 0; i < 6; i++)
+    printf("%d\n", last_position[i]);
   return 0;
 }
