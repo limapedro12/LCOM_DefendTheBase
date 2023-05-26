@@ -19,7 +19,9 @@ bool game_clock = false;
 int lives = 3;
 int coins = 1000;
 
-tower towers[6] = {{1, 610, 160, true, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}, {1, 610, 160, false, false}};
+tower towers_level_1[6] = {{1, 605, 218, true, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}};
+tower towers_level_2[6] = {{2, 672, 220, true, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}};
+
 
 enemy enemies[4] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
 char enemy_directions[4] = {'d', 'd', 'd', 'd'};
@@ -163,22 +165,22 @@ void game(){
       }
 
       //Draw towerS
-      for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-        if(towers[i].placed) {
-          if(towers[i].level == 1) {
-            draw_tower(i, towers[i].x, towers[i].y);
+      for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
+        if(towers_level_1[i].placed) {
+          if(towers_level_1[i].level == 1) {
+            draw_tower(i, towers_level_1[i].x, towers_level_1[i].y);
             // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           }         
           else {
-            draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
+            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
           }
 
-          int bullet_speed = 5*towers[i].level;
-          int bullet_range = 100*towers[i].level;
-          int bullet_time = 2000/towers[i].level;
+          int bullet_speed = 5*towers_level_1[i].level;
+          int bullet_range = 100*towers_level_1[i].level;
+          int bullet_time = 2000/towers_level_1[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers[i].x, towers[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
               coins += 20;
               enemies[j].hp--;
             }
@@ -189,23 +191,50 @@ void game(){
 
     else {
 
-      for(unsigned int i = 0; i < sizeof(towers) / sizeof(towers[0]); i++) {
-        if(towers[i].new) {
-          draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+      for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
+        if(towers_level_1[i].new) {
+          if(towers_level_1[i].level == 1) {
+            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right, 0xFFFFFF);
+          }
+          else if(towers_level_1[i].level == 2) {
+            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);            
+          }
+          
           if(coins >= 50) {
-            verifyDrag(&towers[i].x, &towers[i].y, &towers[i].new, &towers[i+1].new, &towers[i].placed, &towers[i+1].placed, &coins);
+            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &coins);
           }
         }
         else {
-          if(towers[i].placed) {
-            if(towers[i].level == 1) {
-              draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          if(towers_level_1[i].placed) {
+            if(towers_level_1[i].level == 1) {
+              draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right, 0xFFFFFF);
             }  
             else {
-              draw_xpm(towers[i].x, towers[i].y, tower_purple_right, 0xFFFFFF);
+              draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
             }      
             if(coins >= 100) {
-              verifyUpgrade(&towers[i].x, &towers[i].y, &towers[i].level, &coins);
+              verifyUpgrade(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].level, &coins);
+            }
+          }
+        }
+      }
+
+      for(unsigned int i = 0; i < sizeof(towers_level_2) / sizeof(towers_level_2[0]); i++) {
+        if(towers_level_2[i].new) {
+          if(towers_level_2[i].level == 2) {
+            draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);   
+          }   
+          if(coins >= 100) {
+            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins);
+          }
+        }
+        else {
+          if(towers_level_2[i].placed) {
+            if(towers_level_2[i].level == 2) {
+              draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);
+            }    
+            if(coins >= 200) {
+              verifyUpgrade(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_1[i].level, &coins);
             }
           }
         }

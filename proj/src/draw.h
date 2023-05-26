@@ -12,6 +12,7 @@
 #include "xpm/quit.xpm"
 #include "xpm/start_game_glow.xpm"
 #include "xpm/quit_glow.xpm"
+#include "xpm/numbers/numbers.h"
 
 xpm_image_t background_img;
 uint8_t * background_pixmap;
