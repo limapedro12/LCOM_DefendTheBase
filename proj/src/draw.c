@@ -2,6 +2,11 @@
 
 extern position bullet_pos[4];
 
+void load_xpms(){
+    background_pixmap = xpm_load(background_xpm, XPM_8_8_8, &background_img);
+    // tower_orange_up_right_pixmap = 
+}
+
 void draw_map(char map[12][16]) {
 
     for(int y = 0; y <= 12; y++) {

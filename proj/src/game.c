@@ -34,6 +34,7 @@ char direction = 'd';
 int before(){
 
   turn_on_graphics();
+  load_xpms();
 
   return 0;
 }
@@ -85,6 +86,7 @@ void game(){
     };
 
     draw_map(map);
+    draw_xpm_loaded(0, 0, background_pixmap, background_img, 0xFFFFFFFF);
 
     if(is_key_pressed(ESC, true)){
       menu_state = true;

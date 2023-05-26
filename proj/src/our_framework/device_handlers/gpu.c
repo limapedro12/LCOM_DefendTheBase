@@ -98,3 +98,17 @@ int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm, uint color_to_ignore){
     
     return 0;
 }
+
+int draw_xpm_loaded(uint16_t x, uint16_t y, uint8_t * pixmap, xpm_image_t img, uint color_to_ignore){
+    for(int i = 0; i < img.height; i++)
+        for(int j = 0; j < img.width; j++){
+            unsigned int color = 0;
+            for(int k = 0; k < 3; k++){
+                color += ((uint) pixmap[i*img.width*3 + j*3 + k]) << (k*8);
+            }
+            if(color != color_to_ignore)
+                draw_pixel(x+j, y+i, color);
+            }
+    
+    return 0;
+}
