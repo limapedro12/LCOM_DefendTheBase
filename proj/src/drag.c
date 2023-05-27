@@ -1,6 +1,6 @@
 #include "drag.h"
 
-void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * coins){
+void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * coins, uint8_t* background_pixmap, xpm_image_t background_img){
   int tower_size = 30;
   if(placed && is_lb_pressed() && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
     *x = get_mouse_position().x - 15;
@@ -14,7 +14,7 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
     *new = false;
     *new_next = true;
     *coins = *coins - 50;
-    highlight_map(*x, *y, 300, background_pixmap, background_img);
+    highlight_map(*x + 25, *y +25, 120, background_pixmap, background_img);
   }
 }
 

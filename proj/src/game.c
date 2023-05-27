@@ -50,17 +50,16 @@ int before(){
     current_enemy_direction[i] = 0;
   }
 
-  apply_night_mode_on_xpm(background_pixmap, background_img);
-
   return 0;
 }
 
-int times_clicked = 0;
+bool updated_background = false;
 void game(){
-  if(get_time_counter() % 7200 == 0)
-    apply_night_mode_on_xpm(background_pixmap, background_img);
 
-  highlight_map(0, 0, 100, background_pixmap, background_img);
+  if(!updated_background && get_hours() != 33){
+    updated_background = true;
+    apply_night_mode_on_xpm(background_pixmap, background_img);
+  }
   
   clear_screen();
   verify_mouse_limits(0, 800-10, 0, 600-10);
@@ -109,7 +108,6 @@ void game(){
       if(!game_clock){
         game_clock = true;
         time_start_round = get_time_counter();
-        times_clicked++;
       }
     }
 
@@ -124,9 +122,6 @@ void game(){
 
       for(unsigned int i = 0; i < number_of_enemies_by_round[round_number]; i++) {
         if(game_clock && is_time_interval_elapsed_milliseconds(time_start_round, (i*2000)/(round_number+1))  && enemies[i].hp > 0){
-          // if(times_clicked > 1){
-          //     quit();
-          //   }
 
           if(enemy_directions[i] == 'r') {
             enemies[i].x += 2;
@@ -261,7 +256,7 @@ void game(){
           }
           
           if(coins >= 50) {
-            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &coins);
+            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &coins, background_pixmap, background_img);
           }
         }
         else {
@@ -294,7 +289,7 @@ void game(){
           }
 
           if(coins >= 100) {
-            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins);
+            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins, background_pixmap, background_img);
           }
         }
         else {
@@ -319,7 +314,7 @@ void game(){
           draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF); 
           
           if(coins >= 100) {
-            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &coins);
+            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &coins, background_pixmap, background_img);
           }
         }
         else {
@@ -340,7 +335,6 @@ void game(){
         
         if(enemy_animation == 13) enemy_animation = 0;
         draw_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
-        highlight_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
         enemy_animation++;
 
       }
