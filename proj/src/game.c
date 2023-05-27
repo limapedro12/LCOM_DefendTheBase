@@ -40,6 +40,7 @@ int before(){
   return 0;
 }
 
+int times_clicked = 0;
 void game(){
   clear_screen();
   verify_mouse_limits(0, 800-10, 0, 600-10);
@@ -104,20 +105,27 @@ void game(){
       menu_state = true;
     }
 
-    if(is_key_pressed(' ', false)){
-      game_clock = true;
-      time_start_round = get_time_counter();
+    if(is_key_pressed(' ', true)){
+      if(!game_clock){
+        game_clock = true;
+        time_start_round = get_time_counter();
+        times_clicked++;
+      }
     }
 
     if(lives == 0) {
       quit();
     }
 
+    int enemies_alive_2 = 0;
     if(game_clock) {
       int enemies_alive = 6;
 
       for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
-        if(game_clock && is_time_interval_elapsed_seconds(time_start_round, i) && enemies[i].hp > 0){
+        if(game_clock && is_time_interval_elapsed_seconds(time_start_round, i)  && enemies[i].hp > 0){
+          // if(times_clicked > 1){
+          //     quit();
+          //   }
 
           if(enemy_directions[i] == 'r') {
             enemies[i].x += 2;
@@ -144,23 +152,23 @@ void game(){
           }
         }
 
-        if(!enemies[i].hp > 0) {
+        if(enemies[i].hp <= 0) {
           enemies_alive--;
+        } else {
+          enemies_alive_2++;
+        }
+      }
+
+      if(enemies_alive_2 == 0) {
+        for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
+          enemies[i].x = 10;
+          enemies[i].y = 10;
+          enemies[i].hp = 3;
+          enemy_directions[i] = 'd';
+          current_enemy_direction[i] = 0;
         }
 
-        if(enemies_alive == 0) {
-          for(unsigned int i = 0; i <= sizeof(enemies) / sizeof(enemies[0]); i++) {
-            enemies[i].x = 10;
-            enemies[i].y = 10;
-            enemies[i].hp = 3;
-            enemy_directions[i] = 'd';
-            current_enemy_direction[i] = 0;
-          }
-          lives = 3;
-          enemies_alive = 6;
-
-          game_clock = false;
-        }
+        game_clock = false;
       }
 
       //Draw towerS
