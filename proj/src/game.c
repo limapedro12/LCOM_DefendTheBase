@@ -33,6 +33,9 @@ position corners[12] = {{250, 50}, {250, 150}, {100, 150}, {100, 250}, {400, 250
 char directions[12] = {'d', 'l', 'd', 'r', 'u', 'r', 'd', 'l', 'd', 'l', 'd', 'r'};
 char direction = 'r';
 
+uint round_number = 0;
+uint number_of_enemies_by_round[10] = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
+
 
 int before(){
 
@@ -110,8 +113,8 @@ void game(){
     if(game_clock) {
       int enemies_alive = 6;
 
-      for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
-        if(game_clock && is_time_interval_elapsed_seconds(time_start_round, i)  && enemies[i].hp > 0){
+      for(unsigned int i = 0; i < number_of_enemies_by_round[round_number]; i++) {
+        if(game_clock && is_time_interval_elapsed_milliseconds(time_start_round, (i*2000)/(round_number+1))  && enemies[i].hp > 0){
           // if(times_clicked > 1){
           //     quit();
           //   }
@@ -157,14 +160,17 @@ void game(){
           current_enemy_direction[i] = 0;
         }
 
+        if(round_number < 9) {
+          round_number++;
+        } 
         game_clock = false;
       }
 
       //Draw towerS
       for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
         if(towers_level_1[i].placed) {
-          int bullet_speed = 3*towers_level_1[i].level;
-          int bullet_range = 300*towers_level_1[i].level;
+          int bullet_speed = 5*towers_level_1[i].level;
+          int bullet_range = 150*towers_level_1[i].level;
           int bullet_time = 2000/towers_level_1[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
@@ -188,8 +194,8 @@ void game(){
 
       for(unsigned int i = 0; i < sizeof(towers_level_2) / sizeof(towers_level_2[0]); i++) {
         if(towers_level_2[i].placed) {
-          int bullet_speed = 15*towers_level_2[i].level;
-          int bullet_range = 300*towers_level_2[i].level;
+          int bullet_speed = 5*towers_level_2[i].level;
+          int bullet_range = 150*towers_level_2[i].level;
           int bullet_time = 2000/towers_level_2[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
@@ -210,8 +216,8 @@ void game(){
 
       for(unsigned int i = 0; i < sizeof(towers_level_3) / sizeof(towers_level_3[0]); i++) {
         if(towers_level_3[i].placed) {
-          int bullet_speed = 15*towers_level_3[i].level;
-          int bullet_range = 300*towers_level_3[i].level;
+          int bullet_speed = 5*towers_level_3[i].level;
+          int bullet_range = 150*towers_level_3[i].level;
           int bullet_time = 2000/towers_level_3[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {

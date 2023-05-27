@@ -19,7 +19,7 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
 
 void verifyUpgrade(int * x, int * y, int * level, int * coins){
   int tower_size = 30;
-  if(is_key_pressed('u', false) && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
+  if(is_key_pressed('u', true) && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
     
     if(*level == 1) {*level = 2;}
     else if(*level == 2) {*level = 3;}
