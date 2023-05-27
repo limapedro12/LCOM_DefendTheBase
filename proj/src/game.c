@@ -178,7 +178,7 @@ void game(){
           }
 
           if(towers_level_1[i].level == 1) {
-            draw_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies);
+            draw_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
             // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           }         
           else {
@@ -261,7 +261,5 @@ void game(){
 }
 
 int after(){
-  for(int i = 0; i < 6; i++)
-    printf("%d\n", last_position[i]);
   return 0;
 }

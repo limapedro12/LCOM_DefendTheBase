@@ -144,8 +144,23 @@ void draw_tower(int tower_id, int tower_x, int tower_y){
     }
 }
 
-void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies){
-    int enemy_id = bullet_enemy_id_ptr[tower_id];
+void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range){
+    int enemy_id = -1;
+
+    for(int i = 0; i < 4; i++){
+        if(enemies[i].hp <= 0) continue;
+        int tower_x_center =  tower_x + 15;
+        int tower_y_center = tower_y + 15;
+        int enemy_x_center = enemies[i].x + 15;
+        int enemy_y_center = enemies[i].y + 15;
+        double y_difference = enemy_y_center - tower_y_center;
+        double x_difference = enemy_x_center -  tower_x_center;
+
+        if(y_difference*y_difference + x_difference*x_difference <= range*range){
+            enemy_id = i;
+            break;
+        }
+    }
 
     if(enemy_id == -1){
         if(last_position[tower_id] == 0){
