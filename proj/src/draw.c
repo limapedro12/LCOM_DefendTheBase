@@ -33,6 +33,15 @@ void load_xpms(){
     tower_purple_up_left_pixmap = xpm_load(tower_purple_up_left, XPM_8_8_8, &tower_purple_up_left_img);
     tower_purple_up_pixmap = xpm_load(tower_purple_up, XPM_8_8_8, &tower_purple_up_img);
 
+    tower_blue_up_right_pixmap = xpm_load(tower_blue_up_right, XPM_8_8_8, &tower_blue_up_right_img);
+    tower_blue_right_pixmap = xpm_load(tower_blue_right, XPM_8_8_8, &tower_blue_right_img);
+    tower_blue_down_right_pixmap = xpm_load(tower_blue_down_right, XPM_8_8_8, &tower_blue_down_right_img);
+    tower_blue_down_pixmap = xpm_load(tower_blue_down, XPM_8_8_8, &tower_blue_down_img);
+    tower_blue_down_left_pixmap = xpm_load(tower_blue_down_left, XPM_8_8_8, &tower_blue_down_left_img);
+    tower_blue_left_pixmap = xpm_load(tower_blue_left, XPM_8_8_8, &tower_blue_left_img);
+    tower_blue_up_left_pixmap = xpm_load(tower_blue_up_left, XPM_8_8_8, &tower_blue_up_left_img);
+    tower_blue_up_pixmap = xpm_load(tower_blue_up, XPM_8_8_8, &tower_blue_up_img);
+
     // enemy_pixmaps[0] = xpm_load(enemy_fire_skull_walking[0], XPM_8_8_8, &(enemy_imgs[0]));
 
     for(int i = 0; i < 14; i++){
