@@ -17,6 +17,8 @@ uint hours = 33;
 bool update_rtc = true;
 
 int run(void (*func)()){
+  is_rtc_in_binary();
+
   if(mouse_enable_data_reporting_ours())
     game_running = false;
   if(timer_subscribe_interrupt())

@@ -16,33 +16,42 @@ int rtc_output(uint8_t cmd, uint8_t output) {
   return 0;
 }
 
-int rtc_is_updating() {
-  uint result;
-  if (rtc_input(10, &result)) return 1;
-	return result & BIT(7);
-}
-
-int is_rtc_updating() {
+bool is_rtc_updating() {
   uint ret;
   if(rtc_input(10, &ret)) return 1;
-	return ret & BIT(7);
+	if(ret & BIT(7)) return true;
+  return false;
+}
+
+bool is_rtc_in_binary(){
+  uint ret;
+  if(rtc_input(11, &ret)) 
+    return 1;
+  is_rtc_in_binary_store = ret & BIT(2);
+  return ret & BIT(2);
+}
+
+int bcd_to_binary(uint8_t bcd) {
+  return ((bcd & 0xF0) >> 4) * 10 + (bcd & 0x0F);
 }
 
 
 int rtc_update_time(uint *hours, uint *minutes) {
-    if (rtc_is_updating() != 0){
-      printf("RTC is updating\n");	
+    if (is_rtc_updating() != 0){
       return 1;
     }
     if (rtc_input(4, hours) != 0){
-      printf("Error reading hours\n");
       return 1;
     }
     if (rtc_input(2, minutes) != 0){
-      printf("Error reading minutes\n");
       return 1;
     }
     *hours -= 6; *hours %= 24;
     // *minutes -= 6; *minutes %= 60;
+
+    if (!is_rtc_in_binary_store){
+      *hours = bcd_to_binary(*hours);
+      *minutes = bcd_to_binary(*minutes);
+    }
     return 0;
 }

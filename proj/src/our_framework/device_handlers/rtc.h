@@ -3,6 +3,8 @@
 
 #include <lcom/lcf.h>
 
+bool is_rtc_in_binary_store;
+
 /**
  * @brief reads the rtc register corresponding to the command and stores it in place_to_store  
  * @param cmd command to be sent to the rtc
@@ -25,7 +27,7 @@ int rtc_output(uint8_t cmd, uint8_t output);
  * 
  * @return false if rtc is updating, true otherwise 
  */
-int rtc_is_updating();
+bool is_rtc_updating();
 
 /**
  * @brief updates the time of the RTC
@@ -36,7 +38,8 @@ int rtc_is_updating();
  */
 int rtc_update_time(uint *hours, uint *minutes);
 
-int is_rtc_updating();
+bool is_rtc_in_binary();
 
+int bcd_to_binary(uint8_t bcd);
 
 #endif
