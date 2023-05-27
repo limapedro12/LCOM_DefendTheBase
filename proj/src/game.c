@@ -163,12 +163,12 @@ void game(){
       //Draw towerS
       for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
         if(towers_level_1[i].placed) {
-          int bullet_speed = 15*towers_level_1[i].level;
+          int bullet_speed = 3*towers_level_1[i].level;
           int bullet_range = 300*towers_level_1[i].level;
           int bullet_time = 2000/towers_level_1[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
               coins += 20;
               enemies[j].hp--;
             }
@@ -193,7 +193,7 @@ void game(){
           int bullet_time = 2000/towers_level_2[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
               coins += 20;
               enemies[j].hp--;
             }
@@ -215,7 +215,7 @@ void game(){
           int bullet_time = 2000/towers_level_3[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
               coins += 20;
               enemies[j].hp--;
             }

@@ -10,7 +10,10 @@ bool is_bullet_on = false;
 // int bullet_speed = 5;
 // int bullet_range = 100;
 
-bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots){
+bool drawBullet(int tower_x, int tower_y, enemy current_enemy, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots){
+  int enemy_x = current_enemy.x;
+  int enemy_y = current_enemy.y;
+  bool is_enemy_alive = (current_enemy.hp > 0);
   bullet_enemy_id_ptr = bullet_enemy_id;
   if(bullet_enemy_id[tower_id] != -1 && 
      enemy_id != bullet_enemy_id[tower_id]){
@@ -54,7 +57,8 @@ bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id
   if(bullet_pos[tower_id].x + 7.5 >= enemy_x_center - 15 && 
      bullet_pos[tower_id].x + 7.5 <= enemy_x_center + 15 &&
      bullet_pos[tower_id].y + 7.5 >= enemy_y_center - 15 && 
-     bullet_pos[tower_id].y + 7.5 <= enemy_y_center + 15) {
+     bullet_pos[tower_id].y + 7.5 <= enemy_y_center + 15 &&
+     is_enemy_alive) {
     bullet_enemy_id[tower_id] = -1;
     bullet_pos[tower_id].x = tower_x_center; 
     bullet_pos[tower_id].y = tower_y_center;

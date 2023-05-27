@@ -22,6 +22,6 @@ int* bullet_enemy_id_ptr;
  * @param time_between_shots time between shots of bullet
  * @return false if bullet is not drawn
  */
-bool drawBullet(int tower_x, int tower_y, int enemy_x, int enemy_y, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots);
+bool drawBullet(int tower_x, int tower_y, enemy current_enemy, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots);
 
 #endif
