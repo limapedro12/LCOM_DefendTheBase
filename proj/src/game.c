@@ -2,7 +2,6 @@
 #include "our_framework/framework_essencials.h"
 #include "draw.h"
 #include "xpm/test.xpm"
-#include "xpm/cursor.xpm"
 #include "xpm/tower_purple/tower_purple.h"
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
@@ -81,24 +80,24 @@ void game(){
   else {
 
     /* Draw Background */
-    draw_rectangle(0, 0, 800, 600, 0x86592d);
+    // draw_rectangle(0, 0, 800, 600, 0x86592d);
 
-    char map[12][16] = {
-      {' ','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-      {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-      {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-      {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-      {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','-','-','-','-'},
-      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-      {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ','-','-','-','-'},
-      {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-      {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-      {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-      {'#','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-    };
+    // char map[12][16] = {
+    //   {' ','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
+    //   {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
+    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+    //   {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','-','-','-','-'},
+    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
+    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
+    //   {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ','-','-','-','-'},
+    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+    //   {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
+    //   {'#','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
+    // };
 
-    draw_map(map);
+    // draw_map(map);
     draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
 
     if(is_key_pressed(ESC, true)){
@@ -172,7 +171,7 @@ void game(){
             // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
           }         
           else {
-            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
           }
 
           int bullet_speed = 5*towers_level_1[i].level;
@@ -194,10 +193,11 @@ void game(){
       for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
         if(towers_level_1[i].new) {
           if(towers_level_1[i].level == 1) {
-            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right, 0xFFFFFF);
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
           }
           else if(towers_level_1[i].level == 2) {
-            draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);            
+            // draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);    
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
           }
           
           if(coins >= 50) {
@@ -207,10 +207,10 @@ void game(){
         else {
           if(towers_level_1[i].placed) {
             if(towers_level_1[i].level == 1) {
-              draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right, 0xFFFFFF);
+              draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
             }  
             else {
-              draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
+              // draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
             }      
             if(coins >= 100) {
               verifyUpgrade(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].level, &coins);
@@ -222,7 +222,8 @@ void game(){
       for(unsigned int i = 0; i < sizeof(towers_level_2) / sizeof(towers_level_2[0]); i++) {
         if(towers_level_2[i].new) {
           if(towers_level_2[i].level == 2) {
-            draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);   
+            // draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);   
+            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
           }   
           if(coins >= 100) {
             verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins);
@@ -231,7 +232,8 @@ void game(){
         else {
           if(towers_level_2[i].placed) {
             if(towers_level_2[i].level == 2) {
-              draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);
+              // draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);
+              draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
             }    
             if(coins >= 200) {
               verifyUpgrade(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_1[i].level, &coins);
@@ -255,7 +257,7 @@ void game(){
     draw_lives(lives);
   }
 
-  draw_xpm(get_mouse_position().x, get_mouse_position().y, cursor, 0x2AFF00);
+  draw_xpm_loaded(get_mouse_position().x, get_mouse_position().y, cursor_pixmap, cursor_img, 0x2AFF00);
 }
 
 int after(){

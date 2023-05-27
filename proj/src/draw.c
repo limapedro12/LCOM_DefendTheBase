@@ -4,12 +4,14 @@ extern position bullet_pos[4];
 
 
 void load_xpms(){
+    cursor_pixmap = xpm_load(cursor, XPM_8_8_8, &cursor_img);
     background_pixmap = xpm_load(background_xpm, XPM_8_8_8, &background_img);
     menu_pixmap = xpm_load(menu_xpm, XPM_8_8_8, &menu_img);
     start_game_pixmap = xpm_load(start_game_xpm, XPM_8_8_8, &start_game_img);
     quit_pixmap = xpm_load(quit_xpm, XPM_8_8_8, &quit_img);
     start_game_glow_pixmap = xpm_load(start_game_glow_xpm, XPM_8_8_8, &start_game_glow_img);
     quit_glow_pixmap = xpm_load(quit_glow_xpm, XPM_8_8_8, &quit_glow_img);
+
     tower_orange_up_right_pixmap = xpm_load(tower_orange_up_right, XPM_8_8_8, &tower_orange_up_right_img);
     tower_orange_right_pixmap = xpm_load(tower_orange_right, XPM_8_8_8, &tower_orange_right_img);
     tower_orange_down_right_pixmap = xpm_load(tower_orange_down_right, XPM_8_8_8, &tower_orange_down_right_img);
@@ -18,6 +20,15 @@ void load_xpms(){
     tower_orange_left_pixmap = xpm_load(tower_orange_left, XPM_8_8_8, &tower_orange_left_img);
     tower_orange_up_left_pixmap = xpm_load(tower_orange_up_left, XPM_8_8_8, &tower_orange_up_left_img);
     tower_orange_up_pixmap = xpm_load(tower_orange_up, XPM_8_8_8, &tower_orange_up_img);
+
+    tower_purple_up_right_pixmap = xpm_load(tower_purple_up_right, XPM_8_8_8, &tower_purple_up_right_img);
+    tower_purple_right_pixmap = xpm_load(tower_purple_right, XPM_8_8_8, &tower_purple_right_img);
+    tower_purple_down_right_pixmap = xpm_load(tower_purple_down_right, XPM_8_8_8, &tower_purple_down_right_img);
+    tower_purple_down_pixmap = xpm_load(tower_purple_down, XPM_8_8_8, &tower_purple_down_img);
+    tower_purple_down_left_pixmap = xpm_load(tower_purple_down_left, XPM_8_8_8, &tower_purple_down_left_img);
+    tower_purple_left_pixmap = xpm_load(tower_purple_left, XPM_8_8_8, &tower_purple_left_img);
+    tower_purple_up_left_pixmap = xpm_load(tower_purple_up_left, XPM_8_8_8, &tower_purple_up_left_img);
+    tower_purple_up_pixmap = xpm_load(tower_purple_up, XPM_8_8_8, &tower_purple_up_img);
 }
 
 void draw_map(char map[12][16]) {

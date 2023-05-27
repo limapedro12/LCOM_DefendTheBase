@@ -6,6 +6,7 @@
 #include "bullet.h"
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/tower_purple/tower_purple.h"
+#include "xpm/cursor.xpm"
 #include "xpm/background_without_towers.xpm"
 #include "xpm/menu.xpm"
 #include "xpm/start_game.xpm"
@@ -13,6 +14,9 @@
 #include "xpm/start_game_glow.xpm"
 #include "xpm/quit_glow.xpm"
 #include "xpm/numbers/numbers.h"
+
+xpm_image_t cursor_img;
+uint8_t * cursor_pixmap;
 
 xpm_image_t background_img;
 uint8_t * background_pixmap;
