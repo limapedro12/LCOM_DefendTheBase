@@ -67,4 +67,6 @@ void draw_lives(int lives);
  */
 void draw_tower(int tower_id, int tower_x, int tower_y);
 
+void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies);
+
 #endif

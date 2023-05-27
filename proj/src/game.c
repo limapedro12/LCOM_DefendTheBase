@@ -82,23 +82,23 @@ void game(){
     /* Draw Background */
     // draw_rectangle(0, 0, 800, 600, 0x86592d);
 
-    // char map[12][16] = {
-    //   {' ','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-    //   {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ','-','-','-','-'},
-    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-    // };
+    char map[12][16] = {
+      {' ','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
+      {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
+      {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+      {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+      {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','-','-','-','-'},
+      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
+      {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
+      {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ','-','-','-','-'},
+      {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+      {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
+      {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
+      {'#','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
+    };
 
-    // draw_map(map);
-    draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
+    draw_map(map);
+    // draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
 
     if(is_key_pressed(ESC, true)){
       menu_state = true;
@@ -166,16 +166,8 @@ void game(){
       //Draw towerS
       for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
         if(towers_level_1[i].placed) {
-          if(towers_level_1[i].level == 1) {
-            draw_tower(i, towers_level_1[i].x, towers_level_1[i].y);
-            // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
-          }         
-          else {
-            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
-          }
-
-          int bullet_speed = 5*towers_level_1[i].level;
-          int bullet_range = 100*towers_level_1[i].level;
+          int bullet_speed = 15*towers_level_1[i].level;
+          int bullet_range = 300*towers_level_1[i].level;
           int bullet_time = 2000/towers_level_1[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
@@ -183,6 +175,14 @@ void game(){
               coins += 20;
               enemies[j].hp--;
             }
+          }
+
+          if(towers_level_1[i].level == 1) {
+            draw_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies);
+            // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          }         
+          else {
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
           }
         }
       }

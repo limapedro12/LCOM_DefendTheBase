@@ -5,7 +5,7 @@
 #include <math.h>
 #include "our_framework/framework_essencials.h"
 
-position bullet_pos[4];
+position bullet_pos[6];
 int* bullet_enemy_id_ptr;
 
 /**

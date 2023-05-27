@@ -1,6 +1,7 @@
 #include "draw.h"
 
-extern position bullet_pos[4];
+extern position bullet_pos[6];
+int * bullet_enemy_id_ptr;
 
 
 void load_xpms(){
@@ -69,30 +70,31 @@ void draw_tower(int tower_id, int tower_x, int tower_y){
        tower_x + 50 >= bullet_pos[tower_id].x &&
        tower_y <= bullet_pos[tower_id].y &&
        tower_y + 50 >= bullet_pos[tower_id].y){
-        if(last_position[tower_id] == 8)
+        if(last_position[tower_id] == 0){
             /* draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_up_right_pixmap, tower_orange_up_right_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 1)
+        } else if(last_position[tower_id] == 1){
             /* draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 2)
+       } else if(last_position[tower_id] == 2){
             /* draw_xpm(tower_x, tower_y, tower_orange_down_right, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_down_right_pixmap, tower_orange_down_right_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 3)
+        } else if(last_position[tower_id] == 3){
             /* draw_xpm(tower_x, tower_y, tower_orange_down, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_down_pixmap, tower_orange_down_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 4)
+        }else if(last_position[tower_id] == 4){
             /* draw_xpm(tower_x, tower_y, tower_orange_down_left, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_down_left_pixmap, tower_orange_down_left_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 5)
+        }else if(last_position[tower_id] == 5){
             /* draw_xpm(tower_x, tower_y, tower_orange_left, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_left_pixmap, tower_orange_left_img, 0xFFFFFF);
-        else if(last_position[tower_id] == 6)
+        }else if(last_position[tower_id] == 6){
             /* draw_xpm(tower_x, tower_y, tower_orange_up_left, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_up_left_pixmap, tower_orange_up_left_img, 0xFFFFFF);
-        else
+        }else{
             /* draw_xpm(tower_x, tower_y, tower_orange_up, 0xFFFFFF); */
             draw_xpm_loaded(tower_x, tower_y, tower_orange_up_pixmap, tower_orange_up_img, 0xFFFFFF);
+        }
         return;
     }
     int delta_x;
@@ -103,7 +105,7 @@ void draw_tower(int tower_id, int tower_x, int tower_y){
     if(angle > 22.5 && angle < 67.5){
         /* draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF); */
         draw_xpm_loaded(tower_x, tower_y, tower_orange_up_right_pixmap, tower_orange_up_right_img, 0xFFFFFF);
-        last_position[tower_id] = 8;
+        last_position[tower_id] = 0;
     }
     else if(angle > 67.5 && angle < 112.5){
         /* draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF); */
@@ -141,3 +143,83 @@ void draw_tower(int tower_id, int tower_x, int tower_y){
         last_position[tower_id] = 7;
     }
 }
+
+void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies){
+    int enemy_id = bullet_enemy_id_ptr[tower_id];
+
+    if(enemy_id == -1){
+        if(last_position[tower_id] == 0){
+            /* draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_up_right_pixmap, tower_orange_up_right_img, 0xFFFFFF);
+        } else if(last_position[tower_id] == 1){
+            /* draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
+       } else if(last_position[tower_id] == 2){
+            /* draw_xpm(tower_x, tower_y, tower_orange_down_right, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_down_right_pixmap, tower_orange_down_right_img, 0xFFFFFF);
+        } else if(last_position[tower_id] == 3){
+            /* draw_xpm(tower_x, tower_y, tower_orange_down, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_down_pixmap, tower_orange_down_img, 0xFFFFFF);
+        }else if(last_position[tower_id] == 4){
+            /* draw_xpm(tower_x, tower_y, tower_orange_down_left, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_down_left_pixmap, tower_orange_down_left_img, 0xFFFFFF);
+        }else if(last_position[tower_id] == 5){
+            /* draw_xpm(tower_x, tower_y, tower_orange_left, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_left_pixmap, tower_orange_left_img, 0xFFFFFF);
+        }else if(last_position[tower_id] == 6){
+            /* draw_xpm(tower_x, tower_y, tower_orange_up_left, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_up_left_pixmap, tower_orange_up_left_img, 0xFFFFFF);
+        }else{
+            /* draw_xpm(tower_x, tower_y, tower_orange_up, 0xFFFFFF); */
+            draw_xpm_loaded(tower_x, tower_y, tower_orange_up_pixmap, tower_orange_up_img, 0xFFFFFF);
+        }
+        return;
+    }
+    
+    int delta_x;
+    int delta_y;
+    delta_x = tower_x - enemies[enemy_id].x;
+    delta_y = tower_y - enemies[enemy_id].y;
+    int angle = atan2(delta_y, delta_x) * 180 / 3.1416 - 90;
+    if(angle > 22.5 && angle < 67.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_up_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_right_pixmap, tower_orange_up_right_img, 0xFFFFFF);
+        last_position[tower_id] = 0;
+    }
+    else if(angle >= 67.5 && angle < 112.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
+        last_position[tower_id] = 1;
+    }
+    else if(angle >= 112.5 && angle < 157.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_down_right, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_right_pixmap, tower_orange_down_right_img, 0xFFFFFF);
+        last_position[tower_id] = 2;
+    }
+    else if(angle >= 157.5 || angle < -157.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_down, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_pixmap, tower_orange_down_img, 0xFFFFFF);
+        last_position[tower_id] = 3;
+    }
+    else if(angle >= -157.5 && angle < -112.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_down_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_down_left_pixmap, tower_orange_down_left_img, 0xFFFFFF);
+        last_position[tower_id] = 4;
+    }
+    else if(angle >= -112.5 && angle < -67.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_left_pixmap, tower_orange_left_img, 0xFFFFFF);
+        last_position[tower_id] = 5;
+    }
+    else if(angle >= -67.5 && angle < -22.5){
+        /* draw_xpm(tower_x, tower_y, tower_orange_up_left, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_left_pixmap, tower_orange_up_left_img, 0xFFFFFF);
+        last_position[tower_id] = 6;
+    }
+    else{
+        /* draw_xpm(tower_x, tower_y, tower_orange_up, 0xFFFFFF); */
+        draw_xpm_loaded(tower_x, tower_y, tower_orange_up_pixmap, tower_orange_up_img, 0xFFFFFF);
+        last_position[tower_id] = 7;
+    }
+}
+

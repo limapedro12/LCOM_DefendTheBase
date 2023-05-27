@@ -3,8 +3,8 @@
 
 double bullet_x; 
 double bullet_y;
-int bullet_enemy_id[4] = {-1, -1, -1, -1};
-int last_time_a_bullet_was_shot[4] = {-1, -1, -1, -1};
+int bullet_enemy_id[6] = {-1, -1, -1, -1, -1, -1};
+int last_time_a_bullet_was_shot[6] = {-1, -1, -1, -1, -1, -1};
 bool is_bullet_on = false;
 // int time_between_shots = 700;
 // int bullet_speed = 5;
