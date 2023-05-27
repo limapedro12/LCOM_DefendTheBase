@@ -59,7 +59,7 @@ void draw_map(char map[12][16]);
 void draw_lives(int lives);
 
 /**
- * @brief function that draws towers
+ * @brief function that draws towers in the corresponding rotating angle
  * 
  * @param tower_id tower id
  * @param tower_x tower x position
@@ -67,6 +67,14 @@ void draw_lives(int lives);
  */
 void draw_tower(int tower_id, int tower_x, int tower_y);
 
+
+/**
+ * @brief function that draws towers in the corresponding rotating angle
+ * 
+ * @param tower_id tower id
+ * @param tower_x tower x position
+ * @param tower_y tower y position
+ */
 void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range);
 
 #endif
