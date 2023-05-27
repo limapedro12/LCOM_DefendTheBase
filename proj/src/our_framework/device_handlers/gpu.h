@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 uint NO_BACKGROUND;
+unsigned char* double_buffer;
 
 /**
  * @brief initializes the video card in the given mode
@@ -84,4 +85,11 @@ int draw_xpm(uint16_t x, uint16_t y, xpm_map_t xpm, uint color_to_ignore);
  * @return int equal to 0 if the function was successful, 1 otherwise
  */
 int draw_xpm_loaded(uint16_t x, uint16_t y, uint8_t* xpm, xpm_image_t img, uint color_to_ignore);
+
+/**
+ * @brief Get the size of the VRAM
+ * 
+ * @return int equal to the size of the VRAM
+ */
+int get_vram_size();
 #endif

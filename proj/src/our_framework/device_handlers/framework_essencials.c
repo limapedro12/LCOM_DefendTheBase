@@ -216,3 +216,11 @@ bool is_rb_pressed() {
   }
   return false;
 }
+
+uint get_hours(){
+  return hours;
+}
+
+uint get_minutes(){
+  return minutes;
+}

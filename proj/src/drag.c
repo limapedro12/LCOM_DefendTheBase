@@ -14,6 +14,7 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
     *new = false;
     *new_next = true;
     *coins = *coins - 50;
+    highlight_map(*x, *y, 300, background_pixmap, background_img);
   }
 }
 

@@ -9,6 +9,7 @@
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
+#include "night_mode.h"
 
 int time_0;
 int time_start_round;
@@ -41,6 +42,7 @@ int before(){
 
   turn_on_graphics();
   load_xpms();
+  start_night_mode(background_xpm);
 
   for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++){
     enemies[i] = (enemy){-10, 50, 3};
@@ -48,11 +50,18 @@ int before(){
     current_enemy_direction[i] = 0;
   }
 
+  apply_night_mode_on_xpm(background_pixmap, background_img);
+
   return 0;
 }
 
 int times_clicked = 0;
 void game(){
+  if(get_time_counter() % 7200 == 0)
+    apply_night_mode_on_xpm(background_pixmap, background_img);
+
+  highlight_map(0, 0, 100, background_pixmap, background_img);
+  
   clear_screen();
   verify_mouse_limits(0, 800-10, 0, 600-10);
 
@@ -331,18 +340,21 @@ void game(){
         
         if(enemy_animation == 13) enemy_animation = 0;
         draw_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
+        highlight_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
         enemy_animation++;
 
       }
     }
 
     draw_lives(lives);
+    // if(get_time_counter() % 5 == 0)
+    //   apply_night_mode();
   }
-
   draw_xpm_loaded(get_mouse_position().x, get_mouse_position().y, cursor_pixmap, cursor_img, 0x2AFF00);
 }
 
 int after(){
-
+  double animal = 0.5 * 1000;
+  printf("value = %d\n", animal);//get_value_to_multiply());
   return 0;
 }

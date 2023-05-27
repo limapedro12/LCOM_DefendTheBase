@@ -1,6 +1,5 @@
 #include "gpu.h"
 
-char * double_buffer = NULL;
 int vram_size = 0;
 char * video_mem = NULL;
 vbe_mode_info_t info;
@@ -112,4 +111,8 @@ int draw_xpm_loaded(uint16_t x, uint16_t y, uint8_t * pixmap, xpm_image_t img, u
             }
     
     return 0;
+}
+
+int get_vram_size(){
+    return vram_size;
 }

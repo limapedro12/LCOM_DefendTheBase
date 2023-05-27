@@ -46,12 +46,15 @@ int rtc_update_time(uint *hours, uint *minutes) {
     if (rtc_input(2, minutes) != 0){
       return 1;
     }
-    *hours -= 6; *hours %= 24;
-    // *minutes -= 6; *minutes %= 60;
 
     if (!is_rtc_in_binary_store){
       *hours = bcd_to_binary(*hours);
       *minutes = bcd_to_binary(*minutes);
     }
+
+    // *hours += 24;
+    // *hours -= 6;
+    // *hours %= 24;
+
     return 0;
 }

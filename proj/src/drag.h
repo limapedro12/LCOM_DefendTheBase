@@ -2,6 +2,8 @@
 #define DRAG_H
 #include "lcom/lcf.h"
 #include "our_framework/framework_essencials.h"
+#include "night_mode.h"
+#include "draw.h"
 
 /**
  * @brief verifies if a tower is being dragged by the mouse
