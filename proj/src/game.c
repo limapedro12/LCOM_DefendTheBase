@@ -4,6 +4,7 @@
 #include "xpm/test.xpm"
 #include "xpm/tower_purple/tower_purple.h"
 #include "xpm/tower_orange/tower_orange.h"
+#include "xpm/tower_blue/tower_blue.h"
 // #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 #include "player.h"
 #include "drag.h"
@@ -16,10 +17,11 @@ bool menu_state = true;
 bool game_clock = false;
 
 int lives = 3;
-int coins = 1000;
+int coins = 10000;
 
 tower towers_level_1[6] = {{1, 605, 218, true, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}};
 tower towers_level_2[6] = {{2, 672, 220, true, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}};
+tower towers_level_3[6] = {{3, 740, 218, true, false}, {3, 740, 218, false, false}, {3, 740, 218, false, false}, {3, 740, 218, false, false}, {3, 740, 218, false, false}, {3, 740, 218, false, false}};
 
 
 enemy enemies[50];
@@ -27,9 +29,9 @@ char enemy_directions[50];
 int current_enemy_direction[50];
 int enemy_animation = 0;
 
-position corners[13] = {{10, 60}, {510, 60}, {510, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
-char directions[13] = {'r', 'd', 'l', 'd', 'l', 'u', 'l', 'd', 'r', 'u', 'r', 'd', 'r'};
-char direction = 'd';
+position corners[12] = {{250, 50}, {250, 150}, {100, 150}, {100, 250}, {400, 250}, {400, 50}, {500, 50}, {500, 350}, {400, 350}, {400, 400}, {50, 400}, {50, 500}};
+char directions[12] = {'d', 'l', 'd', 'r', 'u', 'r', 'd', 'l', 'd', 'l', 'd', 'r'};
+char direction = 'r';
 
 
 int before(){
@@ -38,8 +40,8 @@ int before(){
   load_xpms();
 
   for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++){
-    enemies[i] = (enemy){10, 10, 3};
-    enemy_directions[i] = 'd';
+    enemies[i] = (enemy){-10, 50, 3};
+    enemy_directions[i] = 'r';
     current_enemy_direction[i] = 0;
   }
 
@@ -85,26 +87,6 @@ void game(){
   } 
 
   else {
-
-    /* Draw Background */
-    // draw_rectangle(0, 0, 800, 600, 0x86592d);
-
-    // char map[12][16] = {
-    //   {' ','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-    //   {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ',' ',' ',' ','#','#',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ','#','#',' ','#','#','#','#','-','-','-','-'},
-    //   {'#',' ','#','#',' ',' ',' ',' ','#','#',' ',' ','-','-','-','-'},
-    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ','#','#','#','#','#','#','#','#',' ','#','-','-','-','-'},
-    //   {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#','-','-','-','-'},
-    //   {'#','#','#','#','#','#','#','#','#','#','#','#','-','-','-','-'},
-    // };
-
-    // draw_map(map);
     draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
 
     if(is_key_pressed(ESC, true)){
@@ -124,6 +106,7 @@ void game(){
     }
 
     int enemies_alive_2 = 0;
+
     if(game_clock) {
       int enemies_alive = 6;
 
@@ -152,7 +135,7 @@ void game(){
             current_enemy_direction[i]++;
           }
 
-          if(enemies[i].x == 11*50+20 && enemies[i].y == 7*50+10) {
+          if(enemies[i].x == 11*50-20 && enemies[i].y == 500) {
             lives--;
             enemies[i].hp = 0;
           }
@@ -167,10 +150,10 @@ void game(){
 
       if(enemies_alive_2 == 0) {
         for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++) {
-          enemies[i].x = 10;
-          enemies[i].y = 10;
+          enemies[i].x = -10;
+          enemies[i].y = 50;
           enemies[i].hp = 3;
-          enemy_directions[i] = 'd';
+          enemy_directions[i] = 'r';
           current_enemy_direction[i] = 0;
         }
 
@@ -193,25 +176,73 @@ void game(){
 
           if(towers_level_1[i].level == 1) {
             draw_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
-            // draw_xpm(towers[i].x, towers[i].y, tower_orange_right, 0xFFFFFF);
+          }         
+          else if(towers_level_1[i].level == 2) {   
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
+          }
+          else {   
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+          }
+        }
+      }
+
+      for(unsigned int i = 0; i < sizeof(towers_level_2) / sizeof(towers_level_2[0]); i++) {
+        if(towers_level_2[i].placed) {
+          int bullet_speed = 15*towers_level_2[i].level;
+          int bullet_range = 300*towers_level_2[i].level;
+          int bullet_time = 2000/towers_level_2[i].level;
+
+          for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+              coins += 20;
+              enemies[j].hp--;
+            }
+          }
+
+          if(towers_level_2[i].level == 2) {
+            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
           }         
           else {
-            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
+            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
           }
+        }
+      }
+
+      for(unsigned int i = 0; i < sizeof(towers_level_3) / sizeof(towers_level_3[0]); i++) {
+        if(towers_level_3[i].placed) {
+          int bullet_speed = 15*towers_level_3[i].level;
+          int bullet_range = 300*towers_level_3[i].level;
+          int bullet_time = 2000/towers_level_3[i].level;
+
+          for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j].x, enemies[j].y, i, j, bullet_speed, bullet_range, bullet_time)) {
+              coins += 20;
+              enemies[j].hp--;
+            }
+          }
+
+          draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
         }
       }
     }
 
+
+
+    //Game paused
+
     else {
 
+      //Towers Level 1
       for(unsigned int i = 0; i < sizeof(towers_level_1) / sizeof(towers_level_1[0]); i++) {
         if(towers_level_1[i].new) {
           if(towers_level_1[i].level == 1) {
             draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
           }
-          else if(towers_level_1[i].level == 2) {
-            // draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);    
+          else if(towers_level_1[i].level == 2) {   
             draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
+          }
+          else {   
+            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
           }
           
           if(coins >= 50) {
@@ -222,10 +253,14 @@ void game(){
           if(towers_level_1[i].placed) {
             if(towers_level_1[i].level == 1) {
               draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_orange_right_pixmap, tower_orange_right_img, 0xFFFFFF);
-            }  
-            else {
-              // draw_xpm(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right, 0xFFFFFF);
-            }      
+            }
+            else if(towers_level_1[i].level == 2) {   
+              draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
+            }
+            else {   
+              draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+            }
+
             if(coins >= 100) {
               verifyUpgrade(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].level, &coins);
             }
@@ -233,12 +268,16 @@ void game(){
         }
       }
 
+      //Towers Level 2
       for(unsigned int i = 0; i < sizeof(towers_level_2) / sizeof(towers_level_2[0]); i++) {
         if(towers_level_2[i].new) {
-          if(towers_level_2[i].level == 2) {
-            // draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);   
+          if(towers_level_2[i].level == 2) { 
             draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
           }   
+          else {   
+            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+          }
+
           if(coins >= 100) {
             verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins);
           }
@@ -246,11 +285,34 @@ void game(){
         else {
           if(towers_level_2[i].placed) {
             if(towers_level_2[i].level == 2) {
-              // draw_xpm(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right, 0xFFFFFF);
               draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
-            }    
+            }   
+            else {   
+              draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+            }
+
             if(coins >= 200) {
-              verifyUpgrade(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_1[i].level, &coins);
+              verifyUpgrade(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].level, &coins);
+            }
+          }
+        }
+      }
+
+      //Towers Level 3
+      for(unsigned int i = 0; i < sizeof(towers_level_3) / sizeof(towers_level_3[0]); i++) {
+        if(towers_level_3[i].new) { 
+          draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF); 
+          
+          if(coins >= 100) {
+            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &coins);
+          }
+        }
+        else {
+          if(towers_level_3[i].placed) {
+            draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
+            
+            if(coins >= 200) {
+              verifyUpgrade(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].level, &coins);
             }
           }
         }

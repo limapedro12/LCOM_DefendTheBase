@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_[] = {
+static xpm_row_t tower_blue_down[] = {
 /* columns rows colors chars-per-pixel */
 "50 50 21 1 ",
 "  c #000000",

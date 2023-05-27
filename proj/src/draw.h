@@ -6,6 +6,7 @@
 #include "bullet.h"
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/tower_purple/tower_purple.h"
+#include "xpm/tower_blue/tower_blue.h"
 #include "xpm/cursor.xpm"
 #include "xpm/background_without_towers.xpm"
 #include "xpm/menu.xpm"
