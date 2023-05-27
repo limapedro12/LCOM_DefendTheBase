@@ -4,7 +4,7 @@
 #include "xpm/test.xpm"
 #include "xpm/tower_purple/tower_purple.h"
 #include "xpm/tower_orange/tower_orange.h"
-#include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
+// #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -22,9 +22,9 @@ tower towers_level_1[6] = {{1, 605, 218, true, false}, {1, 605, 218, false, fals
 tower towers_level_2[6] = {{2, 672, 220, true, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}};
 
 
-enemy enemies[4] = {{10, 10, 3}, {10, 10, 3}, {10, 10, 3}, {10, 10, 3}};
-char enemy_directions[4] = {'d', 'd', 'd', 'd'};
-int current_enemy_direction[4] = {0, 0, 0, 0};
+enemy enemies[50];
+char enemy_directions[50];
+int current_enemy_direction[50];
 int enemy_animation = 0;
 
 position corners[13] = {{10, 60}, {510, 60}, {510, 210}, {360, 210}, {360, 360}, {210, 360}, {210, 210}, {60, 210}, {60, 510}, {510, 510}, {510, 360}, {660, 360}, {660, 510}};
@@ -36,6 +36,12 @@ int before(){
 
   turn_on_graphics();
   load_xpms();
+
+  for(unsigned int i = 0; i < sizeof(enemies) / sizeof(enemies[0]); i++){
+    enemies[i] = (enemy){10, 10, 3};
+    enemy_directions[i] = 'd';
+    current_enemy_direction[i] = 0;
+  }
 
   return 0;
 }
@@ -256,7 +262,7 @@ void game(){
       if(enemies[i].hp > 0 && enemies[i].x < 570 && enemies[i].y < 600) {
         
         if(enemy_animation == 13) enemy_animation = 0;
-        draw_xpm(enemies[i].x, enemies[i].y, enemy_fire_skull_walking[enemy_animation], 0xFFFFFF);
+        draw_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
         enemy_animation++;
 
       }
@@ -269,6 +275,6 @@ void game(){
 }
 
 int after(){
-  
+
   return 0;
 }

@@ -5,6 +5,8 @@ int * bullet_enemy_id_ptr;
 
 
 void load_xpms(){
+    // enemy_pixmaps_test = xpm_load(tower_orange_down, XPM_8_8_8, &enemy_imgs_test);
+
     cursor_pixmap = xpm_load(cursor, XPM_8_8_8, &cursor_img);
     background_pixmap = xpm_load(background_xpm, XPM_8_8_8, &background_img);
     menu_pixmap = xpm_load(menu_xpm, XPM_8_8_8, &menu_img);
@@ -30,6 +32,13 @@ void load_xpms(){
     tower_purple_left_pixmap = xpm_load(tower_purple_left, XPM_8_8_8, &tower_purple_left_img);
     tower_purple_up_left_pixmap = xpm_load(tower_purple_up_left, XPM_8_8_8, &tower_purple_up_left_img);
     tower_purple_up_pixmap = xpm_load(tower_purple_up, XPM_8_8_8, &tower_purple_up_img);
+
+    // enemy_pixmaps[0] = xpm_load(enemy_fire_skull_walking[0], XPM_8_8_8, &(enemy_imgs[0]));
+
+    for(int i = 0; i < 14; i++){
+        enemy_pixmaps[i] = xpm_load(enemy_fire_skull_walking[i], XPM_8_8_8, &enemy_imgs[i]);
+        // enemy_pixmaps[i] = xpm_load(tower_orange_up_right, XPM_8_8_8, &(enemy_imgs[i]));
+    }
 }
 
 void draw_map(char map[12][16]) {

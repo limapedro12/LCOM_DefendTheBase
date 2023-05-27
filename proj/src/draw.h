@@ -14,6 +14,7 @@
 #include "xpm/start_game_glow.xpm"
 #include "xpm/quit_glow.xpm"
 #include "xpm/numbers/numbers.h"
+#include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 
 xpm_image_t cursor_img;
 uint8_t * cursor_pixmap;

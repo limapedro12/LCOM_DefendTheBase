@@ -25,4 +25,9 @@ static xpm_map_t enemy_fire_skull_walking[] = {
     enemy_fire_skull_13, enemy_fire_skull_14
 };
 
+uint8_t* enemy_pixmaps[14];
+xpm_image_t enemy_imgs[14];
+uint8_t* enemy_pixmaps_test;
+xpm_image_t enemy_imgs_test;
+
 #endif
