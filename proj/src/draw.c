@@ -119,6 +119,43 @@ void draw_money(int coins) {
     }
 }
 
+void draw_number(int number, uint16_t x, uint16_t y) {
+        switch (number) {
+        case 0:
+            draw_xpm(x, y, number_0, 0x36FF00);
+            break;
+        case 1:
+            draw_xpm(x, y, number_1, 0x36FF00);
+            break;
+        case 2:
+            draw_xpm(x, y, number_2, 0x36FF00); 
+            break;
+        case 3:
+            draw_xpm(x, y, number_3, 0x36FF00); 
+            break;
+        case 4:
+            draw_xpm(x, y, number_4, 0x36FF00); 
+            break;           
+        case 5:
+            draw_xpm(x, y, number_5, 0x36FF00); 
+            break;  
+        case 6:
+            draw_xpm(x, y, number_6, 0x36FF00); 
+            break;  
+        case 7:
+            draw_xpm(x, y, number_7, 0x36FF00); 
+            break; 
+        case 8:
+            draw_xpm(x, y, number_8, 0x36FF00); 
+            break; 
+        case 9:
+            draw_xpm(x, y, number_9, 0x36FF00);
+            break; 
+        default:
+            break;
+    }
+}
+
 void draw_orange_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range){
     int enemy_id = -1;
 
