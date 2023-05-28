@@ -47,18 +47,18 @@ int last_position[6];
 void load_xpms();
 
 /**
- * @brief function that draws the map
- * 
- * @param map nested array that contains the map
- */
-void draw_map(char map[12][16]);
-
-/**
  * @brief function that draws the lives
  * 
  * @param lives number of lives
  */
 void draw_lives(int lives);
+
+/**
+ * @brief function that draws the money
+ * 
+ * @param coins number of coins
+ */
+void draw_money(int coins);
 
 /**
  * @brief function that draws towers in the corresponding rotating angle
