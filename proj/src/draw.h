@@ -63,6 +63,15 @@ void draw_lives(int lives);
 void draw_money(int coins);
 
 /**
+ * @brief function that draws a specific number
+ * 
+ * @param number number to draw
+ * @param x number x position
+ * @param y number y position
+ */
+void draw_number(int number, uint16_t x, uint16_t y);
+
+/**
  * @brief function that draws orange towers in the corresponding rotating angle
  * 
  * @param tower_id tower id
