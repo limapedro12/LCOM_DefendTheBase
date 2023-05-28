@@ -1,0 +1,6 @@
+<map id="highlight_map" name="highlight_map">
+<area shape="rect" id="node1" title="highlights the circle with center in (x,y) and radius &#39;range&#39; in the pixmap" alt="" coords="388,5,490,32"/>
+<area shape="rect" id="node2" href="$drag_8c.html#ac467f00247fce1214848b82b7a1b3861" title="verifies if a tower is being dragged by the mouse" alt="" coords="263,5,340,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,5,215,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

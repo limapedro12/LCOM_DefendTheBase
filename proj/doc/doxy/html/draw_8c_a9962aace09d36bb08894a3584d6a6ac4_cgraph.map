@@ -1,0 +1,5 @@
+<map id="draw_purple_tower_directing_to_enemy" name="draw_purple_tower_directing_to_enemy">
+<area shape="rect" id="node1" title="function that draws purple towers in the corresponding rotating angle" alt="" coords="5,5,190,48"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a4c6daf0364a6e696dfb89448e53ee52e" title="draws a xpm after it being loaded by the function xpm_load of lcf" alt="" coords="238,13,363,40"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="411,13,493,40"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="draw_rect" name="draw_rect">
+<area shape="rect" id="node1" title="function that draws a rectangle in the given coordinates with the given color" alt="" coords="5,5,83,32"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="131,5,213,32"/>
+</map>

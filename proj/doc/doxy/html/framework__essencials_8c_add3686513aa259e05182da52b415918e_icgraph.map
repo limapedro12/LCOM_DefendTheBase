@@ -1,0 +1,7 @@
+<map id="get_mouse_position" name="get_mouse_position">
+<area shape="rect" id="node1" title="Get the mouse position." alt="" coords="409,21,547,48"/>
+<area shape="rect" id="node2" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,21,215,48"/>
+<area shape="rect" id="node4" href="$drag_8c.html#ac467f00247fce1214848b82b7a1b3861" title="verifies if a tower is being dragged by the mouse" alt="" coords="274,21,351,48"/>
+<area shape="rect" id="node5" href="$drag_8c.html#a0e80e48a7d92e072fcfa53ad7548677b" title="verifies if a tower is being upgraded" alt="" coords="263,72,361,99"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,21,114,48"/>
+</map>

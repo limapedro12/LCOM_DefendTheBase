@@ -1,0 +1,6 @@
+<map id="verifyUpgrade" name="verifyUpgrade">
+<area shape="rect" id="node1" title="verifies if a tower is being upgraded" alt="" coords="5,31,104,57"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#add3686513aa259e05182da52b415918e" title="Get the mouse position." alt="" coords="152,5,289,32"/>
+<area shape="rect" id="node3" href="$framework__essencials_8c.html#a57d480f8ab6792cd2cf7921cbd7aeba9" title="Checks if a certain key is pressed or released." alt="" coords="164,56,277,83"/>
+<area shape="rect" id="node4" href="$kbd_8c.html#a66151b2509d8c6cb0386982ee1448043" title="converts a char to a scancode" alt="" coords="337,56,464,83"/>
+</map>

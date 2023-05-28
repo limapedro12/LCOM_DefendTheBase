@@ -1,0 +1,6 @@
+<map id="get_time_counter" name="get_time_counter">
+<area shape="rect" id="node1" title="Get the current time counter." alt="" coords="392,31,514,57"/>
+<area shape="rect" id="node2" href="$bullet_8c.html#ae7588c77f78aa29a33412d4403677a38" title="function that draws a bullet that is shot from a tower to hit an enemy" alt="" coords="263,5,344,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,31,215,57"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,31,114,57"/>
+</map>

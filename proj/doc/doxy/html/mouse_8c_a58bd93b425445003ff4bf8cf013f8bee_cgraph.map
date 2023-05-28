@@ -1,0 +1,5 @@
+<map id="mouse_enable_data_reporting_ours" name="mouse_enable_data_reporting_ours">
+<area shape="rect" id="node1" title="function that enables mouse data reporting" alt="" coords="5,5,232,32"/>
+<area shape="rect" id="node2" href="$kbd_8c.html#a9b90af107aa113272911997e6050450a" title="Reads the scancode from the output buffer." alt="" coords="280,5,389,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="does the same as sys_inb but with a uint8_t pointer" alt="" coords="437,5,527,32"/>
+</map>

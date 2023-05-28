@@ -1,0 +1,22 @@
+<map id="run" name="run">
+<area shape="rect" id="node1" title="Runs the game." alt="" coords="5,443,45,469"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#aca3aebef612b66b5ca0499b3fb1f907a" title="places the double buffer in the VRAM" alt="" coords="135,5,277,32"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#aede9495168a02d43d5b8a79ea4a2c523" title="function that turns off video graphics and returns to text mode" alt="" coords="171,56,241,83"/>
+<area shape="rect" id="node4" href="$rtc_8c.html#a7be1b741346ac568dee5eef2821160d5" title="confirms if the rtc is in binary mode" alt="" coords="367,259,479,285"/>
+<area shape="rect" id="node5" href="$rtc_8c.html#a2fe34a8243f2c66bb4bd48d7460cd385" title="reads the rtc register corresponding to the command and stores it in place_to_store" alt="" coords="537,208,608,235"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#af094cb0c2bdfce604764ad8fe8764d6f" title="checks if rtc is updating" alt="" coords="369,107,478,133"/>
+<area shape="rect" id="node7" href="$timer_8c.html#afd10170c45c8393dcdd9cbf3fed51572" title="function that checks if timer 0 is interrupting" alt="" coords="138,259,274,285"/>
+<area shape="rect" id="node8" href="$kbd_8c.html#a508ab38a64ff669237359fdc6f100df5" title="Subscribes and enables keyboard interrupts." alt="" coords="137,309,275,352"/>
+<area shape="rect" id="node9" href="$kbd_8c.html#a77d820ca8b86036e1605f2eb84a220c7" title="Unsubscribes keyboard interrupts." alt="" coords="130,376,282,419"/>
+<area shape="rect" id="node10" href="$mouse_8c.html#a17bcf4b2536cf13c7f3937c7d0aa7bc1" title="function that disables mouse data reporting" alt="" coords="136,544,276,587"/>
+<area shape="rect" id="node11" href="$kbd_8c.html#a9b90af107aa113272911997e6050450a" title="Reads the scancode from the output buffer." alt="" coords="369,552,478,579"/>
+<area shape="rect" id="node13" href="$mouse_8c.html#a58bd93b425445003ff4bf8cf013f8bee" title="function that enables mouse data reporting" alt="" coords="93,493,319,520"/>
+<area shape="rect" id="node14" href="$mouse_8c.html#af5115b7f5c25c8a1c3f96d007abc1f83" title="function that subscribes mouse interrupts" alt="" coords="117,611,295,637"/>
+<area shape="rect" id="node15" href="$mouse_8c.html#a58eef3a2ec0acc4a5b6d3a61fe121d9f" title="function that unsubscribes mouse interrupts" alt="" coords="110,661,302,688"/>
+<area shape="rect" id="node16" href="$mouse_8c.html#a361dff45cb65e19a4fcb75df134edab1" title="function that transforms the 3 bytes given by the interrupts of the mouse into a packet" alt="" coords="147,712,265,739"/>
+<area shape="rect" id="node17" href="$rtc_8c.html#aaae0019c0d84f0a725c9a2e488fe1e73" title="updates the time of the RTC" alt="" coords="149,157,263,184"/>
+<area shape="rect" id="node19" href="$timer_8c.html#acde435b094d4859a62daaa2e9362d36a" title="function that subscribes the timer interrupts" alt="" coords="122,813,290,840"/>
+<area shape="rect" id="node20" href="$timer_8c.html#a9bd367b315423cb35a0a5a59438d4a15" title="function that unsubscribes the timer interrupts" alt="" coords="115,864,297,891"/>
+<area shape="rect" id="node12" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="does the same as sys_inb but with a uint8_t pointer" alt="" coords="527,552,618,579"/>
+<area shape="rect" id="node18" href="$rtc_8c.html#a52b2c9cf1a69abf9c18ee36f06e54ca5" title="converts a bcd number to binary" alt="" coords="372,208,474,235"/>
+</map>

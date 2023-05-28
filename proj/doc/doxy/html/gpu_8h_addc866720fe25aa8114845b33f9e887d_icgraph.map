@@ -1,0 +1,17 @@
+<map id="draw_pixel" name="draw_pixel">
+<area shape="rect" id="node1" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="673,183,755,209"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a37a171cbef14394c7d69630cf7883dda" title="function that draws a rectangle in the given coordinates with the given color" alt="" coords="523,56,601,83"/>
+<area shape="rect" id="node7" href="$gpu_8c.html#a5ddb5ba79379fcae50458574bf64321f" title="function that draws a xpm in the given coordinates" alt="" coords="522,183,602,209"/>
+<area shape="rect" id="node12" href="$gpu_8c.html#a4c6daf0364a6e696dfb89448e53ee52e" title="draws a xpm after it being loaded by the function xpm_load of lcf" alt="" coords="499,368,625,395"/>
+<area shape="rect" id="node3" href="$framework__essencials_8c.html#a4953d1edcbbfc7e420c423ded1d5621a" title="paints the screen black" alt="" coords="310,5,405,32"/>
+<area shape="rect" id="node6" href="$framework__essencials_8c.html#ac1b4fa744297a370728a6c35b768ad78" title="Draws a rectangle." alt="" coords="303,56,411,83"/>
+<area shape="rect" id="node4" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,259,215,285"/>
+<area shape="rect" id="node5" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,259,114,285"/>
+<area shape="rect" id="node8" href="$draw_8c.html#a4986798c9aa8785345aee927e51b3b89" title="function that draws the lives" alt="" coords="317,107,397,133"/>
+<area shape="rect" id="node9" href="$draw_8c.html#aed628ccfafeb9467c644e966fa7cb363" title="function that draws the money" alt="" coords="310,157,404,184"/>
+<area shape="rect" id="node10" href="$draw_8c.html#a6a963d9168b707dab11dbf57dd85afb7" title="function that draws a specific number" alt="" coords="308,208,406,235"/>
+<area shape="rect" id="node11" href="$bullet_8c.html#ae7588c77f78aa29a33412d4403677a38" title="function that draws a bullet that is shot from a tower to hit an enemy" alt="" coords="317,259,398,285"/>
+<area shape="rect" id="node13" href="$draw_8c.html#a1e900eac53062496d4c0e407a952b1d5" title="function that draws blue towers in the corresponding rotating angle" alt="" coords="271,360,444,403"/>
+<area shape="rect" id="node14" href="$draw_8c.html#ac017bc3a37fdb40ba635f1adb983b192" title="function that draws orange towers in the corresponding rotating angle" alt="" coords="263,427,451,469"/>
+<area shape="rect" id="node15" href="$draw_8c.html#a9962aace09d36bb08894a3584d6a6ac4" title="function that draws purple towers in the corresponding rotating angle" alt="" coords="265,493,449,536"/>
+</map>

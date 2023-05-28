@@ -1,0 +1,4 @@
+<map id="turn_on_graphics" name="turn_on_graphics">
+<area shape="rect" id="node1" title="Turns on graphics mode." alt="" coords="5,5,126,32"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a90cec62b2ba9cc9ae28fe37d7632cf15" title="initializes the video card in the given mode" alt="" coords="174,5,231,32"/>
+</map>

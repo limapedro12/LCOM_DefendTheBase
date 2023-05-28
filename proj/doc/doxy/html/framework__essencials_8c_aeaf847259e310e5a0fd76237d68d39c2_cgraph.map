@@ -1,0 +1,5 @@
+<map id="set_mouse_position" name="set_mouse_position">
+<area shape="rect" id="node1" title="Set the mouse position." alt="" coords="5,31,143,57"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#afb5a465a77dde0ac84ac4dbf9205614e" title="Get the height of the screen corresponding to the given mode." alt="" coords="191,5,272,32"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#af6f53c34af2ce4e0144c974e482d9eab" title="Get the width of the screen corresponding to the given mode." alt="" coords="193,56,270,83"/>
+</map>

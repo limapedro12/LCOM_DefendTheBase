@@ -1,0 +1,8 @@
+<map id="util_sys_inb" name="util_sys_inb">
+<area shape="rect" id="node1" title="does the same as sys_inb but with a uint8_t pointer" alt="" coords="681,72,771,99"/>
+<area shape="rect" id="node2" href="$kbd_8c.html#a9b90af107aa113272911997e6050450a" title="Reads the scancode from the output buffer." alt="" coords="523,72,633,99"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a17bcf4b2536cf13c7f3937c7d0aa7bc1" title="function that disables mouse data reporting" alt="" coords="292,5,432,48"/>
+<area shape="rect" id="node4" href="$framework__essencials_8c.html#acf9f0252a6cecaea6442c186c14306c6" title="Runs the game." alt="" coords="162,72,201,99"/>
+<area shape="rect" id="node6" href="$mouse_8c.html#a58bd93b425445003ff4bf8cf013f8bee" title="function that enables mouse data reporting" alt="" coords="249,123,475,149"/>
+<area shape="rect" id="node5" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,72,114,99"/>
+</map>

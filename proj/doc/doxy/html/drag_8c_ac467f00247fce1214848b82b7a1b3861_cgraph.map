@@ -1,0 +1,8 @@
+<map id="verifyDrag" name="verifyDrag">
+<area shape="rect" id="node1" title="verifies if a tower is being dragged by the mouse" alt="" coords="5,81,83,108"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#add3686513aa259e05182da52b415918e" title="Get the mouse position." alt="" coords="131,5,268,32"/>
+<area shape="rect" id="node3" href="$night__mode_8c.html#a75ba6fe52200b0b119fccc6292465bed" title="highlights the circle with center in (x,y) and radius &#39;range&#39; in the pixmap" alt="" coords="149,56,250,83"/>
+<area shape="rect" id="node4" href="$framework__essencials_8c.html#a57d480f8ab6792cd2cf7921cbd7aeba9" title="Checks if a certain key is pressed or released." alt="" coords="143,107,256,133"/>
+<area shape="rect" id="node6" href="$framework__essencials_8c.html#afff79d3da3fda0fe1c0e192f4bfb8dbc" title="Check if the left button of the mouse is pressed." alt="" coords="149,157,250,184"/>
+<area shape="rect" id="node5" href="$kbd_8c.html#a66151b2509d8c6cb0386982ee1448043" title="converts a char to a scancode" alt="" coords="316,107,443,133"/>
+</map>

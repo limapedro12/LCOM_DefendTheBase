@@ -1,0 +1,15 @@
+<map id="src/night_mode.h" name="src/night_mode.h">
+<area shape="rect" id="node1" title=" " alt="" coords="526,5,647,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="424,395,501,421"/>
+<area shape="rect" id="node3" href="$framework__essencials_8h.html" title=" " alt="" coords="368,80,536,123"/>
+<area shape="rect" id="node4" title=" " alt="" coords="118,171,192,197"/>
+<area shape="rect" id="node5" href="$timer_8h.html" title=" " alt="" coords="453,245,611,272"/>
+<area shape="rect" id="node7" href="$kbd_8h.html" title=" " alt="" coords="5,245,155,272"/>
+<area shape="rect" id="node11" href="$mouse_8h.html" title=" " alt="" coords="216,171,384,197"/>
+<area shape="rect" id="node12" href="$gpu_8h.html" title=" " alt="" coords="280,245,429,272"/>
+<area shape="rect" id="node13" href="$rtc_8h.html" title=" " alt="" coords="516,171,660,197"/>
+<area shape="rect" id="node6" href="$i8254_8h.html" title=" " alt="" coords="500,320,564,347"/>
+<area shape="rect" id="node8" href="$i8042_8h.html" title=" " alt="" coords="142,320,205,347"/>
+<area shape="rect" id="node9" href="$utils_8h.html" title=" " alt="" coords="11,320,67,347"/>
+<area shape="rect" id="node10" title=" " alt="" coords="7,395,71,421"/>
+</map>

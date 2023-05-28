@@ -1,0 +1,4 @@
+<map id="is_key_pressed" name="is_key_pressed">
+<area shape="rect" id="node1" title="Checks if a certain key is pressed or released." alt="" coords="5,5,118,32"/>
+<area shape="rect" id="node2" href="$kbd_8c.html#a66151b2509d8c6cb0386982ee1448043" title="converts a char to a scancode" alt="" coords="166,5,293,32"/>
+</map>

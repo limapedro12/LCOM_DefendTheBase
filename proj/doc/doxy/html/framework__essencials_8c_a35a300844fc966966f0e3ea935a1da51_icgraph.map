@@ -1,0 +1,7 @@
+<map id="get_hours" name="get_hours">
+<area shape="rect" id="node1" title="Get the hours." alt="" coords="684,5,762,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,5,215,32"/>
+<area shape="rect" id="node4" href="$night__mode_8c.html#a1f5e1d77ea94f934af2cc1527ffd489d" title="gets the number to multiply the pixels by from the RTC" alt="" coords="490,31,636,57"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+<area shape="rect" id="node5" href="$night__mode_8c.html#a0c18982347ebf88a422668009f94ac15" title="applies the &#39;night mode&#39; to the pixmap" alt="" coords="263,31,442,57"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="turn_on_graphics" name="turn_on_graphics">
+<area shape="rect" id="node1" title="Turns on graphics mode." alt="" coords="266,5,386,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#af5f9d6865a85276ce0aeb7bc51d216a6" title="function that sets up the game" alt="" coords="162,5,218,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

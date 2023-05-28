@@ -1,0 +1,7 @@
+<map id="get_width" name="get_width">
+<area shape="rect" id="node1" title="Get the width of the screen corresponding to the given mode." alt="" coords="448,31,525,57"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#a4953d1edcbbfc7e420c423ded1d5621a" title="paints the screen black" alt="" coords="284,5,379,32"/>
+<area shape="rect" id="node5" href="$framework__essencials_8c.html#aeaf847259e310e5a0fd76237d68d39c2" title="Set the mouse position." alt="" coords="263,56,400,83"/>
+<area shape="rect" id="node3" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,5,215,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

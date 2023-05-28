@@ -1,0 +1,7 @@
+<map id="before" name="before">
+<area shape="rect" id="node1" title="function that sets up the game" alt="" coords="5,56,62,83"/>
+<area shape="rect" id="node2" href="$draw_8c.html#ac82e7d55ed069f5d0c396c20b97337e9" title="loads xpms" alt="" coords="128,5,213,32"/>
+<area shape="rect" id="node3" href="$night__mode_8h.html#a811ab292ec546dbbd64cb8eb0a67a43f" title="starts the &#39;night mode&#39;" alt="" coords="110,56,231,83"/>
+<area shape="rect" id="node4" href="$framework__essencials_8c.html#a096ed8ee7629823f736a75770fca746b" title="Turns on graphics mode." alt="" coords="110,107,231,133"/>
+<area shape="rect" id="node5" href="$gpu_8c.html#a90cec62b2ba9cc9ae28fe37d7632cf15" title="initializes the video card in the given mode" alt="" coords="279,107,336,133"/>
+</map>

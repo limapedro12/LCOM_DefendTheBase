@@ -1,0 +1,5 @@
+<map id="parse_to_packet" name="parse_to_packet">
+<area shape="rect" id="node1" title="function that transforms the 3 bytes given by the interrupts of the mouse into a packet" alt="" coords="249,5,366,32"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#acf9f0252a6cecaea6442c186c14306c6" title="Runs the game." alt="" coords="162,5,201,32"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

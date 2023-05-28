@@ -1,0 +1,6 @@
+<map id="rtc_update_time" name="rtc_update_time">
+<area shape="rect" id="node1" title="updates the time of the RTC" alt="" coords="5,56,120,83"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a52b2c9cf1a69abf9c18ee36f06e54ca5" title="converts a bcd number to binary" alt="" coords="171,5,274,32"/>
+<area shape="rect" id="node3" href="$rtc_8c.html#af094cb0c2bdfce604764ad8fe8764d6f" title="checks if rtc is updating" alt="" coords="168,56,277,83"/>
+<area shape="rect" id="node4" href="$rtc_8c.html#a2fe34a8243f2c66bb4bd48d7460cd385" title="reads the rtc register corresponding to the command and stores it in place_to_store" alt="" coords="325,81,396,108"/>
+</map>

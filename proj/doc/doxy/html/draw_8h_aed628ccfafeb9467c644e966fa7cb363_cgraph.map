@@ -1,0 +1,5 @@
+<map id="draw_money" name="draw_money">
+<area shape="rect" id="node1" title="function that draws the money" alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a5ddb5ba79379fcae50458574bf64321f" title="function that draws a xpm in the given coordinates" alt="" coords="148,5,228,32"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="276,5,358,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="draw_number" name="draw_number">
+<area shape="rect" id="node1" title="function that draws a specific number" alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a5ddb5ba79379fcae50458574bf64321f" title="function that draws a xpm in the given coordinates" alt="" coords="152,5,232,32"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="280,5,362,32"/>
+</map>

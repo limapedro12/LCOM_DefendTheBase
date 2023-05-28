@@ -1,0 +1,4 @@
+<map id="draw_xpm_loaded" name="draw_xpm_loaded">
+<area shape="rect" id="node1" title="draws a xpm after it being loaded by the function xpm_load of lcf" alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="179,5,261,32"/>
+</map>

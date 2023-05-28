@@ -1,0 +1,5 @@
+<map id="draw_orange_tower_directing_to_enemy" name="draw_orange_tower_directing_to_enemy">
+<area shape="rect" id="node1" title="function that draws orange towers in the corresponding rotating angle" alt="" coords="263,5,451,48"/>
+<area shape="rect" id="node2" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,13,215,40"/>
+<area shape="rect" id="node3" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,13,114,40"/>
+</map>

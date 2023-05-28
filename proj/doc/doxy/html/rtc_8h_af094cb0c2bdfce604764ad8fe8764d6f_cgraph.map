@@ -1,0 +1,4 @@
+<map id="is_rtc_updating" name="is_rtc_updating">
+<area shape="rect" id="node1" title="checks if rtc is updating" alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a2fe34a8243f2c66bb4bd48d7460cd385" title="reads the rtc register corresponding to the command and stores it in place_to_store" alt="" coords="163,5,234,32"/>
+</map>

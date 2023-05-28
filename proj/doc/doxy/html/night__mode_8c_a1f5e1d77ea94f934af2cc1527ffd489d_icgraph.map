@@ -1,0 +1,6 @@
+<map id="get_value_to_multiply" name="get_value_to_multiply">
+<area shape="rect" id="node1" title="gets the number to multiply the pixels by from the RTC" alt="" coords="490,5,636,32"/>
+<area shape="rect" id="node2" href="$night__mode_8c.html#a0c18982347ebf88a422668009f94ac15" title="applies the &#39;night mode&#39; to the pixmap" alt="" coords="263,5,442,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a9f1c87c7296779c4c895ca2b13ad2e3e" title="game loop" alt="" coords="162,5,215,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

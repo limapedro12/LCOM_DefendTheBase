@@ -1,0 +1,5 @@
+<map id="get_value_to_multiply" name="get_value_to_multiply">
+<area shape="rect" id="node1" title="gets the number to multiply the pixels by from the RTC" alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#a35a300844fc966966f0e3ea935a1da51" title="Get the hours." alt="" coords="206,5,284,32"/>
+<area shape="rect" id="node3" href="$framework__essencials_8c.html#a2100d5ee5587f7cbfac1c033439a63fd" title="Get the minutes." alt="" coords="199,56,291,83"/>
+</map>

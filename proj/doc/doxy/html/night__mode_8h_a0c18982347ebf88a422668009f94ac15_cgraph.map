@@ -1,0 +1,6 @@
+<map id="apply_night_mode_on_xpm" name="apply_night_mode_on_xpm">
+<area shape="rect" id="node1" title="applies the &#39;night mode&#39; to the pixmap" alt="" coords="5,31,185,57"/>
+<area shape="rect" id="node2" href="$night__mode_8c.html#a1f5e1d77ea94f934af2cc1527ffd489d" title="gets the number to multiply the pixels by from the RTC" alt="" coords="233,31,378,57"/>
+<area shape="rect" id="node3" href="$framework__essencials_8c.html#a35a300844fc966966f0e3ea935a1da51" title="Get the hours." alt="" coords="433,5,511,32"/>
+<area shape="rect" id="node4" href="$framework__essencials_8c.html#a2100d5ee5587f7cbfac1c033439a63fd" title="Get the minutes." alt="" coords="426,56,518,83"/>
+</map>

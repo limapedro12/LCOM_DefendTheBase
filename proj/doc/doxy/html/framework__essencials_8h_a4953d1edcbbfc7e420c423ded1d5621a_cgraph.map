@@ -1,0 +1,7 @@
+<map id="clear_screen" name="clear_screen">
+<area shape="rect" id="node1" title="paints the screen black" alt="" coords="5,56,101,83"/>
+<area shape="rect" id="node2" href="$gpu_8c.html#a37a171cbef14394c7d69630cf7883dda" title="function that draws a rectangle in the given coordinates with the given color" alt="" coords="151,5,228,32"/>
+<area shape="rect" id="node4" href="$gpu_8c.html#afb5a465a77dde0ac84ac4dbf9205614e" title="Get the height of the screen corresponding to the given mode." alt="" coords="149,56,230,83"/>
+<area shape="rect" id="node5" href="$gpu_8c.html#af6f53c34af2ce4e0144c974e482d9eab" title="Get the width of the screen corresponding to the given mode." alt="" coords="151,107,228,133"/>
+<area shape="rect" id="node3" href="$gpu_8c.html#addc866720fe25aa8114845b33f9e887d" title="function that draws a pixel in the given coordinates with the given color" alt="" coords="278,5,360,32"/>
+</map>

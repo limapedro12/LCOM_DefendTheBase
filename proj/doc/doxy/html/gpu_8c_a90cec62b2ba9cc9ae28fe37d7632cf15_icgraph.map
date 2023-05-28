@@ -1,0 +1,6 @@
+<map id="vg_init" name="vg_init">
+<area shape="rect" id="node1" title="initializes the video card in the given mode" alt="" coords="434,5,492,32"/>
+<area shape="rect" id="node2" href="$framework__essencials_8c.html#a096ed8ee7629823f736a75770fca746b" title="Turns on graphics mode." alt="" coords="266,5,386,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#af5f9d6865a85276ce0aeb7bc51d216a6" title="function that sets up the game" alt="" coords="162,5,218,32"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,5,114,32"/>
+</map>

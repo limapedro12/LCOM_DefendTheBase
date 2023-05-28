@@ -1,0 +1,8 @@
+<map id="rtc_input" name="rtc_input">
+<area shape="rect" id="node1" title="reads the rtc register corresponding to the command and stores it in place_to_store" alt="" coords="569,81,640,108"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a7be1b741346ac568dee5eef2821160d5" title="confirms if the rtc is in binary mode" alt="" coords="250,5,362,32"/>
+<area shape="rect" id="node3" href="$framework__essencials_8c.html#acf9f0252a6cecaea6442c186c14306c6" title="Runs the game." alt="" coords="162,81,201,108"/>
+<area shape="rect" id="node5" href="$rtc_8c.html#af094cb0c2bdfce604764ad8fe8764d6f" title="checks if rtc is updating" alt="" coords="411,107,521,133"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#aaae0019c0d84f0a725c9a2e488fe1e73" title="updates the time of the RTC" alt="" coords="249,157,363,184"/>
+<area shape="rect" id="node4" href="$proj_8c.html#a2a16f651eccbd248e1ad3b3b924b143b" title=" " alt="" coords="5,81,114,108"/>
+</map>
