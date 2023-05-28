@@ -16,12 +16,16 @@
 #include "xpm/quit_glow.xpm"
 #include "xpm/numbers/numbers.h"
 #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
+#include "xpm/game_over.xpm"
 
 xpm_image_t cursor_img;
 uint8_t * cursor_pixmap;
 
 xpm_image_t background_img;
 uint8_t * background_pixmap;
+
+xpm_image_t game_over_img;
+uint8_t * game_over_pixmap;
 
 xpm_image_t menu_img;
 uint8_t * menu_pixmap;

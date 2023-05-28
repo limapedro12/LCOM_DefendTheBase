@@ -218,7 +218,7 @@ bool is_rb_pressed() {
 }
 
 uint get_hours(){
-  return hours;
+  return 23;//hours;
 }
 
 uint get_minutes(){

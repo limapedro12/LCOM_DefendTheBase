@@ -6,7 +6,6 @@
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/tower_blue/tower_blue.h"
 #include "xpm/numbers/numbers.h"
-// #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 #include "player.h"
 #include "drag.h"
 #include "bullet.h"
@@ -107,7 +106,7 @@ void game(){
       draw_number(get_hours() % 10, 45, 550);
     }
 
-    draw_xpm_loaded(57, 553, two_dots_pixmap, two_dots_img, 0x00FF12);
+    draw_xpm_loaded(59, 553, two_dots_pixmap, two_dots_img, 0x00FF12);
 
     if((get_minutes() / 10) == 1) {
       draw_number(get_minutes() / 10, 65, 550);
@@ -120,7 +119,7 @@ void game(){
   } 
 
   else if(lives <= 0){
-    draw_rectangle(0, 0, 800, 600, 0x000000);
+    draw_xpm_loaded(0, 0, game_over_pixmap, game_over_img, NO_BACKGROUND);
     if(is_key_pressed(ESC, true) || is_key_pressed(ENTER, true)){
       quit();
     }

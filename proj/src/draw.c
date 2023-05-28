@@ -14,6 +14,7 @@ void load_xpms(){
     quit_pixmap = xpm_load(quit_xpm, XPM_8_8_8, &quit_img);
     start_game_glow_pixmap = xpm_load(start_game_glow_xpm, XPM_8_8_8, &start_game_glow_img);
     quit_glow_pixmap = xpm_load(quit_glow_xpm, XPM_8_8_8, &quit_glow_img);
+    game_over_pixmap = xpm_load(game_over_xpm, XPM_8_8_8, &game_over_img);
 
     number_0_pixmap = xpm_load(number_0, XPM_8_8_8, &number_0_img);
     number_1_pixmap = xpm_load(number_1, XPM_8_8_8, &number_1_img);
