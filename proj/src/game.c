@@ -95,6 +95,25 @@ void game(){
         quit();
       }
     }
+
+    //Draw time
+    if((get_hours() / 10) == 1) {
+      draw_number(get_hours() / 10, 30, 550);
+      draw_number(get_hours() % 10, 40, 550);
+    }
+    else {
+      draw_number(get_hours() / 10, 30, 550);
+      draw_number(get_hours() % 10, 45, 550);
+    }
+
+    if((get_minutes() / 10) == 1) {
+      draw_number(get_minutes() / 10, 65, 550);
+      draw_number(get_minutes() % 10, 75, 550);
+    }
+    else {
+      draw_number(get_minutes() / 10, 65, 550);
+      draw_number(get_minutes() % 10, 80, 550);
+    }
   } 
 
   else {
