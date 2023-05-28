@@ -15,6 +15,11 @@
  * @param placed_next allows you to place a new tower
  * @param level level of the tower being dragged
  * @param coins checks if you have enough coins to place a tower
+ * @param background_pixmap background pixmap
+ * @param background_img background image
+ * @param towers_level_1 array of towers of level 1
+ * @param towers_level_2 array of towers of level 2
+ * @param towers_level_3 array of towers of level 3
  */
 void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * level, int * coins, uint8_t* background_pixmap, xpm_image_t background_img, tower towers_level_1[], tower towers_level_2[], tower towers_level_3[]);
 

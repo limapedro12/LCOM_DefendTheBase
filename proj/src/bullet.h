@@ -19,7 +19,8 @@ position bullet_pos[6][3];
  * @param bullet_speed speed of bullet
  * @param bullet_range range of bullet
  * @param time_between_shots time between shots of bullet
- * @return false if bullet is not drawn
+ * @param level level of tower
+ * @return false if bullet is not drawn, true otherwise
  */
 bool drawBullet(int tower_x, int tower_y, enemy current_enemy, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots, int level);
 
