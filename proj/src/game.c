@@ -262,7 +262,7 @@ void game(){
           }
           
           if(coins >= 50) {
-            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &towers_level_1[i].level, &coins, background_pixmap, background_img);
+            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &towers_level_1[i].level, &coins, background_pixmap, background_img, towers_level_1, towers_level_2, towers_level_3);
           }
         }
         else {
@@ -295,7 +295,7 @@ void game(){
           }
 
           if(coins >= 100) {
-            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &towers_level_2[i].level, &coins, background_pixmap, background_img);
+            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &towers_level_2[i].level, &coins, background_pixmap, background_img, towers_level_1, towers_level_2, towers_level_3);
           }
         }
         else {
@@ -320,7 +320,7 @@ void game(){
           draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF); 
           
           if(coins >= 150) {
-            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &towers_level_3[i].level, &coins, background_pixmap, background_img);
+            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &towers_level_3[i].level, &coins, background_pixmap, background_img, towers_level_1, towers_level_2, towers_level_3);
           }
         }
         else {

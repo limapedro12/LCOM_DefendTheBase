@@ -16,7 +16,7 @@
  * @param level level of the tower being dragged
  * @param coins checks if you have enough coins to place a tower
  */
-void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * level, int * coins, uint8_t* background_pixmap, xpm_image_t background_img);
+void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * level, int * coins, uint8_t* background_pixmap, xpm_image_t background_img, tower towers_level_1[], tower towers_level_2[], tower towers_level_3[]);
 
 /**
  * @brief verifies if a tower is being upgraded
