@@ -116,6 +116,13 @@ void game(){
     }
   } 
 
+  else if(lives <= 0){
+    draw_rectangle(0, 0, 800, 600, 0x000000);
+    if(is_key_pressed(ESC, true) || is_key_pressed(ENTER, true)){
+      quit();
+    }
+  }
+
   else {
     draw_xpm_loaded(0, 0, background_pixmap, background_img, NO_BACKGROUND);
 
@@ -130,9 +137,9 @@ void game(){
       }
     }
 
-    if(lives == 0) {
-      quit();
-    }
+    // if(lives == 0) {
+    //   quit();
+    // }
 
     int enemies_alive_2 = 0;
 
