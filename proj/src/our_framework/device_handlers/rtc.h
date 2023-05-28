@@ -38,8 +38,19 @@ bool is_rtc_updating();
  */
 int rtc_update_time(uint *hours, uint *minutes);
 
+/**
+ * @brief confirms if the rtc is in binary mode
+ * 
+ * @return true if rtc is in binary mode, false otherwise
+ */
 bool is_rtc_in_binary();
 
+/**
+ * @brief converts a bcd number to binary
+ * 
+ * @param bcd number to be converted
+ * @return int binary number corresponding to the bcd number
+ */
 int bcd_to_binary(uint8_t bcd);
 
 #endif

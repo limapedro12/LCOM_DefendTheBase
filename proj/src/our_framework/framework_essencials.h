@@ -201,7 +201,18 @@ void draw_rectangle(int x, int y, int width, int height, uint32_t color);
  */
 void clear_screen();
 
+/**
+ * @brief Get the hours
+ * 
+ * @return uint hours
+ */
 uint get_hours();
+
+/**
+ * @brief Get the minutes
+ * 
+ * @return uint minutes
+ */
 uint get_minutes();
 
 #endif

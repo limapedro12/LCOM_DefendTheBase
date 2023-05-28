@@ -15,6 +15,18 @@ void load_xpms(){
     start_game_glow_pixmap = xpm_load(start_game_glow_xpm, XPM_8_8_8, &start_game_glow_img);
     quit_glow_pixmap = xpm_load(quit_glow_xpm, XPM_8_8_8, &quit_glow_img);
 
+    number_0_pixmap = xpm_load(number_0, XPM_8_8_8, &number_0_img);
+    number_1_pixmap = xpm_load(number_1, XPM_8_8_8, &number_1_img);
+    number_2_pixmap = xpm_load(number_2, XPM_8_8_8, &number_2_img);
+    number_3_pixmap = xpm_load(number_3, XPM_8_8_8, &number_3_img);
+    number_4_pixmap = xpm_load(number_4, XPM_8_8_8, &number_4_img);
+    number_5_pixmap = xpm_load(number_5, XPM_8_8_8, &number_5_img);
+    number_6_pixmap = xpm_load(number_6, XPM_8_8_8, &number_6_img);
+    number_7_pixmap = xpm_load(number_7, XPM_8_8_8, &number_7_img);
+    number_8_pixmap = xpm_load(number_8, XPM_8_8_8, &number_8_img);
+    number_9_pixmap = xpm_load(number_9, XPM_8_8_8, &number_9_img);
+    two_dots_pixmap = xpm_load(two_dots, XPM_8_8_8, &two_dots_img);
+
     tower_orange_up_right_pixmap = xpm_load(tower_orange_up_right, XPM_8_8_8, &tower_orange_up_right_img);
     tower_orange_right_pixmap = xpm_load(tower_orange_right, XPM_8_8_8, &tower_orange_right_img);
     tower_orange_down_right_pixmap = xpm_load(tower_orange_down_right, XPM_8_8_8, &tower_orange_down_right_img);
