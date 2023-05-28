@@ -6,6 +6,14 @@
         "*.xpm": "c",
         "enemy_fire_skull_walking.h": "c",
         "xlocale": "c",
-        "draw.h": "c"
+        "draw.h": "c",
+        "chrono": "c",
+        "numbers.h": "c",
+        "tower_purple.h": "c",
+        "tower_orange.h": "c",
+        "tower_blue.h": "c",
+        "player.h": "c",
+        "night_mode.h": "c",
+        "drag.h": "c"
     }
 }

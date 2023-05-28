@@ -5,6 +5,7 @@
 #include "xpm/tower_purple/tower_purple.h"
 #include "xpm/tower_orange/tower_orange.h"
 #include "xpm/tower_blue/tower_blue.h"
+#include "xpm/numbers/numbers.h"
 // #include "xpm/enemy_fire_skull/enemy_fire_skull_walking.h"
 #include "player.h"
 #include "drag.h"
@@ -105,6 +106,8 @@ void game(){
       draw_number(get_hours() / 10, 30, 550);
       draw_number(get_hours() % 10, 45, 550);
     }
+
+    draw_xpm_loaded(57, 553, two_dots_pixmap, two_dots_img, 0x00FF12);
 
     if((get_minutes() / 10) == 1) {
       draw_number(get_minutes() / 10, 65, 550);
