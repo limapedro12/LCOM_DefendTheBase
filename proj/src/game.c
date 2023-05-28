@@ -182,19 +182,21 @@ void game(){
           int bullet_time = 2000/towers_level_1[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time, 1)) {
               enemies[j].hp--;
             }
           }
 
           if(towers_level_1[i].level == 1) {
-            draw_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
+            draw_orange_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
           }         
           else if(towers_level_1[i].level == 2) {   
-            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
+            // draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);        
+            draw_purple_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
           }
           else {   
-            draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+            // draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
+            draw_blue_tower_directing_to_enemy(i, towers_level_1[i].x, towers_level_1[i].y, enemies, bullet_range);
           }
         }
       }
@@ -206,16 +208,18 @@ void game(){
           int bullet_time = 2000/towers_level_2[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {           
+            if(drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time, 2) && enemies[j].hp > 0) {           
               enemies[j].hp--;
             }
           }
 
           if(towers_level_2[i].level == 2) {
-            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
+            // draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_purple_right_pixmap, tower_purple_right_img, 0xFFFFFF);
+            draw_purple_tower_directing_to_enemy(i, towers_level_2[i].x, towers_level_2[i].y, enemies, bullet_range);
           }         
           else {
-            draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
+            // draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
+            draw_blue_tower_directing_to_enemy(i, towers_level_2[i].x, towers_level_2[i].y, enemies, bullet_range);
           }
         }
       }
@@ -227,12 +231,13 @@ void game(){
           int bullet_time = 2000/towers_level_3[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
+            if(drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time, 3) && enemies[j].hp > 0) {
               enemies[j].hp--;
             }
           }
 
-          draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
+          // draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
+          draw_blue_tower_directing_to_enemy(i, towers_level_3[i].x, towers_level_3[i].y, enemies, bullet_range);
         }
       }
     }

@@ -5,8 +5,7 @@
 #include <math.h>
 #include "our_framework/framework_essencials.h"
 
-position bullet_pos[6];
-int* bullet_enemy_id_ptr;
+position bullet_pos[6][3];
 
 /**
  * @brief function that draws a bullet that is shot from a tower to hit an enemy
@@ -22,6 +21,6 @@ int* bullet_enemy_id_ptr;
  * @param time_between_shots time between shots of bullet
  * @return false if bullet is not drawn
  */
-bool drawBullet(int tower_x, int tower_y, enemy current_enemy, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots);
+bool drawBullet(int tower_x, int tower_y, enemy current_enemy, int tower_id, int enemy_id, int bullet_speed, int bullet_range, int time_between_shots, int level);
 
 #endif

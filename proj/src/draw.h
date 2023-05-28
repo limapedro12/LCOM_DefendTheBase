@@ -38,7 +38,9 @@ uint8_t * start_game_glow_pixmap;
 xpm_image_t quit_glow_img;
 uint8_t * quit_glow_pixmap;
 
-int last_position[6];
+int last_position_orange[6];
+int last_position_purple[6];
+int last_position_blue[6];
 
 /**
  * @brief loads xpms
@@ -61,22 +63,30 @@ void draw_lives(int lives);
 void draw_money(int coins);
 
 /**
- * @brief function that draws towers in the corresponding rotating angle
+ * @brief function that draws orange towers in the corresponding rotating angle
  * 
  * @param tower_id tower id
  * @param tower_x tower x position
  * @param tower_y tower y position
  */
-void draw_tower(int tower_id, int tower_x, int tower_y);
-
+void draw_orange_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range);
 
 /**
- * @brief function that draws towers in the corresponding rotating angle
+ * @brief function that draws purple towers in the corresponding rotating angle
  * 
  * @param tower_id tower id
  * @param tower_x tower x position
  * @param tower_y tower y position
  */
-void draw_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range);
+void draw_purple_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range);
+
+/**
+ * @brief function that draws blue towers in the corresponding rotating angle
+ * 
+ * @param tower_id tower id
+ * @param tower_x tower x position
+ * @param tower_y tower y position
+ */
+void draw_blue_tower_directing_to_enemy(int tower_id, int tower_x, int tower_y, enemy* enemies, int range);
 
 #endif
