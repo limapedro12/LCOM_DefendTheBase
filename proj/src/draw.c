@@ -50,36 +50,72 @@ void load_xpms(){
     }
 }
 
-void draw_map(char map[12][16]) {
+void draw_lives(int lives) {
 
-    for(int y = 0; y <= 12; y++) {
-        for(int x = 0; x <= 16; x++) {
-            if(map[y][x] == '#') {
-                draw_rectangle(x*50, y*50, 50, 50, 0x00e600);
-            }
-            if(map[y][x] == '-') {
-                draw_rectangle(x*50, y*50, 50, 50, 0x000000);
-            }
-        }
+    switch (lives) {
+        case 1:
+            draw_xpm(710, 152, number_1, 0x36FF00);
+            break;
+        
+        case 2:
+            draw_xpm(710, 152, number_2, 0x36FF00);
+            break;
+
+        case 3:
+            draw_xpm(710, 152, number_3, 0x36FF00);
+            break;          
+        default:
+            break;
     }
 }
 
-void draw_lives(int lives) {
-    switch (lives)
-    {
-    case 1:
-        draw_xpm(720, 130, number_1, 0x36FF00);
-        break;
-    
-    case 2:
-        draw_xpm(720, 130, number_2, 0x36FF00);
-        break;
+void draw_money(int coins) {
 
-    case 3:
-        draw_xpm(720, 130, number_3, 0x36FF00);
-        break;          
-    default:
-        break;
+    if(coins < 0) {draw_xpm(720, 112, number_0, 0x36FF00);}
+
+    switch (coins) {
+        case 0:
+            draw_xpm(720, 112, number_0, 0x36FF00);
+            break;
+        case 50:
+            draw_xpm(720, 112, number_5, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00);
+            break;
+        case 100:
+            draw_xpm(720, 112, number_1, 0x36FF00); draw_xpm(730, 112, number_0, 0x36FF00); draw_xpm(745, 112, number_0, 0x36FF00);
+            break;
+        case 150:
+            draw_xpm(720, 112, number_1, 0x36FF00); draw_xpm(730, 112, number_5, 0x36FF00); draw_xpm(745, 112, number_0, 0x36FF00);
+            break;
+        case 200:
+            draw_xpm(720, 112, number_2, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break;           
+        case 250:
+            draw_xpm(720, 112, number_2, 0x36FF00); draw_xpm(735, 112, number_5, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break;  
+        case 300:
+            draw_xpm(720, 112, number_3, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break;  
+        case 350:
+            draw_xpm(720, 112, number_3, 0x36FF00); draw_xpm(735, 112, number_5, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+        case 400:
+            draw_xpm(720, 112, number_4, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+        case 450:
+            draw_xpm(720, 112, number_4, 0x36FF00); draw_xpm(735, 112, number_5, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+        case 500:
+            draw_xpm(720, 112, number_5, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+        case 550:
+            draw_xpm(720, 112, number_5, 0x36FF00); draw_xpm(735, 112, number_5, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+        case 600:
+            draw_xpm(720, 112, number_6, 0x36FF00); draw_xpm(735, 112, number_0, 0x36FF00); draw_xpm(750, 112, number_0, 0x36FF00);
+            break; 
+
+        default:
+            break;
     }
 }
 

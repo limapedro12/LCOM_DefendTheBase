@@ -18,7 +18,7 @@ bool menu_state = true;
 bool game_clock = false;
 
 int lives = 3;
-int coins = 10000;
+int coins = 100;
 
 tower towers_level_1[6] = {{1, 605, 218, true, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}, {1, 605, 218, false, false}};
 tower towers_level_2[6] = {{2, 672, 220, true, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}, {2, 672, 220, false, false}};
@@ -145,12 +145,14 @@ void game(){
           if(enemies[i].x == 11*50-20 && enemies[i].y == 500) {
             lives--;
             enemies[i].hp = 0;
+            coins -= 50;
           }
         }
 
         if(enemies[i].hp <= 0) {
           enemies_alive--;
-        } else {
+        } 
+        else {
           enemies_alive_2++;
         }
       }
@@ -163,6 +165,8 @@ void game(){
           enemy_directions[i] = 'r';
           current_enemy_direction[i] = 0;
         }
+
+        coins += 150;
 
         if(round_number < 9) {
           round_number++;
@@ -179,7 +183,6 @@ void game(){
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
             if(enemies[j].hp > 0 && drawBullet(towers_level_1[i].x, towers_level_1[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
-              coins += 20;
               enemies[j].hp--;
             }
           }
@@ -203,8 +206,7 @@ void game(){
           int bullet_time = 2000/towers_level_2[i].level;
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
-            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
-              coins += 20;
+            if(enemies[j].hp > 0 && drawBullet(towers_level_2[i].x, towers_level_2[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {           
               enemies[j].hp--;
             }
           }
@@ -226,7 +228,6 @@ void game(){
 
           for(unsigned int j = 0; j < sizeof(enemies) / sizeof(enemies[0]);j++) {
             if(enemies[j].hp > 0 && drawBullet(towers_level_3[i].x, towers_level_3[i].y, enemies[j], i, j, bullet_speed, bullet_range, bullet_time)) {
-              coins += 20;
               enemies[j].hp--;
             }
           }
@@ -256,7 +257,7 @@ void game(){
           }
           
           if(coins >= 50) {
-            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &coins, background_pixmap, background_img);
+            verifyDrag(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].new, &towers_level_1[i+1].new, &towers_level_1[i].placed, &towers_level_1[i+1].placed, &towers_level_1[i].level, &coins, background_pixmap, background_img);
           }
         }
         else {
@@ -271,7 +272,7 @@ void game(){
               draw_xpm_loaded(towers_level_1[i].x, towers_level_1[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
             }
 
-            if(coins >= 100) {
+            if(coins >= 50) {
               verifyUpgrade(&towers_level_1[i].x, &towers_level_1[i].y, &towers_level_1[i].level, &coins);
             }
           }
@@ -289,7 +290,7 @@ void game(){
           }
 
           if(coins >= 100) {
-            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &coins, background_pixmap, background_img);
+            verifyDrag(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].new, &towers_level_2[i+1].new, &towers_level_2[i].placed, &towers_level_2[i+1].placed, &towers_level_2[i].level, &coins, background_pixmap, background_img);
           }
         }
         else {
@@ -301,7 +302,7 @@ void game(){
               draw_xpm_loaded(towers_level_2[i].x, towers_level_2[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);        
             }
 
-            if(coins >= 200) {
+            if(coins >= 50) {
               verifyUpgrade(&towers_level_2[i].x, &towers_level_2[i].y, &towers_level_2[i].level, &coins);
             }
           }
@@ -313,17 +314,13 @@ void game(){
         if(towers_level_3[i].new) { 
           draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF); 
           
-          if(coins >= 100) {
-            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &coins, background_pixmap, background_img);
+          if(coins >= 150) {
+            verifyDrag(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].new, &towers_level_3[i+1].new, &towers_level_3[i].placed, &towers_level_3[i+1].placed, &towers_level_3[i].level, &coins, background_pixmap, background_img);
           }
         }
         else {
           if(towers_level_3[i].placed) {
             draw_xpm_loaded(towers_level_3[i].x, towers_level_3[i].y, tower_blue_right_pixmap, tower_blue_right_img, 0xFFFFFF);
-            
-            if(coins >= 200) {
-              verifyUpgrade(&towers_level_3[i].x, &towers_level_3[i].y, &towers_level_3[i].level, &coins);
-            }
           }
         }
       }
@@ -336,11 +333,12 @@ void game(){
         if(enemy_animation == 13) enemy_animation = 0;
         draw_xpm_loaded(enemies[i].x, enemies[i].y, enemy_pixmaps[enemy_animation], enemy_imgs[enemy_animation], 0xFFFFFF);
         enemy_animation++;
-
       }
     }
 
     draw_lives(lives);
+    draw_money(coins);
+
     // if(get_time_counter() % 5 == 0)
     //   apply_night_mode();
   }

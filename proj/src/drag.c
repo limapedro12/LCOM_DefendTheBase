@@ -1,6 +1,6 @@
 #include "drag.h"
 
-void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * coins, uint8_t* background_pixmap, xpm_image_t background_img){
+void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bool * placed_next, int * level, int * coins, uint8_t* background_pixmap, xpm_image_t background_img){
   int tower_size = 30;
   if(placed && is_lb_pressed() && *x>=get_mouse_position().x - tower_size  && *x<=get_mouse_position().x+tower_size &&*y>=get_mouse_position().y-tower_size && *y<=get_mouse_position().y+tower_size){
     *x = get_mouse_position().x - 15;
@@ -13,7 +13,11 @@ void verifyDrag(int * x, int * y, bool * new, bool * new_next, bool * placed, bo
     *placed_next = false;
     *new = false;
     *new_next = true;
-    *coins = *coins - 50;
+
+    if(*level == 1) {*coins = *coins - 50;}
+    else if(*level == 2) {*coins = *coins - 100;}
+    else {*coins = *coins - 150;}
+
     highlight_map(*x + 25, *y +25, 120, background_pixmap, background_img);
   }
 }
@@ -25,6 +29,6 @@ void verifyUpgrade(int * x, int * y, int * level, int * coins){
     if(*level == 1) {*level = 2;}
     else if(*level == 2) {*level = 3;}
 
-    *coins = *coins -100;
+    *coins = *coins -50;
   }
 }
