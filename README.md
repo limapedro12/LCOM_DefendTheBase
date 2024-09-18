@@ -2,6 +2,8 @@
 
 LCOM Project for group T05G1.
 
+For detailed information about the project, please read [proj/doc/Relatorio_vf.pdf](https://github.com/limapedro12/LCOM_DefendTheBase/blob/main/proj/doc/Relatorio_vf.pdf)
+
 Group members:
 
 1. João Coelho (up202004846@up.pt)
